@@ -1,38 +1,72 @@
-<script setup>
-import HelloWorld from "./components/HelloWorld.vue";
-</script>
-
 <template>
-  <div class="p-4 bg-asdf text-black">
-    If Tailwind is working, this box will have a green background and white
-    text.
-  </div>
-  <div class="p-4 bg-brandDark text-white mt-2">
-    This should have a dark brand color background.
-  </div>
+  <div class="container">
+    <header class="p-8">
+      <h1>Button Examples</h1>
 
-  <div>
-    <a href="https://vite.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+      <div class="button-container">
+        <IconButton
+          variant="primary"
+          text="Claim New Credential"
+          :iconLeft="PhPlus"
+        />
+        <BaseButton variant="secondary">Cancel</BaseButton>
+
+        <IconButton
+          variant="outline-primary"
+          text="Signe"
+          :iconLeft="PhKey"
+          icon-weight="fill"
+          icon-rotation="45"
+        />
+
+        <IconButton variant="danger" text="Reject" :iconLeft="PhProhibit" />
+
+        <!--        &lt;!&ndash; Danger Button (Red) &ndash;&gt;-->
+        <!--        <IconButton variant="danger" text="Delete" :iconLeft="Trash" />-->
+
+        <!--        &lt;!&ndash; Outlined Button (Cancel) &ndash;&gt;-->
+        <!--        <IconButton variant="outline" text="Cancel" :iconLeft="X" />-->
+
+        <!--        &lt;!&ndash; Button with icon on right &ndash;&gt;-->
+        <!--        <IconButton text="Next" variant="primary" :iconRight="ArrowRight" />-->
+
+        <!--        &lt;!&ndash; Button with icons on both sides &ndash;&gt;-->
+        <!--        <IconButton-->
+        <!--          text="Navigate"-->
+        <!--          variant="outline-primary"-->
+        <!--          :iconLeft="ArrowLeft"-->
+        <!--          :iconRight="ArrowRight"-->
+        <!--          :isActive="true"-->
+        <!--        />-->
+      </div>
+    </header>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
+<script setup>
+import IconButton from "./components/buttons/IconButton.vue";
+import { PhCheck, PhPlus, PhKey, PhProhibit } from "@phosphor-icons/vue";
+import BaseButton from "./components/buttons/BaseButton.vue";
+</script>
+
 <style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
 }
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
+
+.button-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 2rem;
 }
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
+
+@media (min-width: 640px) {
+  .button-container {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
 }
 </style>
