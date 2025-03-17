@@ -1,4 +1,5 @@
 <template>
+  <NavBar />
   <div class="container">
     <header class="p-8">
       <h1>Button Examples</h1>
@@ -47,6 +48,7 @@
 import IconButton from "./components/buttons/IconButton.vue";
 import { PhCheck, PhPlus, PhKey, PhProhibit } from "@phosphor-icons/vue";
 import BaseButton from "./components/buttons/BaseButton.vue";
+import NavBar from "./components/navigation/NavBar.vue";
 </script>
 
 <style scoped>
