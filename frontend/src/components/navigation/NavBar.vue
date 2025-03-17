@@ -6,49 +6,83 @@
       </div>
 
       <ul class="nav-list">
-        <NavItem
-          :icon="PhWallet"
-          text="Credentials"
-          :isActive="currentPage === 'credentials'"
-          @click="goTo('credentials')"
-        />
+        <!-- Dynamic navigation items based on current role -->
+        <template v-if="currentRole === 'holder'">
+          <NavItem
+            :icon="PhWallet"
+            text="My Credentials"
+            :isActive="isActiveRoute('holder-credentials')"
+            @click="navigateTo('holder-credentials')"
+          />
+          <NavItem
+            :icon="PhQuestion"
+            text="Sharing"
+            :isActive="isActiveRoute('holder-sharing')"
+            @click="navigateTo('holder-sharing')"
+          />
+        </template>
+
+        <template v-else-if="currentRole === 'issuer'">
+          <NavItem
+            :icon="PhQuestion"
+            text="Issue Credentials"
+            :isActive="isActiveRoute('issuer-issue')"
+            @click="navigateTo('issuer-issue')"
+          />
+          <NavItem
+            :icon="PhQuestion"
+            text="Templates"
+            :isActive="isActiveRoute('issuer-templates')"
+            @click="navigateTo('issuer-templates')"
+          />
+        </template>
+
+        <template v-else-if="currentRole === 'verifier'">
+          <NavItem
+            :icon="PhQuestion"
+            text="Verify"
+            :isActive="isActiveRoute('verifier-verify')"
+            @click="navigateTo('verifier-verify')"
+          />
+          <NavItem
+            :icon="PhQuestion"
+            text="Requests"
+            :isActive="isActiveRoute('verifier-requests')"
+            @click="navigateTo('verifier-requests')"
+          />
+        </template>
+
+        <!-- Common navigation items for all roles -->
         <NavItem
           :icon="PhGearSix"
           text="Settings"
-          :isActive="currentPage === 'settings'"
-          @click="goTo('settings')"
+          :isActive="isActiveRoute('settings')"
+          @click="navigateTo('settings')"
         />
         <NavItem
           :icon="PhQuestion"
           text="Help"
-          :isActive="currentPage === 'help'"
-          @click="goTo('help')"
+          :isActive="isActiveRoute('help')"
+          @click="navigateTo('help')"
         />
       </ul>
     </div>
 
     <!-- Right section: Profile + Dropdown -->
-    <div class="relative">
-      <button
-        class="flex items-center gap-2 px-4 py-2 rounded-md transition-colors"
-        style="
-          background-color: var(--color-secondary);
-          color: var(--color-text-primary);
-        "
-        @click="toggleProfileMenu"
-      >
-        <component :is="profileIcon" :size="24" :weight="'bold'" />
-        <span class="text-sm font-medium"> Profile </span>
+    <div class="profile-container">
+      <button class="profile-button" @click="toggleProfileMenu">
+        <component :is="getRoleIcon(currentRole)" :size="24" :weight="'bold'" />
+        <span class="profile-text">{{ currentRole }}</span>
       </button>
 
       <!-- Profile dropdown -->
       <transition name="fade">
-        <div
-          v-if="showProfileMenu"
-          class="absolute right-0 mt-2 w-48 rounded-md shadow-lg"
-          style="background-color: var(--color-secondary)"
-        >
-          <ProfileDropdown @close="showProfileMenu = false" />
+        <div v-if="showProfileMenu" class="profile-dropdown">
+          <ProfileDropdown
+            :current-role="currentRole"
+            @switch-role="switchRole"
+            @close="showProfileMenu = false"
+          />
         </div>
       </transition>
     </div>
@@ -57,25 +91,60 @@
 
 <script setup>
 import { ref } from "vue";
-
-import { PhWallet, PhGearSix, PhQuestion } from "@phosphor-icons/vue";
+import { useRouter, useRoute } from "vue-router";
+import {
+  PhWallet,
+  PhGearSix,
+  PhQuestion,
+  PhUser,
+  PhBuildings,
+  PhMagnifyingGlass,
+} from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";
 import ProfileDropdown from "./ProfileDropdown.vue";
 
-const currentPage = ref("credentials"); // or use a router-based approach
-const showProfileMenu = ref(false);
+const props = defineProps({
+  currentRole: {
+    type: String,
+    default: "holder",
+    validator: (value) => ["holder", "issuer", "verifier"].includes(value),
+  },
+});
 
-const profileIcon = PhQuestion; // or pass this in via props
+const router = useRouter();
+const route = useRoute();
+const showProfileMenu = ref(false);
 
 function toggleProfileMenu() {
   showProfileMenu.value = !showProfileMenu.value;
 }
 
-function goTo(page) {
-  currentPage.value = page;
-  // Your routing logic here, e.g.:
-  // router.push({ name: page })
+function isActiveRoute(name) {
+  return route.name === name;
+}
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
+
+function switchRole(role) {
+  // Navigate to the main page of the selected role
+  router.push({ path: `/${role}` });
+  showProfileMenu.value = false;
+}
+
+function getRoleIcon(role) {
+  switch (role) {
+    case "holder":
+      return PhUser;
+    case "issuer":
+      return PhBuildings;
+    case "verifier":
+      return PhMagnifyingGlass;
+    default:
+      return PhUser;
+  }
 }
 </script>
 

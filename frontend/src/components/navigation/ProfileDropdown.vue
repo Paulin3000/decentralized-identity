@@ -1,19 +1,25 @@
 <template>
-  <div class="py-2">
-    <div
-      class="px-4 py-2 text-sm font-semibold text-white opacity-80"
-      style="border-bottom: 1px solid var(--color-primary-opacity-low)"
-    >
-      Switch Roles
-    </div>
+  <div class="profile-dropdown-container">
+    <div class="profile-dropdown-header">Switch Roles</div>
 
-    <ul class="flex flex-col mt-2">
-      <NavItem text="Holder" :icon="holderIcon" @click="onClick('holder')" />
-      <NavItem text="Issuer" :icon="issuerIcon" @click="onClick('issuer')" />
+    <ul class="role-list">
+      <NavItem
+        text="Holder"
+        :icon="PhUser"
+        :isActive="currentRole === 'holder'"
+        @click="switchRole('holder')"
+      />
+      <NavItem
+        text="Issuer"
+        :icon="PhBuildings"
+        :isActive="currentRole === 'issuer'"
+        @click="switchRole('issuer')"
+      />
       <NavItem
         text="Verifier"
-        :icon="verifierIcon"
-        @click="onClick('verifier')"
+        :icon="PhMagnifyingGlass"
+        :isActive="currentRole === 'verifier'"
+        @click="switchRole('verifier')"
       />
     </ul>
   </div>
@@ -21,22 +27,42 @@
 
 <script setup>
 import NavItem from "./NavItem.vue";
-import { PhQuestion } from "@phosphor-icons/vue";
+import { PhUser, PhBuildings, PhMagnifyingGlass } from "@phosphor-icons/vue";
 
-const emit = defineEmits(["close"]);
+const props = defineProps({
+  currentRole: {
+    type: String,
+    default: "holder",
+  },
+});
 
-// Example icons for roles
-const holderIcon = PhQuestion;
-const issuerIcon = PhQuestion;
-const verifierIcon = PhQuestion;
+const emit = defineEmits(["switch-role", "close"]);
 
-function onClick(role) {
-  // handle role switching logic here
-
+function switchRole(role) {
+  if (role !== props.currentRole) {
+    emit("switch-role", role);
+  }
   emit("close");
 }
 </script>
 
 <style scoped>
-/* Adjust spacing or style as desired */
+.profile-dropdown-container {
+  padding: 0.5rem 0;
+}
+
+.profile-dropdown-header {
+  padding: 0.5rem 1rem;
+  font-size: var(--text-sm);
+  font-weight: var(--font-semibold);
+  color: white;
+  opacity: 0.8;
+  border-bottom: 1px solid var(--color-primary-opacity-low);
+}
+
+.role-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.5rem;
+}
 </style>
