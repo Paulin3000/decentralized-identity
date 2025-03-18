@@ -1,9 +1,11 @@
 <template>
   <div class="layout">
     <NavBar :current-role="currentRole" />
-    <main class="main-content">
-      <router-view />
-    </main>
+    <div class="container">
+      <main class="main-content">
+        <router-view />
+      </main>
+    </div>
   </div>
 </template>
 
@@ -31,11 +33,15 @@ const currentRole = computed(() => {
   min-height: 100vh;
 }
 
-.main-content {
-  flex: 1;
-  padding: 2rem;
+.container {
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
+  padding: 2rem;
+  flex: 1;
+}
+
+.main-content {
   width: 100%;
 }
 </style>

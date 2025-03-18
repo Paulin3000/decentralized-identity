@@ -1,4 +1,8 @@
 <template>
-  <h1>Sharing</h1>
+  <div>
+    <Header title="Sharing"> </Header>
+  </div>
 </template>
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import Header from "../../components/Header.vue";
+</script>

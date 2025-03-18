@@ -1,90 +1,95 @@
 <template>
   <nav class="navbar">
-    <div class="navbar-left">
-      <div class="flex items-center">
-        <span class="text-lg font-bold tracking-wide"> MyLogo </span>
+    <div class="navbar-content">
+      <div class="navbar-left">
+        <div class="flex items-center">
+          <span class="text-lg font-bold tracking-wide"> MyLogo </span>
+        </div>
+
+        <ul class="nav-list">
+          <template v-if="currentRole === 'holder'">
+            <NavItem
+              :icon="PhWallet"
+              text="My Credentials"
+              :isActive="isActiveRoute('holder-credentials')"
+              @click="navigateTo('holder-credentials')"
+            />
+            <NavItem
+              :icon="PhPaperPlaneTilt"
+              text="Sharing"
+              :isActive="isActiveRoute('holder-sharing')"
+              @click="navigateTo('holder-sharing')"
+            />
+          </template>
+
+          <template v-else-if="currentRole === 'issuer'">
+            <NavItem
+              :icon="PhQuestion"
+              text="Issue Credentials"
+              :isActive="isActiveRoute('issuer-issue')"
+              @click="navigateTo('issuer-issue')"
+            />
+            <NavItem
+              :icon="PhQuestion"
+              text="Templates"
+              :isActive="isActiveRoute('issuer-templates')"
+              @click="navigateTo('issuer-templates')"
+            />
+          </template>
+
+          <template v-else-if="currentRole === 'verifier'">
+            <NavItem
+              :icon="PhQuestion"
+              text="Verify"
+              :isActive="isActiveRoute('verifier-verify')"
+              @click="navigateTo('verifier-verify')"
+            />
+            <NavItem
+              :icon="PhQuestion"
+              text="Requests"
+              :isActive="isActiveRoute('verifier-requests')"
+              @click="navigateTo('verifier-requests')"
+            />
+          </template>
+
+          <!-- Common navigation items for all roles -->
+          <NavItem
+            :icon="PhGearSix"
+            text="Settings"
+            :isActive="isActiveRoute('settings')"
+            @click="navigateTo('settings')"
+          />
+          <NavItem
+            :icon="PhQuestion"
+            text="Help"
+            :isActive="isActiveRoute('help')"
+            @click="navigateTo('help')"
+          />
+        </ul>
       </div>
 
-      <ul class="nav-list">
-        <!-- Dynamic navigation items based on current role -->
-        <template v-if="currentRole === 'holder'">
-          <NavItem
-            :icon="PhWallet"
-            text="My Credentials"
-            :isActive="isActiveRoute('holder-credentials')"
-            @click="navigateTo('holder-credentials')"
+      <!-- Right section: Profile + Dropdown -->
+      <div class="profile-container">
+        <button class="profile-button" @click="toggleProfileMenu">
+          <component
+            :is="getRoleIcon(currentRole)"
+            :size="24"
+            :weight="'bold'"
           />
-          <NavItem
-            :icon="PhQuestion"
-            text="Sharing"
-            :isActive="isActiveRoute('holder-sharing')"
-            @click="navigateTo('holder-sharing')"
-          />
-        </template>
+          <span class="profile-text">{{ currentRole }}</span>
+        </button>
 
-        <template v-else-if="currentRole === 'issuer'">
-          <NavItem
-            :icon="PhQuestion"
-            text="Issue Credentials"
-            :isActive="isActiveRoute('issuer-issue')"
-            @click="navigateTo('issuer-issue')"
-          />
-          <NavItem
-            :icon="PhQuestion"
-            text="Templates"
-            :isActive="isActiveRoute('issuer-templates')"
-            @click="navigateTo('issuer-templates')"
-          />
-        </template>
-
-        <template v-else-if="currentRole === 'verifier'">
-          <NavItem
-            :icon="PhQuestion"
-            text="Verify"
-            :isActive="isActiveRoute('verifier-verify')"
-            @click="navigateTo('verifier-verify')"
-          />
-          <NavItem
-            :icon="PhQuestion"
-            text="Requests"
-            :isActive="isActiveRoute('verifier-requests')"
-            @click="navigateTo('verifier-requests')"
-          />
-        </template>
-
-        <!-- Common navigation items for all roles -->
-        <NavItem
-          :icon="PhGearSix"
-          text="Settings"
-          :isActive="isActiveRoute('settings')"
-          @click="navigateTo('settings')"
-        />
-        <NavItem
-          :icon="PhQuestion"
-          text="Help"
-          :isActive="isActiveRoute('help')"
-          @click="navigateTo('help')"
-        />
-      </ul>
-    </div>
-
-    <!-- Right section: Profile + Dropdown -->
-    <div class="profile-container">
-      <button class="profile-button" @click="toggleProfileMenu">
-        <component :is="getRoleIcon(currentRole)" :size="24" :weight="'bold'" />
-        <span class="profile-text">{{ currentRole }}</span>
-      </button>
-
-      <!-- Profile dropdown -->
-      <transition name="fade">
-        <div v-if="showProfileMenu" class="profile-dropdown">
-          <ProfileDropdown
-            :current-role="currentRole"
-            @switch-role="switchRole"
-            @close="showProfileMenu = false"
-          />
-        </div>
-      </transition>
+        <!-- Profile dropdown -->
+        <transition name="fade">
+          <div v-if="showProfileMenu" class="profile-dropdown">
+            <ProfileDropdown
+              :current-role="currentRole"
+              @switch-role="switchRole"
+              @close="showProfileMenu = false"
+            />
+          </div>
+        </transition>
+      </div>
     </div>
   </nav>
 </template>
@@ -99,6 +104,8 @@ import {
   PhUser,
   PhBuildings,
   PhMagnifyingGlass,
+  PhPaperPlaneTilt,
+  PhBank,
 } from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";
@@ -139,7 +146,7 @@ function getRoleIcon(role) {
     case "holder":
       return PhUser;
     case "issuer":
-      return PhBuildings;
+      return PhBank;
     case "verifier":
       return PhMagnifyingGlass;
     default:
@@ -150,11 +157,22 @@ function getRoleIcon(role) {
 
 <style scoped>
 .navbar {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background-color: var(--color-background);
+  z-index: 100;
+}
+
+.navbar-content {
   display: flex;
-  align-items: center;
   justify-content: space-between;
-  padding: 0.75rem 1.5rem;
-  border-bottom: 1px solid var(--color-secondary);
+  align-items: center;
+  padding: 0.75rem 2rem;
+  max-width: 1600px;
+  margin: 0 auto;
+  width: 100%;
+  height: 64px;
 }
 
 .navbar-left {
@@ -167,6 +185,46 @@ function getRoleIcon(role) {
   display: flex;
   align-items: center;
   gap: 1rem;
+}
+
+.profile-container {
+  position: relative;
+}
+
+.profile-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  border-radius: 0.375rem;
+  background: transparent;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+
+.profile-button:hover {
+  background-color: var(--color-background-hover);
+}
+
+.profile-text {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: capitalize;
+}
+
+.profile-dropdown {
+  position: absolute;
+  top: 100%; /* Position right below the button */
+  right: 0;
+  width: max-content;
+  margin-top: 0.5rem;
+  background-color: var(--color-secondary-dark);
+  border-radius: 1rem;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.1),
+    0 2px 4px -1px rgba(0, 0, 0, 0.06);
+  z-index: 60; /* Higher than navbar */
+  overflow: hidden;
 }
 
 /* Simple fade transition for the dropdown */

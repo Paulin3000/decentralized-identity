@@ -1,20 +1,16 @@
 <template>
-  <li
-    class="nav-item"
-    :class="{
-      'bg-primary': isActive,
-      'hover:bg-primary-dark': !isActive,
-    }"
-    @click="$emit('click')"
-  >
+  <li class="nav-item" @click="$emit('click')">
     <component
       v-if="icon"
       :is="icon"
       :size="iconSize"
       :weight="iconWeight"
-      class="text-current"
+      :class="{ 'text-primary': isActive }"
     />
-    <span class="text-sm font-medium text-text-primary">
+    <span
+      class="text-sm font-medium"
+      :class="isActive ? 'text-primary' : 'text-text-primary'"
+    >
       {{ text }}
     </span>
   </li>

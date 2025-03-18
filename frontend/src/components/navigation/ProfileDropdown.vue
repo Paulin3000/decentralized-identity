@@ -11,7 +11,7 @@
       />
       <NavItem
         text="Issuer"
-        :icon="PhBuildings"
+        :icon="PhBank"
         :isActive="currentRole === 'issuer'"
         @click="switchRole('issuer')"
       />
@@ -27,7 +27,7 @@
 
 <script setup>
 import NavItem from "./NavItem.vue";
-import { PhUser, PhBuildings, PhMagnifyingGlass } from "@phosphor-icons/vue";
+import { PhUser, PhBank, PhMagnifyingGlass } from "@phosphor-icons/vue";
 
 const props = defineProps({
   currentRole: {
@@ -48,7 +48,7 @@ function switchRole(role) {
 
 <style scoped>
 .profile-dropdown-container {
-  padding: 0.5rem 0;
+  padding: 0.5rem 0.5rem;
 }
 
 .profile-dropdown-header {

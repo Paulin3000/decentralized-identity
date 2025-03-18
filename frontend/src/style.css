@@ -52,8 +52,19 @@
   --color-secondary: #4A5568;
   --color-secondary-dark: #404b5b;
 
-  --color-danger: #FF4D4D;
-  --color-danger-dark: #D93D3D;
+  --color-good: rgb(16, 185, 129);
+  --color-good-dark: rgba(16, 185, 129, 0.1);
+
+  --color-danger: rgb(239, 68, 68);
+  --color-danger-dark: rgb(239, 68, 68, 0.1);
+
+  /* Gradient theme colors */
+  --color-yellow: #FFD600;
+  --color-orange: #FF7A00;
+  --color-pink: #FF0069;
+  --color-purple: #D300C5;
+  --color-blue: #7638FA;
+
 
 
 
@@ -78,6 +89,7 @@ body {
   font-family: var(--font-body), sans-serif;
   color: var(--color-text-primary);
 }
+
 
 
 h1, .heading-1 {
@@ -105,6 +117,11 @@ h3, .heading-3 {
   font-weight: var(--font-semibold);
   margin-bottom: 0.75rem;
   color: var(--color-text-primary);
+}
+
+/* in card */
+h4, .heading-4 {
+  font-family: var(--font-heading), sans-serif;
 }
 
 .text-small {
