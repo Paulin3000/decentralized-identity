@@ -35,9 +35,9 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  --opacity-high: 1;     /* 100% */
-  --opacity-medium: 0.9; /* 80% */
-  --opacity-low: 0.6;    /* 60% */
+  --opacity-high: 1;     /* 100%  KILL */
+  --opacity-medium: 0.9; /* 80% KILL */
+  --opacity-low: 0.6;    /* 60% KILL */
 
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #dbdbdb;
@@ -45,15 +45,15 @@
 
   --color-background: #0C0F14;
   --color-background-card: #12141d;
-  --color-background-xxx: #152026;
+  --color-background-secondary: #152026;
 
 
   --color-primary: #495CF8;
   --color-primary-dark: #4052df;
   --color-primary-opacity-low: rgba(143, 133, 255, 0.2);
 
-  --color-secondary: #4A5568; /* not sure yet */
-  --color-secondary-dark: #404b5b;
+  --color-secondary: #4A5568; /* Kill */
+  --color-secondary-dark: #404b5b; /* Kill */
 
   --color-good: rgb(16, 185, 129);
   --color-good-dark: rgba(16, 185, 129, 0.1);

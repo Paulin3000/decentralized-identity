@@ -3,7 +3,9 @@
     <div class="navbar-content">
       <div class="navbar-left">
         <div class="flex items-center">
-          <span class="text-lg font-bold tracking-wide"> MyLogo </span>
+          <button @click="navigateToHome" class="logo-button">
+            <span class="text-lg font-bold tracking-wide"> MyLogo </span>
+          </button>
         </div>
 
         <ul class="nav-list">
@@ -24,28 +26,22 @@
 
           <template v-else-if="currentRole === 'issuer'">
             <NavItem
-              :icon="PhQuestion"
-              text="Issue Credentials"
-              :isActive="isActiveRoute('issuer-issue')"
-              @click="navigateTo('issuer-issue')"
+              :icon="PhSquaresFour"
+              text="Dashboard"
+              :isActive="isActiveRoute('issuer-dashboard')"
+              @click="navigateTo('issuer-dashboard')"
             />
             <NavItem
-              :icon="PhQuestion"
-              text="Templates"
-              :isActive="isActiveRoute('issuer-templates')"
-              @click="navigateTo('issuer-templates')"
+              :icon="PhEnvelopeSimple"
+              text="Requests"
+              :isActive="isActiveRoute('issuer-requests')"
+              @click="navigateTo('issuer-requests')"
             />
           </template>
 
           <template v-else-if="currentRole === 'verifier'">
             <NavItem
-              :icon="PhQuestion"
-              text="Verify"
-              :isActive="isActiveRoute('verifier-verify')"
-              @click="navigateTo('verifier-verify')"
-            />
-            <NavItem
-              :icon="PhQuestion"
+              :icon="PhEnvelopeSimple"
               text="Requests"
               :isActive="isActiveRoute('verifier-requests')"
               @click="navigateTo('verifier-requests')"
@@ -102,10 +98,11 @@ import {
   PhGearSix,
   PhQuestion,
   PhUser,
-  PhBuildings,
+  PhEnvelopeSimple,
   PhMagnifyingGlass,
   PhPaperPlaneTilt,
   PhBank,
+  PhSquaresFour,
 } from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";
@@ -152,6 +149,10 @@ function getRoleIcon(role) {
     default:
       return PhUser;
   }
+}
+
+function navigateToHome() {
+  router.push({ path: `/${props.currentRole}` });
 }
 </script>
 
@@ -204,7 +205,7 @@ function getRoleIcon(role) {
 }
 
 .profile-button:hover {
-  /* background-color: ;  TODO */
+  background-color: var(--color-background-secondary);
 }
 
 .profile-text {
@@ -219,7 +220,7 @@ function getRoleIcon(role) {
   right: 0;
   width: max-content;
   margin-top: 0.5rem;
-  background-color: var(--color-secondary-dark);
+  background-color: var(--color-background-secondary);
   border-radius: 1rem;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),

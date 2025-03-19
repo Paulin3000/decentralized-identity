@@ -1,5 +1,7 @@
 <template>
-  <h1>Issuer</h1>
+  <div>
+    <Header title="Requests"> </Header>
+  </div>
 </template>
 <script setup lang="ts">
 import Header from "../../components/Header.vue";

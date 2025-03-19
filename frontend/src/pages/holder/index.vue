@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Holder Dashboard</h1>
+    <h1>Holder</h1>
     <div>
       <div>
         <button @click="$router.push({ name: 'holder-credentials' })">

@@ -1,5 +1,9 @@
 <template>
-  <li class="nav-item" @click="$emit('click')">
+  <li
+    class="nav-item"
+    @click="$emit('click')"
+    :class="{ 'bg-background-secondary': isActive }"
+  >
     <component
       v-if="icon"
       :is="icon"
@@ -54,5 +58,8 @@ const props = defineProps({
   cursor: pointer;
   transition: background-color 0.2s ease;
   color: var(--color-text-primary);
+}
+.nav-item:hover {
+  background-color: var(--color-background-secondary);
 }
 </style>
