@@ -35,7 +35,6 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-
   --opacity-high: 1;     /* 100% */
   --opacity-medium: 0.9; /* 80% */
   --opacity-low: 0.6;    /* 60% */
@@ -45,18 +44,22 @@
   --color-text-button: #0C0F14;
 
   --color-background: #0C0F14;
+  --color-background-card: #12141d;
+  --color-background-xxx: #152026;
+
+
   --color-primary: #495CF8;
   --color-primary-dark: #4052df;
   --color-primary-opacity-low: rgba(143, 133, 255, 0.2);
 
-  --color-secondary: #4A5568;
+  --color-secondary: #4A5568; /* not sure yet */
   --color-secondary-dark: #404b5b;
 
   --color-good: rgb(16, 185, 129);
   --color-good-dark: rgba(16, 185, 129, 0.1);
 
   --color-danger: rgb(239, 68, 68);
-  --color-danger-dark: rgb(239, 68, 68, 0.1);
+  --color-danger-dark: rgb(239, 68, 68, 0.1); /* used in tag? */
 
   /* Gradient theme colors */
   --color-yellow: #FFD600;
@@ -64,9 +67,6 @@
   --color-pink: #FF0069;
   --color-purple: #D300C5;
   --color-blue: #7638FA;
-
-
-
 
 
 }
@@ -119,16 +119,19 @@ h3, .heading-3 {
   color: var(--color-text-primary);
 }
 
-/* in card */
+
 h4, .heading-4 {
   font-family: var(--font-heading), sans-serif;
+  font-size: var(--text-xl);
+  line-height: var(--leading-tight);
+  font-weight: var(--font-bold);
+  color: var(--color-text-primary);
 }
 
 .text-small {
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
   color: var(--color-text-primary);
-  opacity: var(--opacity-medium);
 }
 
 .text-base, p {

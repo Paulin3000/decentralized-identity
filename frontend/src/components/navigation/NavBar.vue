@@ -196,14 +196,15 @@ function getRoleIcon(role) {
   align-items: center;
   gap: 0.5rem;
   padding: 0.5rem 0.75rem;
-  border-radius: 0.375rem;
+  border-radius: 0.5rem;
+  border: 1px solid #ffffff;
   background: transparent;
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
 
 .profile-button:hover {
-  background-color: var(--color-background-hover);
+  /* background-color: ;  TODO */
 }
 
 .profile-text {
