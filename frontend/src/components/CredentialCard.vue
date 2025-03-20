@@ -33,6 +33,11 @@
           <span class="data-value">{{ formatDate(expiryDate) }}</span>
         </div>
       </div>
+
+      <!-- logo -->
+      <div v-if="logoUrl" class="logo-container" :style="logoContainerStyle">
+        <img :src="logoUrl" alt="logo" />
+      </div>
     </div>
   </div>
 </template>
@@ -72,7 +77,11 @@ const props = defineProps({
   },
   logoUrl: {
     type: String,
-    default: "/default-logo.svg",
+    default: false,
+  },
+  logoContainerColor: {
+    type: String,
+    default: null,
   },
 });
 
@@ -88,6 +97,12 @@ const formatDate = (dateString) => {
     day: "numeric",
   });
 };
+
+const logoContainerStyle = computed(() => {
+  return props.logoContainerColor
+    ? { backgroundColor: props.logoContainerColor }
+    : {};
+});
 </script>
 
 <style scoped>
@@ -101,6 +116,7 @@ const formatDate = (dateString) => {
     2 2 0 3px var(--color-pink),
     3 3 0 4px var(--color-purple),
     4 4 0 5px var(--color-blue);*/
+
   background: radial-gradient(
     circle at top left,
     rgba(255, 255, 255, 0.1) 0%,
@@ -117,7 +133,8 @@ const formatDate = (dateString) => {
   cursor: pointer;
 }
 
-/* gradient at the left side
+/* gradient at the left side */
+/*
 .credential-card::before {
   content: "";
   position: absolute;
@@ -220,5 +237,19 @@ const formatDate = (dateString) => {
   color: var(--color-text-primary);
   grid-column: 2;
   text-align: left;
+}
+
+.logo-container {
+  width: 45px;
+  height: 45px;
+  border-radius: 10px;
+  background-color: var(--color-blue); /* default color */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+img {
+  width: 28px;
 }
 </style>
