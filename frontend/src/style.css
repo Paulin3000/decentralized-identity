@@ -35,22 +35,23 @@
   --font-semibold: 600;
   --font-bold: 700;
 
-  --opacity-high: 1;     /* 100%  KILL */
-  --opacity-medium: 0.9; /* 80% KILL */
-  --opacity-low: 0.6;    /* 60% KILL */
 
   --color-text-primary: #FFFFFF;
   --color-text-secondary: #dbdbdb;
+  --color-text-tertiary: #a0a0a0;
   --color-text-button: #0C0F14;
 
   --color-background: #0C0F14;
   --color-background-card: #12141d;
   --color-background-secondary: #152026;
 
+  --color-container: #23282F;
 
   --color-primary: #495CF8;
   --color-primary-dark: #4052df;
   --color-primary-opacity-low: rgba(143, 133, 255, 0.2);
+
+
 
   --color-secondary: #4A5568; /* Kill */
   --color-secondary-dark: #404b5b; /* Kill */
@@ -112,7 +113,7 @@ h2, .heading-2 {
 
 h3, .heading-3 {
   font-family: var(--font-heading), sans-serif;
-  font-size: var(--text-3xl);
+  font-size: 1.3rem;
   line-height: var(--leading-snug);
   font-weight: var(--font-semibold);
   margin-bottom: 0.75rem;
@@ -131,15 +132,15 @@ h4, .heading-4 {
 .text-small {
   font-size: var(--text-sm);
   line-height: var(--leading-normal);
-  color: var(--color-text-primary);
+  color: var(--color-text-secondary);
 }
 
 .text-base, p {
   font-size: var(--text-base);
   line-height: var(--leading-relaxed);
   margin-bottom: 1rem;
-  opacity: var(--opacity-medium);
   color: var(--color-text-primary);
+  font-weight: var(--font-normal);
 }
 
 .text-large {
@@ -173,7 +174,7 @@ h4, .heading-4 {
 }
 
 .nav-item:hover {
-  opacity: var(--opacity-medium);
+  opacity: 0.8;
 }
 
 .btn-text {

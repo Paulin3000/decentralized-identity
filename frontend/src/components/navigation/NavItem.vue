@@ -4,17 +4,8 @@
     @click="$emit('click')"
     :class="{ 'bg-background-secondary': isActive }"
   >
-    <component
-      v-if="icon"
-      :is="icon"
-      :size="iconSize"
-      :weight="iconWeight"
-      :class="{ 'text-primary': isActive }"
-    />
-    <span
-      class="text-sm font-medium"
-      :class="isActive ? 'text-primary' : 'text-text-primary'"
-    >
+    <component v-if="icon" :is="icon" :size="iconSize" :weight="iconWeight" />
+    <span class="text-sm font-medium">
       {{ text }}
     </span>
   </li>

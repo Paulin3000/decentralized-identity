@@ -5,6 +5,7 @@
 
   <div class="credentials-grid">
     <CredentialCard
+      id="national-id-1"
       type="National ID"
       subheading="Government of Switzerland"
       :verified="true"
@@ -14,6 +15,7 @@
       logoUrl="/placeholder-logo.svg"
     />
     <CredentialCard
+      id="certification-id-1"
       type="Certification"
       subheading="Project Management Institute"
       :verified="false"
@@ -24,6 +26,7 @@
     />
 
     <CredentialCard
+      id="drivers-license-id-1"
       type="Driver's License"
       subheading="Department of Transportation"
       :verified="true"
@@ -33,6 +36,7 @@
       logoUrl="/placeholder-logo.svg"
     />
     <CredentialCard
+      id="health-insurance-id-1"
       type="Health Insurance"
       subheading="National Healthcare System"
       :verified="true"
@@ -42,6 +46,7 @@
       logoUrl="/placeholder-logo.svg"
     />
     <CredentialCard
+      id="degree-id-1"
       type="University Degree"
       subheading="ETH Zurich"
       :verified="true"

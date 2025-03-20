@@ -1,5 +1,9 @@
 <template>
-  <div class="credential-card" :class="{ revoked: !verified }">
+  <div
+    class="credential-card"
+    :class="{ revoked: !verified }"
+    @click="navigateToDetail"
+  >
     <div class="card-header">
       <div class="header-content">
         <h4 class="text-left">{{ type }}</h4>
@@ -35,8 +39,13 @@
 
 <script setup>
 import { computed } from "vue";
+import router from "../router/index.js";
 
 const props = defineProps({
+  id: {
+    type: String,
+    required: true,
+  },
   type: {
     type: String,
     required: true,
@@ -67,6 +76,10 @@ const props = defineProps({
   },
 });
 
+const navigateToDetail = () => {
+  router.push(`/holder/credentials/${props.id}`);
+};
+
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -94,16 +107,17 @@ const formatDate = (dateString) => {
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.01) 100%
   );
-  border: 1px solid white;
+  border: 1px solid #393939;
   border-radius: 16px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
   position: relative;
+  cursor: pointer;
 }
 
-/* gradient at the left side */
+/* gradient at the left side
 .credential-card::before {
   content: "";
   position: absolute;
@@ -122,7 +136,7 @@ const formatDate = (dateString) => {
   opacity: 0.8;
   pointer-events: none;
   border-radius: 0 6px 6px 0;
-}
+}*/
 
 .credential-card:hover {
   transform: scale(1.02);
