@@ -1,8 +1,9 @@
 <template>
   <div class="credential-detail-page">
-    <Header :title="credential.type" :showBackButton="true" />
-
-    <div class="credential-detail-content">
+    <div class="top-container">
+      <button class="go-back-button text-base" @click="handleBack">
+        ← Go Back
+      </button>
       <div class="card-section">
         <CredentialCard
           :id="credential.id"
@@ -13,82 +14,46 @@
           :issuer="credential.issuer"
           :expiryDate="credential.expiryDate"
           :logoUrl="credential.logoUrl"
+          :logo-container-color="credential.logoContainerColor"
         />
       </div>
+    </div>
 
-      <div class="details-section">
-        <DataContainer title="Credential Information">
-          <DataField
-            label="Holder"
-            :value="credential.holder"
-            description="The entity that owns this credential"
-          />
-          <DataField
-            label="Holder DID"
-            value="did:example:holder123456789"
-            description="Decentralized identifier of the credential holder"
-          />
-          <DataField
-            label="Issuer"
-            :value="credential.issuer"
-            description="The entity that issued this credential"
-          />
-          <DataField
-            label="Issuer DID"
-            value="did:example:issuer987654321"
-            description="Decentralized identifier of the credential issuer"
-          />
-          <DataField
-            label="Issuance Date"
-            value="Jan 15, 2023"
-            description="Date when this credential was issued"
-          />
-          <DataField
-            label="Expiry Date"
-            :value="formatDate(credential.expiryDate)"
-            description="Date when this credential will expire"
-            :isLast="true"
-          />
-        </DataContainer>
+    <div class="details-section">
+      <DataContainer title="Credential Information">
+        <DataField label="Holder" :value="credential.holder" />
+        <DataField
+          label="Holder DID"
+          value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+        />
+        <DataField label="Issuer" :value="credential.issuer" />
+        <DataField
+          label="Issuer DID"
+          value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+        />
+        <DataField label="Issuance Date" value="Jan 15, 2023" />
+        <DataField
+          label="Expiry Date"
+          :value="formatDate(credential.expiryDate)"
+          :isLast="true"
+        />
+      </DataContainer>
 
-        <DataContainer title="Credential Data">
-          <DataField
-            label="First Name"
-            value="John"
-            description="Legal first name as per government ID"
-          />
-          <DataField
-            label="Last Name"
-            value="Appleseed"
-            description="Legal last name as per government ID"
-          />
-          <DataField
-            label="Date of Birth"
-            value="April 1, 1990"
-            description="Date of birth as per government records"
-          />
-          <DataField
-            label="Nationality"
-            value="Swiss"
-            description="Country of citizenship"
-            :isLast="true"
-          />
-        </DataContainer>
+      <DataContainer title="Credential Data">
+        <DataField label="First Name" value="John" />
+        <DataField label="Last Name" value="Appleseed" />
+        <DataField label="Date of Birth" value="April 1, 1990" />
+        <DataField label="Nationality" value="Swiss" :isLast="true" />
+      </DataContainer>
 
-        <DataContainer title="Verification History">
-          <DataField
-            label="Last Verification"
-            value="May 12, 2023"
-            description="Date when this credential was last verified"
-          />
-          <DataField
-            label="Verification Method"
-            value="Blockchain Consensus"
-            description="The method used to verify this credential"
-            :isLast="true"
-          />
-        </DataContainer>
-      </div>
+      <DataContainer title="Verification History">
+        <DataField label="Last Verification" value="May 12, 2023" />
+        <DataField
+          label="Verification Method"
+          value="Blockchain Consensus"
+          :isLast="true"
+        />
+      </DataContainer>
     </div>
   </div>
 </template>
@@ -100,6 +65,8 @@ import Header from "../../components/Header.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
+import switzerlandLogo from "../../assets/switzerland.png";
+import router from "../../router/index.js";
 
 const route = useRoute();
 const credentialId = route.params.id;
@@ -112,12 +79,17 @@ const credential = ref({
   holder: "John Appleseed",
   issuer: "Swiss Federal Office",
   expiryDate: "2028-06-30",
-  logoUrl: "/placeholder-logo.svg",
+  logoUrl: switzerlandLogo,
+  logoContainerColor: "var(--color-pink)",
 });
 
 onMounted(() => {
   // Fetch/update credential details as needed
 });
+
+function handleBack() {
+  router.back();
+}
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);
@@ -131,11 +103,36 @@ const formatDate = (dateString) => {
 
 <style scoped>
 .credential-detail-page {
-  padding: 20px;
+  padding: 1rem 7rem;
 }
 
-.credential-detail-content {
+.top-container {
   display: flex;
+  align-items: start;
+  justify-content: center;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.go-back-button {
+  position: absolute;
+  left: 0;
+  top: 1rem;
+  padding: 0.55rem 1.5rem;
+  border: none;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  color: var(--color-primary);
+  font-weight: var(--font-medium);
+}
+
+.go-back-button:hover {
+  opacity: 0.8;
+}
+
+.details-section {
+  display: flex;
+  padding: 1rem;
   flex-direction: column;
   gap: 24px;
 }

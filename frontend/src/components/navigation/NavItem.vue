@@ -1,9 +1,5 @@
 <template>
-  <li
-    class="nav-item"
-    @click="$emit('click')"
-    :class="{ 'bg-nav-hover': isActive }"
-  >
+  <li class="nav-item" @click="$emit('click')">
     <component
       v-if="icon"
       :is="icon"

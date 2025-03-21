@@ -32,11 +32,12 @@ defineProps({
 .data-container {
   background: var(--color-container);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
-  padding: 16px 20px;
+  border-radius: 1rem;
+  padding: 1.5rem 20px;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  max-width: 800px;
 }
 </style>

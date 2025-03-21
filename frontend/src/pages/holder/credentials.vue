@@ -71,9 +71,9 @@ import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
-  padding: 24px;
+  padding: 32px 24px;
   max-width: 1200px;
-  margin: 0 auto;
+  margin: auto;
 }
 
 /* Responsive adjustments */

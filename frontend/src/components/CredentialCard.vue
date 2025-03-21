@@ -119,10 +119,11 @@ const logoContainerStyle = computed(() => {
 
   background: radial-gradient(
     circle at top left,
-    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.125) 0%,
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.01) 100%
   );
+
   border: 1px solid #393939;
   border-radius: 16px;
   overflow: hidden;
