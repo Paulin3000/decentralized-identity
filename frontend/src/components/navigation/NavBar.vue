@@ -4,7 +4,7 @@
       <div class="navbar-left">
         <div class="flex items-center">
           <button @click="navigateToHome" class="logo-button">
-            <span class="text-lg font-bold tracking-wide"> MyLogo </span>
+            <img :src="maskLogo" class="logo" alt="Logo" />
           </button>
         </div>
 
@@ -107,6 +107,7 @@ import {
 
 import NavItem from "./NavItem.vue";
 import ProfileDropdown from "./ProfileDropdown.vue";
+import maskLogo from "../../assets/Mask.png";
 
 const props = defineProps({
   currentRole: {
@@ -205,7 +206,7 @@ function navigateToHome() {
 }
 
 .profile-button:hover {
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-nav-hover);
 }
 
 .profile-text {
@@ -227,6 +228,10 @@ function navigateToHome() {
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
   z-index: 60; /* Higher than navbar */
   overflow: hidden;
+}
+
+.logo {
+  width: 4rem;
 }
 
 /* Simple fade transition for the dropdown */

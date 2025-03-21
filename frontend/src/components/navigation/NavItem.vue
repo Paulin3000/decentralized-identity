@@ -2,9 +2,14 @@
   <li
     class="nav-item"
     @click="$emit('click')"
-    :class="{ 'bg-background-secondary': isActive }"
+    :class="{ 'bg-nav-hover': isActive }"
   >
-    <component v-if="icon" :is="icon" :size="iconSize" :weight="iconWeight" />
+    <component
+      v-if="icon"
+      :is="icon"
+      :size="iconSize"
+      :weight="isActive ? 'fill' : iconWeight"
+    />
     <span class="text-sm font-medium">
       {{ text }}
     </span>
@@ -51,6 +56,6 @@ const props = defineProps({
   color: var(--color-text-primary);
 }
 .nav-item:hover {
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-nav-hover);
 }
 </style>
