@@ -71,13 +71,13 @@ const onClick = (event) => {
 }
 
 .danger {
-  background-color: var(--color-danger);
+  background-color: var(--color-bad);
   color: white;
   border: 2px solid transparent;
 }
 
 .danger:hover {
-  background-color: var(--color-danger-dark);
+  background-color: var(--color-bad-dark);
 }
 
 .secondary {
@@ -106,7 +106,7 @@ const onClick = (event) => {
 
 /* Disabled state */
 .base-btn.disabled {
-  opacity: var(--opacity-low);
+  opacity: 0.2;
   cursor: not-allowed;
   pointer-events: none;
 }

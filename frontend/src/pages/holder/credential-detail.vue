@@ -25,18 +25,22 @@
         <DataField
           label="Holder DID"
           value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+          :has-verified-icon="true"
         />
         <DataField label="Issuer" :value="credential.issuer" />
         <DataField
           label="Issuer DID"
           value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+          :has-verified-icon="true"
         />
         <DataField label="Issuance Date" value="Jan 15, 2023" />
         <DataField
           label="Expiry Date"
           :value="formatDate(credential.expiryDate)"
-          :isLast="true"
         />
+        <DataField label="Status" :isLast="true">
+          <status-tag status="verified">Revoked</status-tag>
+        </DataField>
       </DataContainer>
 
       <DataContainer title="Credential Data">
@@ -67,6 +71,8 @@ import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
+import { PhSealCheck } from "@phosphor-icons/vue";
+import StatusTag from "../../components/statusTag.vue";
 
 const route = useRoute();
 const credentialId = route.params.id;
