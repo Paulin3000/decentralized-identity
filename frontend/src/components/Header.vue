@@ -1,39 +1,28 @@
 <template>
-  <header class="page-header">
-    <!-- Top section: Back button, Title & Actions -->
-    <div class="header-top">
-      <div class="header-left">
-        <button v-if="showBackButton" @click="handleBack" class="back-button">
-          <!-- Use your preferred icon component or SVG here -->
-          <component :is="PhArrowLeft" />
-        </button>
-        <h1 class="page-title">{{ title }}</h1>
-      </div>
-      <div class="header-right" v-if="$slots.actions">
-        <slot name="actions" />
-      </div>
+  <div class="page-header">
+    <div class="header-container">
+      <h1>{{ title }}</h1>
+
+      <!-- Action button area -->
+      <slot></slot>
     </div>
 
-    <!-- Subtitle -->
-    <p v-if="subtitle" class="page-subtitle">{{ subtitle }}</p>
-
-    <!-- Info section: could be for data security or any other information -->
-    <div v-if="infoText || $slots.info" class="header-info">
-      <!-- Use your preferred icon component or SVG here -->
-      <InfoIcon class="info-icon" />
-      <span class="info-text">
-        <slot name="info">
-          {{ infoText }}
-        </slot>
-      </span>
-    </div>
-  </header>
+    <p v-if="subtitle" class="subtitle-container">
+      <component
+        :is="subtitleIcon"
+        :weight="iconWeight"
+        color="var(--color-text-tertiary)"
+      />
+      <span class="text-sm text-text-tertiary">{{ subtitle }}</span>
+    </p>
+  </div>
 </template>
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
-import { PhArrowLeft } from "@phosphor-icons/vue";
-import router from "../router/index.js";
+import { PhLock } from "@phosphor-icons/vue";
+
+const emit = defineEmits(["action"]);
 
 const props = defineProps({
   title: {
@@ -44,86 +33,39 @@ const props = defineProps({
     type: String,
     default: "",
   },
-  showBackButton: {
-    type: Boolean,
-    default: false,
+  subtitleIcon: {
+    type: Object,
+    default: () => PhLock,
   },
-  infoText: {
+  iconWeight: {
     type: String,
-    default: "",
+    default: "fill",
   },
 });
 
-const emit = defineEmits(["back"]);
-
-function handleBack() {
-  router.back();
-}
+const onActionClick = () => {
+  emit("action");
+};
 </script>
 
 <style scoped>
 .page-header {
   padding: 1rem;
   border-bottom: 1px solid #e5e7eb;
+  margin-bottom: 1.5rem;
 }
 
-.header-top {
+.header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.header-left {
+.subtitle-container {
+  margin: 0.5rem 0 0;
   display: flex;
-  align-items: center;
-  gap: 1rem;
-}
-
-.back-button {
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  display: flex;
-  align-items: center;
-}
-
-.back-button .icon {
-  width: 1.25rem;
-  height: 1.25rem;
-  color: var(--color-text-primary);
-}
-
-.page-title {
-  margin: 0;
-  text-align: left;
-}
-
-.header-right {
-  display: flex;
-  gap: 1rem;
-}
-
-.page-subtitle {
-  margin: 0.5rem 0 1rem;
-  color: var(--color-text-secondary);
-  text-align: left;
-}
-
-.header-info {
-  display: flex;
+  flex-direction: row;
   align-items: center;
   gap: 0.5rem;
-  padding: 0.5rem;
-  background: #f9fafb;
-  border: 1px solid #e5e7eb;
-  border-radius: 0.375rem;
-  font-size: 0.875rem;
-  color: var(--color-text-tertiary);
-}
-
-.header-info .info-icon {
-  width: 1rem;
-  height: 1rem;
 }
 </style>

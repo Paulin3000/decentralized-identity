@@ -20,13 +20,17 @@ defineProps({
 .data-container-wrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 12px;
+  width: 100%;
 }
 
 .container-title {
   margin: 0;
   text-align: left;
   padding-left: 4px;
+  width: 100%;
+  max-width: 800px; /* same as data-container! */
 }
 
 .data-container {
@@ -38,6 +42,7 @@ defineProps({
   flex-direction: column;
   gap: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
   max-width: 800px;
 }
 </style>

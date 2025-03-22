@@ -107,7 +107,7 @@ import {
 
 import NavItem from "./NavItem.vue";
 import ProfileDropdown from "./ProfileDropdown.vue";
-import maskLogo from "../../assets/Mask.png";
+import maskLogo from "../../assets/MaskLogo.svg";
 
 const props = defineProps({
   currentRole: {

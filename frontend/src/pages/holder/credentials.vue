@@ -1,6 +1,13 @@
 <template>
   <div>
-    <Header title="Credentials"> </Header>
+    <Header
+      title="Credentials"
+      subtitle="Your credentials are securely stored on your device, not on a public server."
+    >
+      <IconButton :icon-left="PhPlus" variant="primary"
+        >Claim New Credential</IconButton
+      >
+    </Header>
   </div>
 
   <div class="credentials-grid">
@@ -64,6 +71,8 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import uzhLogo from "../../assets/uzh-acronym.svg";
 import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
+import IconButton from "../../components/buttons/IconButton.vue";
+import { PhPlus } from "@phosphor-icons/vue";
 </script>
 
 <style scoped>

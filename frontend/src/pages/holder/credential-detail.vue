@@ -108,10 +108,6 @@ const formatDate = (dateString) => {
 </script>
 
 <style scoped>
-.credential-detail-page {
-  padding: 1rem 7rem;
-}
-
 .top-container {
   display: flex;
   align-items: start;
@@ -138,9 +134,10 @@ const formatDate = (dateString) => {
 
 .details-section {
   display: flex;
-  padding: 1rem;
   flex-direction: column;
+  align-items: center;
   gap: 24px;
+  padding: 1rem 7rem;
 }
 
 .card-section {
