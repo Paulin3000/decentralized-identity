@@ -14,7 +14,11 @@ export default [
     component: () => import("../pages/holder/credential-detail.vue"),
     name: "credential-detail",
   },
-
+  {
+    path: "/holder/request-credential",
+    component: () => import("../pages/holder/request-credential.vue"),
+    name: "request-credential",
+  },
   {
     path: "sharing",
     component: () => import("../pages/holder/sharing.vue"),

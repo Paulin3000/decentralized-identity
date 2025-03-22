@@ -22,8 +22,6 @@
 import { defineProps, defineEmits } from "vue";
 import { PhLock } from "@phosphor-icons/vue";
 
-const emit = defineEmits(["action"]);
-
 const props = defineProps({
   title: {
     type: String,
@@ -42,10 +40,6 @@ const props = defineProps({
     default: "fill",
   },
 });
-
-const onActionClick = () => {
-  emit("action");
-};
 </script>
 
 <style scoped>

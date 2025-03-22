@@ -4,7 +4,10 @@
       title="Credentials"
       subtitle="Your credentials are securely stored on your device, not on a public server."
     >
-      <IconButton :icon-left="PhPlus" variant="primary"
+      <IconButton
+        :icon-left="PhPlus"
+        variant="primary"
+        @click="navigateTo('request-credential')"
         >Claim New Credential</IconButton
       >
     </Header>
@@ -73,6 +76,11 @@ import uzhLogo from "../../assets/uzh-acronym.svg";
 import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhPlus } from "@phosphor-icons/vue";
+import router from "../../router";
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
 </script>
 
 <style scoped>

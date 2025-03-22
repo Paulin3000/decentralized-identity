@@ -1,9 +1,8 @@
 <template>
   <div class="credential-detail-page">
     <div class="top-container">
-      <button class="go-back-button text-base" @click="handleBack">
-        ← Go Back
-      </button>
+      <GoBackButton class="back-button-container" />
+
       <div class="card-section">
         <CredentialCard
           :id="credential.id"
@@ -72,7 +71,8 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
 import { PhSealCheck } from "@phosphor-icons/vue";
-import StatusTag from "../../components/statusTag.vue";
+import StatusTag from "../../components/things/StatusTag.vue";
+import GoBackButton from "../../components/things/GoBackButton.vue";
 
 const route = useRoute();
 const credentialId = route.params.id;
@@ -93,10 +93,6 @@ onMounted(() => {
   // Fetch/update credential details as needed
 });
 
-function handleBack() {
-  router.back();
-}
-
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -116,20 +112,10 @@ const formatDate = (dateString) => {
   position: relative;
 }
 
-.go-back-button {
+.back-button-container {
   position: absolute;
   left: 0;
   top: 1rem;
-  padding: 0.55rem 1.5rem;
-  border: none;
-  cursor: pointer;
-  transition: background-color 0.2s ease;
-  color: var(--color-primary);
-  font-weight: var(--font-medium);
-}
-
-.go-back-button:hover {
-  opacity: 0.8;
 }
 
 .details-section {
