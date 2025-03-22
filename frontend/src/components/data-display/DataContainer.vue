@@ -30,7 +30,6 @@ defineProps({
   text-align: left;
   padding-left: 4px;
   width: 100%;
-  max-width: 800px; /* same as data-container! */
 }
 
 .data-container {
@@ -43,6 +42,5 @@ defineProps({
   gap: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   width: 100%;
-  max-width: 800px;
 }
 </style>
