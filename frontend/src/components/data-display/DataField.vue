@@ -12,12 +12,12 @@
         size="16"
         v-if="hasVerifiedIcon"
       />
-      <div class="field-value text-base">
+      <div class="value-inner-container text-base">
         <slot>{{ value }}</slot>
       </div>
     </div>
 
-    <button class="info-button" v-if="hasIcon">
+    <button class="info-button" v-if="hasInfoIcon">
       <component :is="PhInfo" size="16" />
     </button>
   </div>
@@ -38,7 +38,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  hasIcon: {
+  hasInfoIcon: {
     type: Boolean,
     default: false,
   },
@@ -46,6 +46,7 @@ defineProps({
     type: Boolean,
     default: false,
   },
+  hasDescription: {},
 });
 
 import { PhInfo, PhSealCheck } from "@phosphor-icons/vue";
@@ -61,21 +62,24 @@ import { PhInfo, PhSealCheck } from "@phosphor-icons/vue";
 .field-label {
   font-weight: var(--font-semibold);
   text-align: left;
-  width: 260px;
-  min-width: 260px;
+  width: 100%;
+  max-width: 250px;
   padding-left: 0.6rem;
 }
 
-.field-value {
+.value-inner-container {
   word-break: break-word;
   right: 0.6rem;
   text-align: left;
+  width: 100%;
 }
 
 .value-container {
   display: flex;
   align-items: center;
   gap: 8px;
+  width: 100%;
+  padding-right: 3rem;
 }
 
 .info-button {

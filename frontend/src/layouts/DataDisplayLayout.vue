@@ -12,7 +12,7 @@
 
 <script setup>
 import { useRouter } from "vue-router";
-import GoBackButton from "../components/things/GoBackButton.vue";
+import GoBackButton from "../components/GoBackButton.vue";
 import PageHeader from "../components/PageHeader.vue";
 
 const props = defineProps({

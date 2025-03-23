@@ -70,8 +70,8 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
 import { PhSealCheck } from "@phosphor-icons/vue";
-import StatusTag from "../../components/things/StatusTag.vue";
-import GoBackButton from "../../components/things/GoBackButton.vue";
+import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
+import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
 
 const route = useRoute();

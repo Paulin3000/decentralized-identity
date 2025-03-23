@@ -19,7 +19,7 @@
 <script setup>
 import { defineProps, defineEmits } from "vue";
 import { PhLock } from "@phosphor-icons/vue";
-import GoBackButton from "./things/GoBackButton.vue";
+import GoBackButton from "./GoBackButton.vue";
 
 const props = defineProps({
   title: {
