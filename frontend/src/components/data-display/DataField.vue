@@ -4,21 +4,19 @@
       {{ label }}
     </div>
 
-    <div class="value-container">
-      <component
-        :is="PhSealCheck"
-        weight="fill"
-        color="var(--color-good)"
-        size="16"
-        v-if="hasVerifiedIcon"
-      />
-      <div class="value-inner-container text-base">
-        <slot>{{ value }}</slot>
-      </div>
+    <div class="value-container text-base">
+      <slot>{{ value }}</slot>
     </div>
 
     <button class="info-button" v-if="hasInfoIcon">
-      <component :is="PhInfo" size="16" />
+      <component
+        :is="PhInfo"
+        size="16"
+        v-tooltip="{
+          content: 'Additional information available',
+          placement: 'right',
+        }"
+      ></component>
     </button>
   </div>
   <div class="field-divider" v-if="!isLast"></div>
@@ -42,14 +40,9 @@ defineProps({
     type: Boolean,
     default: false,
   },
-  hasVerifiedIcon: {
-    type: Boolean,
-    default: false,
-  },
-  hasDescription: {},
 });
 
-import { PhInfo, PhSealCheck } from "@phosphor-icons/vue";
+import { PhInfo } from "@phosphor-icons/vue";
 </script>
 
 <style scoped>
@@ -71,7 +64,6 @@ import { PhInfo, PhSealCheck } from "@phosphor-icons/vue";
   word-break: break-word;
   right: 0.6rem;
   text-align: left;
-  width: 100%;
 }
 
 .value-container {

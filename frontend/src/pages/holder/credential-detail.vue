@@ -19,17 +19,19 @@
       <div class="details-section">
         <DataContainer title="Credential Information">
           <DataField label="Holder" :value="credential.holder" />
-          <DataField
-            label="Holder DID"
-            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
-            :has-verified-icon="true"
-          />
+          <DataField label="Holder DID"
+            ><DIDAddress
+              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              show-icon="true"
+              icon="verified"
+          /></DataField>
           <DataField label="Issuer" :value="credential.issuer" />
-          <DataField
-            label="Issuer DID"
-            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
-            :has-verified-icon="true"
-          />
+          <DataField label="Issuer DID"
+            ><DIDAddress
+              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              show-icon="true"
+              icon="verified"
+          /></DataField>
           <DataField label="Issuance Date" value="Jan 15, 2023" />
           <DataField
             label="Expiry Date"
@@ -73,6 +75,7 @@ import { PhSealCheck } from "@phosphor-icons/vue";
 import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
 import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
+import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
 
 const route = useRoute();
 const credentialId = route.params.id;

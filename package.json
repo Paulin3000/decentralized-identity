@@ -19,6 +19,7 @@
   "dependencies": {
     "big-integer": "^1.6.51",
     "crypto-js": "^4.1.1",
-    "ethereumjs-util": "^7.1.5"
+    "ethereumjs-util": "^7.1.5",
+    "floating-vue": "^5.2.2"
   }
 }
