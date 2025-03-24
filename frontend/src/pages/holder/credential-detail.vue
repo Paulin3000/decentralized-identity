@@ -26,7 +26,7 @@
               icon="verified"
           /></DataField>
           <DataField label="Issuer" :value="credential.issuer" />
-          <DataField label="Issuer DID"
+          <DataField label="Issuer@ DID"
             ><DIDAddress
               address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
               show-icon="true"
@@ -119,5 +119,17 @@ const formatDate = (dateString) => {
   flex-direction: column;
   width: 100%;
   gap: 3.75rem;
+}
+
+/* Add this style to apply box-shadow to credential card only in the detail view */
+.card-section :deep(.credential-card) {
+  box-shadow: 0 0 20px rgba(73, 92, 248, 0.3);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.card-section :deep(.credential-card:hover) {
+  box-shadow: 0 0 25px rgba(73, 92, 248, 0.6);
 }
 </style>

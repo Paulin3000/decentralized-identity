@@ -119,7 +119,7 @@ const logoContainerStyle = computed(() => {
 
   background: radial-gradient(
     circle at top left,
-    rgba(255, 255, 255, 0.125) 0%,
+    rgba(255, 255, 255, 0.11) 0%,
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.01) 100%
   );
@@ -129,7 +129,7 @@ const logoContainerStyle = computed(() => {
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  transition: all 0.3s ease;
+  transition: transform 0.3s ease;
   position: relative;
   cursor: pointer;
 }
@@ -158,19 +158,10 @@ const logoContainerStyle = computed(() => {
 
 .credential-card:hover {
   transform: scale(1.02);
-  /*
-  box-shadow:
-    0 0 4px 2px var(--color-pink),
-    0 0 6px 3px var(--color-purple),
-    0 0 8px 4px var(--color-blue); */
-}
-
-.credential-card.revoked {
-  /* */
 }
 
 .card-header {
-  padding: 20px 20px 12px 25px; /* change back to 20px 20px 12px if you remove the gradient */
+  padding: 20px 20px 12px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -205,7 +196,7 @@ const logoContainerStyle = computed(() => {
 }
 
 .card-body {
-  padding: 16px 20px 16px 25px; /* change back to 16px 20px if you remove the gradient */
+  padding: 16px 20px;
   flex: 1;
   display: flex;
   justify-content: space-between;
