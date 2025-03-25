@@ -46,4 +46,11 @@ const router = useRouter();
   max-width: 850px;
   gap: 1.5rem;
 }
+
+/* Add responsive styling for smaller screens */
+@media (max-width: 1200px) {
+  .back-button-container {
+    top: -2rem;
+  }
+}
 </style>

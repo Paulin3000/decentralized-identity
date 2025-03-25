@@ -51,9 +51,8 @@
   --color-primary-dark: #4052df;
   --color-primary-opacity-low: rgba(143, 133, 255, 0.2);
 
-
-  --color-secondary: #4A5568; /* Kill */
-  --color-secondary-dark: #404b5b; /* Kill */
+  --color-secondary: #4A5568;
+  --color-secondary-dark: #404b5b;
 
   --color-good: rgb(16, 185, 129);
   --color-good-dark: rgba(16, 185, 129, 0.1);

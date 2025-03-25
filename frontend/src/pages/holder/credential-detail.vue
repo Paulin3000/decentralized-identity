@@ -26,7 +26,7 @@
               icon="verified"
           /></DataField>
           <DataField label="Issuer" :value="credential.issuer" />
-          <DataField label="Issuer@ DID"
+          <DataField label="Issuer DID"
             ><DIDAddress
               address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
               show-icon="true"

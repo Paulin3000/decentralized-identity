@@ -44,7 +44,6 @@ const props = defineProps({
 <style scoped>
 .page-header {
   padding: 1rem;
-  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: row;
   justify-content: flex-start;

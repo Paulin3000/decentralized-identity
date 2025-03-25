@@ -1,16 +1,31 @@
 <template>
   <div>
-    <Header
-      title="Credentials"
-      subtitle="Your credentials are securely stored on your device, not on a public server."
-    >
-      <IconButton
-        :icon-left="PhPlus"
-        variant="primary"
-        @click="navigateTo('request-credential')"
-        >Claim New Credential</IconButton
-      >
-    </Header>
+    <div class="header">
+      <div>
+        <div class="heading-container">
+          <h1>Credentials</h1>
+        </div>
+        <p class="subtitle-container">
+          <component
+            :is="PhLock"
+            weight="fill"
+            color="var(--color-text-tertiary)"
+          />
+          <span class="text-sm text-text-tertiary"
+            >Your credentials are securely stored on your device, not on a
+            public server.
+          </span>
+        </p>
+      </div>
+      <div class="button-container">
+        <IconButton
+          :icon-left="PhPlus"
+          variant="primary"
+          @click="navigateTo('request-credential')"
+          >Claim New Credential</IconButton
+        >
+      </div>
+    </div>
   </div>
 
   <div class="credentials-grid">
@@ -75,7 +90,7 @@ import switzerlandLogo from "../../assets/switzerland.png";
 import uzhLogo from "../../assets/uzh-acronym.svg";
 import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
 import IconButton from "../../components/buttons/IconButton.vue";
-import { PhPlus } from "@phosphor-icons/vue";
+import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
 
 function navigateTo(routeName) {
@@ -84,6 +99,29 @@ function navigateTo(routeName) {
 </script>
 
 <style scoped>
+.header {
+  padding: 1rem 1rem 2rem;
+
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  border-bottom: 1px solid #e5e7eb;
+}
+.heading-container {
+  display: flex;
+  align-items: flex-start;
+}
+.subtitle-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.button-container {
+  display: flex;
+  align-items: flex-end;
+  align-self: flex-end; /* Aligns the container itself at the bottom of the header */
+}
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));

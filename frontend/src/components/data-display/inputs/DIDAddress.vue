@@ -7,7 +7,7 @@
       weight="fill"
       :color="iconColor"
     ></component>
-    <span class="text-base">{{ address }}</span>
+    <span class="text-base did-text">{{ address }}</span>
   </div>
 </template>
 
@@ -55,5 +55,12 @@ const iconColor = computed(() => {
   display: inline-flex;
   align-items: center;
   gap: 0.5rem;
+}
+.did-text {
+  word-break: break-all;
+  overflow-wrap: break-word;
+  hyphens: auto;
+  min-width: 0;
+  text-align: left;
 }
 </style>

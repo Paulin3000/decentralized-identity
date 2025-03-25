@@ -51,6 +51,13 @@
           </div>
         </template>
       </div>
+      <template v-if="!trustStatus">
+        <div class="message-inner-container">
+          <p class="message-text" style="color: var(--color-text-tertiary)">
+            DIDs are verified automatically for your security
+          </p>
+        </div>
+      </template>
     </div>
   </div>
 </template>

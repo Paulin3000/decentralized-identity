@@ -35,6 +35,34 @@
             <InputField type="text" placeholder="Enter message" />
           </DataField>
         </DataContainer>
+
+        <FeedbackModal
+          type="success"
+          title="Success"
+          message="Your credential request has been sent to the issuer. You will be notified once it's processed."
+          :is-visible="showFeedbackModal"
+          @close="closeFeedbackModal"
+        />
+
+        <!-- buttons container -->
+        <div class="buttons-container">
+          <IconButton
+            variant="outline-primary"
+            :icon-left="PhX"
+            @click="handleCancel"
+          >
+            Cancel
+          </IconButton>
+          <IconButton
+            variant="primary"
+            :icon-left="PhPaperPlaneTilt"
+            icon-weight="regular"
+            :disabled="!issuerDID"
+            @click="handleSendRequest"
+          >
+            Send Request
+          </IconButton>
+        </div>
       </div>
     </template>
   </DataDisplayLayout>
@@ -50,13 +78,36 @@ import InputField from "../../components/data-display/inputs/InputField.vue";
 import LinkButton from "../../components/data-display/inputs/LinkButton.vue";
 import { ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
+import IconButton from "../../components/buttons/IconButton.vue";
+import {
+  PhCheck,
+  PhCheckCircle,
+  PhPaperPlaneTilt,
+  PhX,
+} from "@phosphor-icons/vue";
+import router from "../../router/index.js";
+import FeedbackModal from "../../components/FeedbackModal.vue";
 
 const issuerDID = ref("");
 const trustStatus = ref(null);
+const showFeedbackModal = ref(false);
 
-const handleTrustStatus = (status) => {
-  trustStatus.value = status;
-  console.log("Trust status updated:", status);
+const handleSendRequest = () => {
+  console.log("Sending credential request...");
+  // Add request sending logic
+  showFeedbackModal.value = true;
+};
+
+const closeFeedbackModal = () => {
+  showFeedbackModal.value = false;
+  // would be better to navigate to credentials but doesn't work somehow
+  // router.push({ name: "holder-credentials" });
+  router.back();
+};
+
+const handleCancel = () => {
+  console.log("Request cancelled");
+  router.back();
 };
 </script>
 
@@ -66,5 +117,13 @@ const handleTrustStatus = (status) => {
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
+}
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding-right: 0.5rem;
 }
 </style>

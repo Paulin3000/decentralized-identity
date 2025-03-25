@@ -106,7 +106,7 @@ const onClick = (event) => {
 
 /* Disabled state */
 .base-btn.disabled {
-  opacity: 0.2;
+  opacity: 0.4;
   cursor: not-allowed;
   pointer-events: none;
 }
