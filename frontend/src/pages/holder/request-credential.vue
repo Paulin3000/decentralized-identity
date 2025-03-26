@@ -40,7 +40,7 @@
 
         <FeedbackModal
           type="success"
-          title="Success"
+          title="Request Sent"
           message="Your credential request has been sent to the issuer. You will be notified once it's processed."
           :is-visible="showFeedbackModal"
           @close="closeFeedbackModal"

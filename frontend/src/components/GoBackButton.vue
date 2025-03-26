@@ -14,7 +14,7 @@ function handleBack() {
 
 <style scoped>
 .go-back-button {
-  padding: 0.55rem 1.5rem;
+  padding: 0.55rem 1.5rem 0.55rem 0rem;
   cursor: pointer;
   color: var(--color-primary);
   font-weight: var(--font-medium);

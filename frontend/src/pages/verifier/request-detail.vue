@@ -1,23 +1,14 @@
 <template>
   <DataDisplayLayout :show-go-back="true">
     <template #header>
-      <div class="card-section">
-        <CredentialCard
-          :id="credential.id"
-          :type="credential.type"
-          :subheading="credential.subheading"
-          :verified="credential.verified"
-          :holder="credential.holder"
-          :issuer="credential.issuer"
-          :expiryDate="credential.expiryDate"
-          :logoUrl="credential.logoUrl"
-          :logo-container-color="credential.logoContainerColor"
-          :glowy="true"
-        />
-      </div>
+      <PageHeader
+        title="New Credential Request "
+        subtitle="Send a request to a trusted issuer to claim your credential."
+      ></PageHeader>
     </template>
+
     <template #content>
-      <div class="details-section">
+      <div class="request-section">
         <DataContainer title="Credential Information">
           <DataField label="Holder" :value="credential.holder" />
           <DataField label="Holder DID"
@@ -50,39 +41,62 @@
           <DataField label="Nationality" value="Swiss" :isLast="true" />
         </DataContainer>
 
-        <DataContainer title="Verification History">
-          <DataField label="Last Verification" value="May 12, 2023" />
-          <DataField
-            label="Verification Method"
-            value="Blockchain Consensus"
-            :isLast="true"
-          />
-        </DataContainer>
+        <FeedbackModal
+          type="success"
+          title="Credential Approved"
+          message="The credential request has been verified and approved. The holder will be notified."
+          :is-visible="showApprovedFeedbackModal"
+          @close="closeFeedbackModal"
+        />
+        <FeedbackModal
+          type="error"
+          title="Credential Rejected"
+          message="This credential request has been rejected. The holder will be notified about this decision."
+          :is-visible="showRejectedFeedbackModal"
+          @close="closeFeedbackModal"
+        />
+
+        <div class="buttons-container">
+          <IconButton
+            variant="outline-primary"
+            :icon-left="PhX"
+            @click="handleReject"
+          >
+            Reject
+          </IconButton>
+          <IconButton
+            variant="primary"
+            :icon-left="PhCheck"
+            @click="handleApprove"
+          >
+            Approve
+          </IconButton>
+        </div>
       </div>
     </template>
   </DataDisplayLayout>
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
-import { useRoute } from "vue-router";
-import Header from "../../components/Header.vue";
+import PageHeader from "../../components/PageHeader.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
-import CredentialCard from "../../components/CredentialCard.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
-import router from "../../router/index.js";
-import { PhSealCheck } from "@phosphor-icons/vue";
-import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
-import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
+import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
+import { onMounted, ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
+import IconButton from "../../components/buttons/IconButton.vue";
+import { PhCheck, PhX } from "@phosphor-icons/vue";
+import FeedbackModal from "../../components/FeedbackModal.vue";
+import switzerlandLogo from "../../assets/switzerland.png";
+import { useRouter } from "vue-router";
 
-const route = useRoute();
-const credentialId = route.params.id;
+const router = useRouter();
+const showApprovedFeedbackModal = ref(false);
+const showRejectedFeedbackModal = ref(false);
 
 const credential = ref({
-  id: credentialId,
+  id: "asdf",
   type: "National ID",
   subheading: "Government of Switzerland",
   verified: true,
@@ -105,20 +119,35 @@ const formatDate = (dateString) => {
     day: "numeric",
   });
 };
+
+const handleApprove = () => {
+  showApprovedFeedbackModal.value = true;
+};
+
+const handleReject = () => {
+  showRejectedFeedbackModal.value = true;
+};
+
+const closeFeedbackModal = () => {
+  showApprovedFeedbackModal.value = false;
+  showRejectedFeedbackModal.value = false;
+  router.push("/verifier/requests");
+};
 </script>
 
 <style scoped>
-.card-section {
-  display: flex;
-  justify-content: center;
-  padding-bottom: 2rem;
-  width: 100%;
-}
-
-.details-section {
+.request-section {
   display: flex;
   flex-direction: column;
-  width: 100%;
+  align-items: center;
   gap: 3.75rem;
+}
+.buttons-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  width: 100%;
+  margin-top: 1rem;
+  padding-right: 0.5rem;
 }
 </style>

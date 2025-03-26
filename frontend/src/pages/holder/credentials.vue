@@ -9,9 +9,9 @@
           <component
             :is="PhLock"
             weight="fill"
-            color="var(--color-text-tertiary)"
+            color="var(--color-text-secondary)"
           />
-          <span class="text-sm text-text-tertiary"
+          <span class="text-sm text-text-secondary"
             >Your credentials are securely stored on your device, not on a
             public server.
           </span>

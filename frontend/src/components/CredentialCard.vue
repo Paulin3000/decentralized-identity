@@ -1,7 +1,7 @@
 <template>
   <div
     class="credential-card"
-    :class="{ revoked: !verified }"
+    :class="{ glowy: glowy }"
     @click="navigateToDetail"
   >
     <div class="card-header">
@@ -83,6 +83,10 @@ const props = defineProps({
     type: String,
     default: null,
   },
+  glowy: {
+    type: Boolean,
+    default: false,
+  },
 });
 
 const navigateToDetail = () => {
@@ -134,6 +138,21 @@ const logoContainerStyle = computed(() => {
   cursor: pointer;
 }
 
+.credential-card:hover {
+  transform: scale(1.02);
+}
+
+.credential-card.glowy {
+  box-shadow: 0 0 20px rgba(73, 92, 248, 0.3);
+  transition:
+    box-shadow 0.3s ease,
+    transform 0.3s ease;
+}
+
+.credential-card.glowy:hover {
+  box-shadow: 0 0 25px rgba(73, 92, 248, 0.6);
+}
+
 /* gradient at the left side */
 /*
 .credential-card::before {
@@ -155,10 +174,6 @@ const logoContainerStyle = computed(() => {
   pointer-events: none;
   border-radius: 0 6px 6px 0;
 }*/
-
-.credential-card:hover {
-  transform: scale(1.02);
-}
 
 .card-header {
   padding: 20px 20px 12px;

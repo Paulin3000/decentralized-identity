@@ -3,7 +3,7 @@
     <div class="header-container">
       <h1>{{ title }}</h1>
 
-      <!-- Action button area -->
+      <!-- ?? -->
       <slot></slot>
     </div>
 
@@ -11,9 +11,9 @@
       <component
         :is="subtitleIcon"
         :weight="iconWeight"
-        color="var(--color-text-tertiary)"
+        color="var(--color-text-secondary)"
       />
-      <span class="text-sm text-text-tertiary">{{ subtitle }}</span>
+      <span class="text-sm text-text-secondary">{{ subtitle }}</span>
     </p>
   </div>
 </template>

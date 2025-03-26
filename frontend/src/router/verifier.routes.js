@@ -9,4 +9,9 @@ export default [
     component: () => import("../pages/verifier/requests.vue"),
     name: "verifier-requests",
   },
+  {
+    path: "requests/:id",
+    component: () => import("../pages/verifier/request-detail.vue"),
+    name: "request-detail",
+  },
 ];
