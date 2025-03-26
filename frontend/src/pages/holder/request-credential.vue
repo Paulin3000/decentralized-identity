@@ -36,6 +36,8 @@
           </DataField>
         </DataContainer>
 
+        <SignatureField :disabled="!issuerDID" @signed="signed = true" />
+
         <FeedbackModal
           type="success"
           title="Success"
@@ -44,7 +46,6 @@
           @close="closeFeedbackModal"
         />
 
-        <!-- buttons container -->
         <div class="buttons-container">
           <IconButton
             variant="outline-primary"
@@ -57,7 +58,7 @@
             variant="primary"
             :icon-left="PhPaperPlaneTilt"
             icon-weight="regular"
-            :disabled="!issuerDID"
+            :disabled="!issuerDID || !signed"
             @click="handleSendRequest"
           >
             Send Request
@@ -87,10 +88,12 @@ import {
 } from "@phosphor-icons/vue";
 import router from "../../router/index.js";
 import FeedbackModal from "../../components/FeedbackModal.vue";
+import SignatureField from "../../components/data-display/SignatureField.vue";
 
 const issuerDID = ref("");
 const trustStatus = ref(null);
 const showFeedbackModal = ref(false);
+const signed = ref(false);
 
 const handleSendRequest = () => {
   console.log("Sending credential request...");

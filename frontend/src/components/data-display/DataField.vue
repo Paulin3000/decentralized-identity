@@ -1,6 +1,6 @@
 <template>
   <div class="data-field">
-    <div class="field-label text-base">
+    <div class="field-label text-label">
       {{ label }}
     </div>
 
@@ -53,7 +53,6 @@ import { PhInfo } from "@phosphor-icons/vue";
 }
 
 .field-label {
-  font-weight: var(--font-semibold);
   text-align: left;
   width: 100%;
   max-width: 250px;

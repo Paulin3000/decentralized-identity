@@ -37,15 +37,14 @@
 
 
   --color-text-primary: #FFFFFF;
-  --color-text-secondary: #dbdbdb;
-  --color-text-tertiary: #a0a0a0;
+  --color-text-secondary: #a0a0a0;
   --color-text-button: #0C0F14;
 
   --color-background: #0C0F14;
   --color-background-secondary: #152026;
   --color-nav-hover: #292f3e;
-
   --color-container: #23282F;
+  --color-line: #e5e7eb;
 
   --color-primary: #495CF8;
   --color-primary-dark: #4052df;
@@ -146,20 +145,13 @@ h4, .heading-4 {
   color: var(--color-text-primary);
 }
 
-/* Special text type */
-.lead {
-  font-size: var(--text-xl);
+.text-label {
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
+  color: var(--color-text-primary);
   line-height: var(--leading-relaxed);
-  font-weight: var(--font-normal);
-  margin-bottom: 1.5rem;
 }
 
-/* Special text type */
-.caption {
-  font-size: var(--text-xs);
-  line-height: var(--leading-normal);
-  opacity: 0.8;
-}
 
 /* Navigation elements */
 .nav-item {

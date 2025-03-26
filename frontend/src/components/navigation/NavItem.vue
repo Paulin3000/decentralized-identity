@@ -49,7 +49,6 @@ const props = defineProps({
   border-radius: 0.375rem;
   cursor: pointer;
   transition: background-color 0.2s ease;
-  color: var(--color-text-primary);
 }
 .nav-item:hover {
   background-color: var(--color-nav-hover);

@@ -8,9 +8,7 @@
       />
     </template>
     <template #content>
-      <DataContainer>
-        <DataField label="label 1" value="value 1" />
-      </DataContainer>
+      <p class="text-large text-primary">Blablabal</p>
     </template>
   </DataDisplayLayout>
 </template>
