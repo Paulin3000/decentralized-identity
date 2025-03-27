@@ -41,6 +41,8 @@
           <DataField label="Nationality" value="Swiss" :isLast="true" />
         </DataContainer>
 
+        <CredentialVerifier @verified="isVerified = true" />
+
         <FeedbackModal
           type="success"
           title="Credential Approved"
@@ -68,6 +70,7 @@
             variant="primary"
             :icon-left="PhCheck"
             @click="handleApprove"
+            :disabled="!isVerified"
           >
             Approve
           </IconButton>
@@ -90,10 +93,12 @@ import { PhCheck, PhX } from "@phosphor-icons/vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import { useRouter } from "vue-router";
+import CredentialVerifier from "../../components/data-display/verify/CredentialVerifier.vue";
 
 const router = useRouter();
 const showApprovedFeedbackModal = ref(false);
 const showRejectedFeedbackModal = ref(false);
+const isVerified = ref(false);
 
 const credential = ref({
   id: "asdf",

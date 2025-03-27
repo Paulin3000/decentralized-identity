@@ -103,6 +103,7 @@ import {
   PhPaperPlaneTilt,
   PhBank,
   PhSquaresFour,
+  PhShieldCheck,
 } from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";
@@ -146,7 +147,7 @@ function getRoleIcon(role) {
     case "issuer":
       return PhBank;
     case "verifier":
-      return PhMagnifyingGlass;
+      return PhShieldCheck;
     default:
       return PhUser;
   }
@@ -217,11 +218,13 @@ function navigateToHome() {
 
 .profile-dropdown {
   position: absolute;
-  top: 100%; /* Position right below the button */
-  right: 0;
+  top: 110%; /* Position right below the button */
+  left: 50%;
+  transform: translateX(-50%);
   width: max-content;
   margin-top: 0.5rem;
-  background-color: var(--color-background-secondary);
+  background-color: var(--color-background);
+  border: 1px solid var(--color-primary-opacity-low);
   border-radius: 1rem;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),

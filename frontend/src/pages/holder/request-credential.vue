@@ -57,7 +57,7 @@
           <IconButton
             variant="primary"
             :icon-left="PhPaperPlaneTilt"
-            icon-weight="regular"
+            icon-weight="fill"
             :disabled="!issuerDID || !signed"
             @click="handleSendRequest"
           >

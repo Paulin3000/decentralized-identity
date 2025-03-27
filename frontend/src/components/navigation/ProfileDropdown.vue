@@ -17,7 +17,7 @@
       />
       <NavItem
         text="Verifier"
-        :icon="PhMagnifyingGlass"
+        :icon="PhShieldCheck"
         :isActive="currentRole === 'verifier'"
         @click="switchRole('verifier')"
       />
@@ -27,7 +27,12 @@
 
 <script setup>
 import NavItem from "./NavItem.vue";
-import { PhUser, PhBank, PhMagnifyingGlass } from "@phosphor-icons/vue";
+import {
+  PhUser,
+  PhBank,
+  PhMagnifyingGlass,
+  PhShieldCheck,
+} from "@phosphor-icons/vue";
 
 const props = defineProps({
   currentRole: {
