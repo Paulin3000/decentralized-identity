@@ -23,39 +23,6 @@ const routes = [
     component: () => import("../layouts/DefaultLayout.vue"),
     children: verifierRoutes,
   },
-  {
-    path: "/settings",
-    component: () => import("../layouts/DefaultLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("../pages/settings.vue"),
-        name: "settings",
-      },
-    ],
-  },
-  {
-    path: "/help",
-    component: () => import("../layouts/DefaultLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("../pages/help.vue"),
-        name: "help",
-      },
-    ],
-  },
-  {
-    path: "/playground",
-    component: () => import("../layouts/DefaultLayout.vue"),
-    children: [
-      {
-        path: "",
-        component: () => import("../pages/playground.vue"),
-        name: "playground",
-      },
-    ],
-  },
 ];
 
 const router = createRouter({

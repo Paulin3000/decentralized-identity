@@ -24,4 +24,14 @@ export default [
     component: () => import("../pages/holder/sharing.vue"),
     name: "holder-sharing",
   },
+  {
+    path: "settings",
+    component: () => import("../pages/holder/settings.vue"),
+    name: "holder-settings",
+  },
+  {
+    path: "help",
+    component: () => import("../pages/holder/help.vue"),
+    name: "holder-help",
+  },
 ];

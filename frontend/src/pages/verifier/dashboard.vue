@@ -1,11 +1,11 @@
 <template>
   <div>
-    <Header title="Issuer Dashboard"> </Header>
+    <Header title="Verifier Dashboard"> </Header>
   </div>
   <button
     @click="
       $router.push({
-        name: 'issuer-request-detail',
+        name: 'verifier-request-detail',
         params: { id: 'certification-id-1' },
       })
     "

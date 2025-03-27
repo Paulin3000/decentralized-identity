@@ -5,6 +5,11 @@ export default [
     name: "verifier",
   },
   {
+    path: "dashboard",
+    component: () => import("../pages/verifier/dashboard.vue"),
+    name: "verifier-dashboard",
+  },
+  {
     path: "requests",
     component: () => import("../pages/verifier/requests.vue"),
     name: "verifier-requests",
@@ -12,6 +17,16 @@ export default [
   {
     path: "requests/:id",
     component: () => import("../pages/verifier/request-detail.vue"),
-    name: "request-detail",
+    name: "verifier-request-detail",
+  },
+  {
+    path: "settings",
+    component: () => import("../pages/verifier/settings.vue"),
+    name: "verifier-settings",
+  },
+  {
+    path: "help",
+    component: () => import("../pages/verifier/help.vue"),
+    name: "verifier-help",
   },
 ];

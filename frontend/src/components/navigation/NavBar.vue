@@ -8,6 +8,7 @@
           </button>
         </div>
 
+        <!-- Holder -->
         <ul class="nav-list">
           <template v-if="currentRole === 'holder'">
             <NavItem
@@ -22,8 +23,21 @@
               :isActive="isActiveRoute('holder-sharing')"
               @click="navigateTo('holder-sharing')"
             />
+            <NavItem
+              :icon="PhGearSix"
+              text="Settings"
+              :isActive="isActiveRoute('holder-settings')"
+              @click="navigateTo('holder-settings')"
+            />
+            <NavItem
+              :icon="PhQuestion"
+              text="Help"
+              :isActive="isActiveRoute('holder-help')"
+              @click="navigateTo('holder-help')"
+            />
           </template>
 
+          <!-- Issuer -->
           <template v-else-if="currentRole === 'issuer'">
             <NavItem
               :icon="PhSquaresFour"
@@ -37,30 +51,61 @@
               :isActive="isActiveRoute('issuer-requests')"
               @click="navigateTo('issuer-requests')"
             />
+            <NavItem
+              :icon="PhGearSix"
+              text="Settings"
+              :isActive="isActiveRoute('issuer-settings')"
+              @click="navigateTo('issuer-settings')"
+            />
+            <NavItem
+              :icon="PhQuestion"
+              text="Help"
+              :isActive="isActiveRoute('issuer-help')"
+              @click="navigateTo('issuer-help')"
+            />
           </template>
 
+          <!-- Verifier -->
           <template v-else-if="currentRole === 'verifier'">
+            <NavItem
+              :icon="PhSquaresFour"
+              text="Dashboard"
+              :isActive="isActiveRoute('verifier-dashboard')"
+              @click="navigateTo('verifier-dashboard')"
+            />
             <NavItem
               :icon="PhEnvelopeSimple"
               text="Requests"
               :isActive="isActiveRoute('verifier-requests')"
               @click="navigateTo('verifier-requests')"
             />
+            <NavItem
+              :icon="PhGearSix"
+              text="Settings"
+              :isActive="isActiveRoute('verifier-settings')"
+              @click="navigateTo('verifier-settings')"
+            />
+            <NavItem
+              :icon="PhQuestion"
+              text="Help"
+              :isActive="isActiveRoute('verifier-help')"
+              @click="navigateTo('verifier-help')"
+            />
           </template>
 
           <!-- Common navigation items for all roles -->
-          <NavItem
-            :icon="PhGearSix"
-            text="Settings"
-            :isActive="isActiveRoute('settings')"
-            @click="navigateTo('settings')"
-          />
-          <NavItem
-            :icon="PhQuestion"
-            text="Help"
-            :isActive="isActiveRoute('help')"
-            @click="navigateTo('help')"
-          />
+          <!--          <NavItem-->
+          <!--            :icon="PhGearSix"-->
+          <!--            text="Settings"-->
+          <!--            :isActive="isActiveRoute('settings')"-->
+          <!--            @click="navigateTo('settings')"-->
+          <!--          />-->
+          <!--          <NavItem-->
+          <!--            :icon="PhQuestion"-->
+          <!--            text="Help"-->
+          <!--            :isActive="isActiveRoute('help')"-->
+          <!--            @click="navigateTo('help')"-->
+          <!--          />-->
         </ul>
       </div>
 
@@ -224,12 +269,12 @@ function navigateToHome() {
   width: max-content;
   margin-top: 0.5rem;
   background-color: var(--color-background);
-  border: 1px solid var(--color-primary-opacity-low);
+  border: 2px solid var(--color-primary-opacity-low);
   border-radius: 1rem;
   box-shadow:
     0 4px 6px -1px rgba(0, 0, 0, 0.1),
     0 2px 4px -1px rgba(0, 0, 0, 0.06);
-  z-index: 60; /* Higher than navbar */
+  z-index: 60;
   overflow: hidden;
 }
 
