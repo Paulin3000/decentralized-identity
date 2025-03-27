@@ -1,7 +1,7 @@
 <template>
   <div class="signature-field" :class="{ 'is-signed': isSigned }">
     <div class="signature-header">
-      <p class="signature-title text-label">Digital Signature</p>
+      <h4 class="signature-title">Digital Signature</h4>
       <div class="signature-action">
         <IconButton
           v-if="!isSigned"
@@ -123,8 +123,8 @@ async function signDocument() {
 <style scoped>
 .signature-field {
   border: 1px solid #e5e7eb;
-  border-radius: 1rem;
-  padding: 16px 20px;
+  border-radius: 1.5rem;
+  padding: 2rem 20px;
   margin: 16px 0;
   transition: all 0.3s ease;
   overflow: hidden;
@@ -141,12 +141,13 @@ async function signDocument() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 8px;
   gap: 1rem;
   padding-left: 0.6rem;
 }
 
 .signature-title {
+  font-size: 16px;
+  font-weight: var(--font-semibold);
 }
 
 .sign-button:hover {
@@ -185,6 +186,7 @@ async function signDocument() {
   display: flex;
   flex-direction: column;
   gap: 8px;
+  margin-top: 1rem;
 }
 
 .signature-row {

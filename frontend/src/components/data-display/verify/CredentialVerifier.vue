@@ -1,50 +1,53 @@
 <template>
-  <DataContainer title="Credential Verification">
-    <div class="verification-items">
-      <VerificationItem
-        v-for="(item, index) in items"
-        :key="index"
-        :title="item.title"
-        :description="item.description"
-        :status="item.status"
-      />
+  <div class="credential-verifier">
+    <h3 class="container-title">Credential Verification</h3>
+    <div class="container">
+      <div class="verification-items">
+        <VerificationItem
+          v-for="(item, index) in items"
+          :key="index"
+          :title="item.title"
+          :description="item.description"
+          :status="item.status"
+        />
 
-      <div class="bottom-container">
-        <div>
-          <div class="verification-result" v-if="isVerified">
-            <PhSealCheck
-              v-if="allVerified"
-              size="24"
-              weight="fill"
-              class="summary-icon icon-good"
-            />
-            <PhWarning
-              v-else
-              size="24"
-              weight="fill"
-              class="summary-icon icon-bad"
-            />
-            <span
-              class="summary-text"
-              :class="allVerified ? 'text-good' : 'text-bad'"
-            >
-              {{ allVerified ? "Verified" : "Verification Failed" }}
-            </span>
+        <div class="bottom-container">
+          <div>
+            <div class="verification-result" v-if="isVerified">
+              <PhSealCheck
+                v-if="allVerified"
+                size="24"
+                weight="fill"
+                class="summary-icon icon-good"
+              />
+              <PhWarning
+                v-else
+                size="24"
+                weight="fill"
+                class="summary-icon icon-bad"
+              />
+              <span
+                class="summary-text"
+                :class="allVerified ? 'text-good' : 'text-bad'"
+              >
+                {{ allVerified ? "Verified" : "Verification Failed" }}
+              </span>
+            </div>
           </div>
-        </div>
 
-        <IconButton
-          :disabled="isVerifying || isVerified"
-          variant="primary"
-          :icon-left="PhShieldCheck"
-          icon-weight="fill"
-          @click="startVerification"
-        >
-          Verify Now
-        </IconButton>
+          <IconButton
+            :disabled="isVerifying || isVerified"
+            variant="primary"
+            :icon-left="PhShieldCheck"
+            icon-weight="fill"
+            @click="startVerification"
+          >
+            Verify Now
+          </IconButton>
+        </div>
       </div>
     </div>
-  </DataContainer>
+  </div>
 </template>
 
 <script setup>
@@ -152,6 +155,32 @@ async function startVerification() {
 </script>
 
 <style scoped>
+.credential-verifier {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+}
+.container-title {
+  margin: 0;
+  text-align: left;
+  padding-left: 4px;
+  width: 100%;
+}
+
+.container {
+  background: #2a323b;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 2rem;
+  padding: 2rem 1.5rem 1.5rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
 .verification-items {
   display: flex;
   flex-direction: column;
