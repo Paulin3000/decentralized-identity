@@ -17,31 +17,38 @@
               show-icon="true"
               icon="verified"
           /></DataField>
-          <DataField label="Issuer" :value="credential.issuer" />
+          <DataField label="Issuer" value="University of Zürich" />
           <DataField label="Issuer DID"
             ><DIDAddress
               address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
               show-icon="true"
               icon="verified"
           /></DataField>
-          <DataField label="Issuance Date" value="Jan 15, 2023" />
           <DataField
-            label="Expiry Date"
-            :value="formatDate(credential.expiryDate)"
+            label="Date of Request"
+            value="April 30, 2025"
+            :is-last="true"
           />
-          <DataField label="Status" :isLast="true">
-            <status-tag status="verified">Revoked</status-tag>
-          </DataField>
         </DataContainer>
 
         <DataContainer title="Credential Data">
           <DataField label="First Name" value="John" />
           <DataField label="Last Name" value="Appleseed" />
           <DataField label="Date of Birth" value="April 1, 1990" />
-          <DataField label="Nationality" value="Swiss" :isLast="true" />
+          <DataField label="Student ID" value="18-187-369" />
+          <DataField label="Course" value="Ethical Management" />
+          <DataField label="Final Grade" value="5.5" />
+          <DataField label="ECTS" value="6" />
+          <DataField label="Instructor" value="Prof. Sample" :isLast="true" />
         </DataContainer>
 
-        <CredentialVerifier @verified="isVerified = true" />
+        <CredentialVerifier mode="issuer" @verified="isVerified = true" />
+
+        <SignatureField
+          signer-name="University of Zürich"
+          :disabled="!isVerified"
+          @signed="isSigned = true"
+        />
 
         <FeedbackModal
           type="success"
@@ -70,7 +77,7 @@
             variant="primary"
             :icon-left="PhCheck"
             @click="handleApprove"
-            :disabled="!isVerified"
+            :disabled="!isVerified || !isSigned"
           >
             Approve
           </IconButton>
@@ -94,11 +101,13 @@ import FeedbackModal from "../../components/FeedbackModal.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import { useRouter } from "vue-router";
 import CredentialVerifier from "../../components/data-display/verify/CredentialVerifier.vue";
+import SignatureField from "../../components/data-display/SignatureField.vue";
 
 const router = useRouter();
 const showApprovedFeedbackModal = ref(false);
 const showRejectedFeedbackModal = ref(false);
 const isVerified = ref(false);
+const isSigned = ref(false);
 
 const credential = ref({
   id: "asdf",

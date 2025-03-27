@@ -2,7 +2,7 @@
   <DataContainer title="Credential Verification">
     <div class="verification-items">
       <VerificationItem
-        v-for="(item, index) in verificationItems"
+        v-for="(item, index) in items"
         :key="index"
         :title="item.title"
         :description="item.description"
@@ -48,21 +48,25 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
-import {
-  PhShieldCheck,
-  PhCheckCircle,
-  PhWarning,
-  PhSealCheck,
-} from "@phosphor-icons/vue";
+import { ref, computed, watch } from "vue";
+import { PhShieldCheck, PhWarning, PhSealCheck } from "@phosphor-icons/vue";
 import IconButton from "../../../components/buttons/IconButton.vue";
 import VerificationItem from "./VerificationItem.vue";
 import DataContainer from "../DataContainer.vue";
 
 const isVerifying = ref(false);
 const isVerified = ref(false);
+const items = ref([]);
 
-const verificationItems = ref([
+const props = defineProps({
+  mode: {
+    type: String,
+    default: "verifier",
+    validator: (value) => ["verifier", "issuer"].includes(value),
+  },
+});
+
+const verificationItemsVerifier = [
   {
     title: "Issuer's Signature",
     description: "Is the credential signed by the expected issuer?",
@@ -88,31 +92,56 @@ const verificationItems = ref([
     description: "Is the holder’s DID registered and not blacklisted?",
     status: "initial",
   },
-]);
+];
+
+const verificationItemsIssuer = [
+  {
+    title: "Requestor Identity",
+    description: "Is the requestor identity valid and registered?",
+    status: "initial",
+  },
+  {
+    title: "Request Signature",
+    description: "Is the request properly signed by the requestor?",
+    status: "initial",
+  },
+];
+
+// Initialize items based on mode
+function updateItems() {
+  // Create deep copies of the arrays to make them reactive
+  items.value =
+    props.mode === "verifier"
+      ? verificationItemsVerifier.map((item) => ({ ...item }))
+      : verificationItemsIssuer.map((item) => ({ ...item }));
+}
+
+// Call initially and watch for changes
+updateItems();
+watch(() => props.mode, updateItems);
 
 const emit = defineEmits(["verified"]);
 
 const allVerified = computed(() => {
   return (
-    isVerified.value &&
-    verificationItems.value.every((item) => item.status === "verified")
+    isVerified.value && items.value.every((item) => item.status === "verified")
   );
 });
 
 async function startVerification() {
   isVerifying.value = true;
 
-  verificationItems.value.forEach((item) => {
+  items.value.forEach((item) => {
     item.status = "verifying";
   });
 
-  for (let i = 0; i < verificationItems.value.length; i++) {
+  for (let i = 0; i < items.value.length; i++) {
     await new Promise((resolve) =>
       setTimeout(resolve, 1000 + Math.random() * 500),
     );
 
-    const success = Math.random() > 0.2;
-    verificationItems.value[i].status = success ? "verified" : "failed";
+    const success = Math.random() > 0.0;
+    items.value[i].status = success ? "verified" : "failed";
   }
 
   isVerifying.value = false;
@@ -133,7 +162,7 @@ async function startVerification() {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  min-height: 52px;
+  min-height: 60px;
 }
 
 .verification-result {

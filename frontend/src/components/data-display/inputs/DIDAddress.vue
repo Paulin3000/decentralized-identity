@@ -1,5 +1,6 @@
 <template>
   <div class="did-address">
+    <span class="text-base did-text">{{ address }}</span>
     <component
       v-if="icon"
       :is="icon"
@@ -7,7 +8,6 @@
       weight="fill"
       :color="iconColor"
     ></component>
-    <span class="text-base did-text">{{ address }}</span>
   </div>
 </template>
 
