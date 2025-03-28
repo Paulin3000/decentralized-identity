@@ -52,6 +52,12 @@
               @click="navigateTo('issuer-requests')"
             />
             <NavItem
+              :icon="PhIdentificationCard"
+              text="Credentials"
+              :isActive="isActiveRoute('issuer-credentials')"
+              @click="navigateTo('issuer-credentials')"
+            />
+            <NavItem
               :icon="PhGearSix"
               text="Settings"
               :isActive="isActiveRoute('issuer-settings')"
@@ -92,20 +98,6 @@
               @click="navigateTo('verifier-help')"
             />
           </template>
-
-          <!-- Common navigation items for all roles -->
-          <!--          <NavItem-->
-          <!--            :icon="PhGearSix"-->
-          <!--            text="Settings"-->
-          <!--            :isActive="isActiveRoute('settings')"-->
-          <!--            @click="navigateTo('settings')"-->
-          <!--          />-->
-          <!--          <NavItem-->
-          <!--            :icon="PhQuestion"-->
-          <!--            text="Help"-->
-          <!--            :isActive="isActiveRoute('help')"-->
-          <!--            @click="navigateTo('help')"-->
-          <!--          />-->
         </ul>
       </div>
 
@@ -144,11 +136,11 @@ import {
   PhQuestion,
   PhUser,
   PhEnvelopeSimple,
-  PhMagnifyingGlass,
   PhPaperPlaneTilt,
   PhBank,
   PhSquaresFour,
   PhShieldCheck,
+  PhIdentificationCard,
 } from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";

@@ -117,13 +117,11 @@ function navigateTo(routeName) {
   align-items: center;
   gap: 0.5rem;
 }
-
 .button-container {
   display: flex;
   align-items: flex-end;
-  align-self: flex-end;
+  align-self: flex-end; /* Aligns the container itself at the bottom of the header */
 }
-
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));

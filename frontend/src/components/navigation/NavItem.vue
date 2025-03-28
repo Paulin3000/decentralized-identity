@@ -31,7 +31,7 @@ const props = defineProps({
   },
   iconSize: {
     type: Number,
-    default: 20,
+    default: 24,
   },
   iconWeight: {
     type: String,

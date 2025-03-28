@@ -15,9 +15,14 @@ export default [
     name: "issuer-requests",
   },
   {
-    path: "requests/:id",
-    component: () => import("../pages/issuer/request-detail.vue"),
-    name: "issuer-request-detail",
+    path: "credentials",
+    component: () => import("../pages/issuer/credentials.vue"),
+    name: "issuer-credentials",
+  },
+  {
+    path: "/holder/credentials/:id",
+    component: () => import("../pages/issuer/credential-detail.vue"),
+    name: "credential-detail",
   },
   {
     path: "settings",

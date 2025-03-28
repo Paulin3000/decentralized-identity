@@ -66,6 +66,21 @@
   --color-purple: #D300C5;
   --color-blue: #7638FA;
 
+  /* New gradient variable */
+  --gradient-credential: linear-gradient(
+          to bottom right,
+          rgba(119, 76, 105, 0.7) 0%,
+          rgba(35, 72, 109, 0.7) 60%,
+          rgba(37, 106, 97, 0.7) 100%
+  );
+
+  /*
+  background: linear-gradient(
+    to bottom right,
+    #774c69 0%,
+    #23486d 60%,
+    #256a61 100%
+  ); */
 
 }
 
