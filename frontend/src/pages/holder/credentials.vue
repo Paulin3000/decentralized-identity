@@ -38,7 +38,8 @@
       issuer="Swiss Federal Office"
       expiryDate="2028-06-30"
       :logoUrl="switzerlandLogo"
-      logo-container-color="var(--color-pink)"
+      color-theme="pink"
+      @credentialClick="navigateToDetail"
     />
     <CredentialCard
       id="degree-id-1"
@@ -49,7 +50,8 @@
       issuer="ETH Zurich University"
       expiryDate="2099-01-01"
       :logoUrl="uzhLogo"
-      logo-container-color="var(--color-blue)"
+      color-theme="blue"
+      @credentialClick="navigateToDetail"
     />
     <CredentialCard
       id="drivers-license-id-1"
@@ -60,7 +62,8 @@
       issuer="Strassenverkehrsamt"
       expiryDate="2027-03-15"
       :logoUrl="switzerlandLogo"
-      logo-container-color="var(--color-pink)"
+      color-theme="pink"
+      @credentialClick="navigateToDetail"
     />
     <CredentialCard
       id="health-insurance-id-1"
@@ -70,7 +73,8 @@
       holder="John Appleseeed"
       issuer="Sanitas"
       :logoUrl="sanitasLogo"
-      logo-container-color="var(--color-orange)"
+      color-theme="orange"
+      @credentialClick="navigateToDetail"
     />
     <CredentialCard
       id="certification-id-1"
@@ -80,6 +84,7 @@
       holder="John Appleseeed"
       issuer="PMI Global"
       expiryDate="2025-09-18"
+      @credentialClick="navigateToDetail"
     />
   </div>
 </template>
@@ -93,9 +98,31 @@ import IconButton from "../../components/buttons/IconButton.vue";
 import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
 
+/*
 function navigateTo(routeName) {
   router.push({ name: routeName });
 }
+
+ */
+function navigateTo(routeName) {
+  router
+    .push({ name: routeName })
+    .catch((err) => {
+      if (err.name !== "NavigationDuplicated") {
+        throw err;
+      }
+    })
+    .then(() => {
+      // Force component update if needed
+      if (router.currentRoute.value.name === routeName) {
+        window.location.reload();
+      }
+    });
+}
+
+const navigateToDetail = (credentialId) => {
+  router.push(`/holder/credentials/${credentialId}`);
+};
 </script>
 
 <style scoped>

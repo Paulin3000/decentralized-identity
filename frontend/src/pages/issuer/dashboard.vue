@@ -140,11 +140,13 @@ const goToCredentials = () => {
 .request-card:hover {
   transform: scale(1.03);
   /*box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);*/
+  /*
   box-shadow:
     0 0 5px rgba(119, 76, 105, 0.5),
     0 0 15px rgba(35, 72, 109, 0.4),
-    0 0 25px rgba(37, 106, 97, 0.3);
+    0 0 25px rgba(37, 106, 97, 0.3);*/
   border: 1px solid rgba(255, 255, 255, 0.5);
+
   transition: all 0.3s ease;
 }
 
@@ -205,9 +207,9 @@ h3 {
 }
 
 .stats-container {
+  margin-top: auto;
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
 }
 
 .stat-item {

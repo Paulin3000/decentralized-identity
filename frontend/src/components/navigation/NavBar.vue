@@ -244,7 +244,7 @@ function navigateToHome() {
 }
 
 .profile-button:hover {
-  background-color: var(--color-nav-hover);
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .profile-text {

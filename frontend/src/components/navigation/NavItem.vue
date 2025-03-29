@@ -50,7 +50,4 @@ const props = defineProps({
   cursor: pointer;
   transition: background-color 0.2s ease;
 }
-.nav-item:hover {
-  background-color: var(--color-nav-hover);
-}
 </style>

@@ -1,8 +1,8 @@
 <template>
   <div
     class="credential-card"
-    :class="{ glowy: glowy }"
-    @click="navigateToDetail"
+    :class="[backgroundColor, { glowy: glowy }]"
+    @click="handleClick"
   >
     <div class="card-header">
       <div class="header-content">
@@ -46,6 +46,8 @@
 import { computed } from "vue";
 import router from "../router/index.js";
 
+const emit = defineEmits(["credential-click"]);
+
 const props = defineProps({
   id: {
     type: String,
@@ -79,18 +81,21 @@ const props = defineProps({
     type: String,
     default: false,
   },
-  logoContainerColor: {
+  colorTheme: {
     type: String,
-    default: null,
+    default: "",
+    validator: (value) =>
+      ["yellow", "orange", "pink", "purple", "blue"].includes(value),
   },
+
   glowy: {
     type: Boolean,
     default: false,
   },
 });
 
-const navigateToDetail = () => {
-  router.push(`/holder/credentials/${props.id}`);
+const handleClick = () => {
+  emit("credential-click", props.id);
 };
 
 const formatDate = (dateString) => {
@@ -102,10 +107,22 @@ const formatDate = (dateString) => {
   });
 };
 
+const backgroundColor = computed(() => {
+  return props.colorTheme ? `background-${props.colorTheme}` : "";
+});
+
 const logoContainerStyle = computed(() => {
-  return props.logoContainerColor
-    ? { backgroundColor: props.logoContainerColor }
-    : {};
+  if (!props.colorTheme) return {};
+
+  const colorMap = {
+    yellow: "var(--color-yellow)",
+    orange: "var(--color-orange)",
+    pink: "var(--color-pink)",
+    purple: "var(--color-purple)",
+    blue: "var(--color-blue)",
+  };
+
+  return { backgroundColor: colorMap[props.colorTheme] };
 });
 </script>
 
@@ -113,21 +130,22 @@ const logoContainerStyle = computed(() => {
 .credential-card {
   width: 340px;
   height: 215px;
-  /*
-  box-shadow:
-    0 0 0 1px var(--color-yellow),
-    1 1 0 2px var(--color-orange),
-    2 2 0 3px var(--color-pink),
-    3 3 0 4px var(--color-purple),
-    4 4 0 5px var(--color-blue);*/
 
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.01) 0%,
+    rgba(255, 255, 255, 0.12) 50%,
+    rgba(255, 255, 255, 0.01) 100%
+  );
+
+  /*
   background: radial-gradient(
     circle at top left,
     rgba(255, 255, 255, 0.11) 0%,
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.01) 100%
   );
-
+   */
   border: 1px solid #393939;
   border-radius: 16px;
   overflow: hidden;
@@ -137,6 +155,71 @@ const logoContainerStyle = computed(() => {
   position: relative;
   cursor: pointer;
 }
+
+/*
+.background-yellow {
+  background-color: rgba(255, 214, 0, 0.5);
+}
+.background-orange {
+  background-color: rgba(255, 122, 0, 0.5);
+}
+.background-pink {
+  background-color: rgba(255, 0, 105, 0.5);
+}
+.background-purple {
+  background-color: rgba(211, 0, 197, 0.5);
+}
+.background-blue {
+  background-color: rgba(118, 56, 250, 0.5);
+}
+ */
+/*
+.background-yellow {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 214, 0, 0.3) 0%,
+    rgba(255, 173, 51, 0.25) 50%,
+    rgba(255, 233, 125, 0.2) 100%
+  );
+}
+
+.background-orange {
+  background: linear-gradient(
+    120deg,
+    rgba(255, 122, 0, 0.3) 0%,
+    rgba(255, 159, 26, 0.25) 50%,
+    rgba(255, 76, 0, 0.2) 100%
+  );
+}
+
+.background-pink {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 0, 105, 0.3) 0%,
+    rgba(255, 51, 153, 0.25) 65%,
+    rgba(230, 0, 126, 0.2) 100%
+  );
+}
+
+.background-purple {
+  background: linear-gradient(
+    130deg,
+    rgba(211, 0, 197, 0.3) 0%,
+    rgba(172, 51, 255, 0.25) 60%,
+    rgba(156, 0, 230, 0.2) 100%
+  );
+}
+
+.background-blue {
+  background: linear-gradient(
+    150deg,
+    rgba(118, 56, 250, 0.3) 0%,
+    rgba(56, 120, 255, 0.25) 50%,
+    rgba(83, 166, 250, 0.2) 100%
+  );
+}
+
+ */
 
 .credential-card:hover {
   transform: scale(1.02);

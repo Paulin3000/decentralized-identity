@@ -46,7 +46,7 @@
   --color-container: #23282F;
   --color-line: #e5e7eb;
 
-  --color-primary: #495CF8;
+  --color-primary: rgb(73, 92, 248);
   --color-primary-dark: #4052df;
   --color-primary-opacity-low: rgba(143, 133, 255, 0.2);
 
@@ -60,11 +60,11 @@
   --color-warning: #FF7A00;
 
   /* Gradient theme colors */
-  --color-yellow: #FFD600;
-  --color-orange: #FF7A00;
-  --color-pink: #FF0069;
-  --color-purple: #D300C5;
-  --color-blue: #7638FA;
+  --color-yellow: rgb(255, 214, 0);
+  --color-orange: rgb(255, 122, 0);
+  --color-pink:   rgb(255, 0, 105);
+  --color-purple: rgb(211, 0, 197);
+  --color-blue:   rgb(118, 56, 250);
 
   /* New gradient variable */
   --gradient-credential: linear-gradient(
