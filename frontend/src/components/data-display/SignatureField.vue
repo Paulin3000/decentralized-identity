@@ -8,9 +8,8 @@
           @click="signDocument"
           variant="primary"
           :disabled="isSigningInProgress || disabled"
-          :icon-left="PhKey"
-          icon-weight="fill"
-          icon-rotation="45"
+          :icon-left="PhSignature"
+          icon-weight="bold"
         >
           <span v-if="!isSigningInProgress">Sign Document</span>
           <div v-else class="spinner-container">

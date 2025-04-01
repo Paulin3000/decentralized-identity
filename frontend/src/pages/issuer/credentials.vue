@@ -38,7 +38,7 @@
       issuer="Swiss Federal Office"
       expiryDate="2028-06-30"
       :logoUrl="switzerlandLogo"
-      color-theme="var(--color-pink)"
+      color-theme="pink"
       @credentialClick="navigateToDetail"
     />
     <CredentialCard
@@ -50,7 +50,7 @@
       issuer="ETH Zurich University"
       expiryDate="2099-01-01"
       :logoUrl="uzhLogo"
-      color-theme="var(--color-blue)"
+      color-theme="blue"
       @credentialClick="navigateToDetail"
     />
     <CredentialCard
@@ -62,7 +62,7 @@
       issuer="Strassenverkehrsamt"
       expiryDate="2027-03-15"
       :logoUrl="switzerlandLogo"
-      color-theme="var(--color-pink)"
+      color-theme="pink"
       @credentialClick="navigateToDetail"
     />
     <CredentialCard
@@ -73,7 +73,7 @@
       holder="John Appleseeed"
       issuer="Sanitas"
       :logoUrl="sanitasLogo"
-      color-theme="var(--color-orange)"
+      color-theme="orange"
       @credentialClick="navigateToDetail"
     />
     <CredentialCard

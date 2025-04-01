@@ -107,7 +107,7 @@
           <component
             :is="getRoleIcon(currentRole)"
             :size="24"
-            :weight="'bold'"
+            :weight="'fill'"
           />
           <span class="profile-text">{{ currentRole }}</span>
         </button>

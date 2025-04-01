@@ -1,200 +1,140 @@
 <template>
-  <div class="issuer-welcome-container">
-    <div class="content-wrapper">
-      <!-- Hero section with SVG illustration -->
-      <div class="hero-section">
-        <div class="hero-content">
-          <h1 class="hero-title">Welcome to the Issuer Portal</h1>
-          <p class="hero-subtitle">
-            Your gateway to creating, signing, and managing verifiable
-            credentials
-          </p>
-        </div>
-        <div class="svg-container">
-          <img
-            :src="authenticity"
-            alt="Credential Authentication"
-            class="authenticity-svg"
-          />
-        </div>
+  <div class="issuer-onboarding-container">
+    <div class="header-section">
+      <h1 class="main-title">Issuer Portal</h1>
+      <div class="gradient-line"></div>
+    </div>
+
+    <div class="process-container">
+      <div class="illustration-container">
+        <img :src="issuerIllu" class="illustration" alt="Illustration" />
       </div>
 
-      <!-- Information section -->
-      <div class="info-section">
-        <h2>Your Role as a Credential Issuer</h2>
-        <p class="info-text">
-          As an issuer, you have the authority to create and sign verifiable
-          credentials, ensuring their authenticity and validity in the
-          credential ecosystem.
-        </p>
-
-        <!-- Process steps -->
-        <div class="process-container">
-          <h3>The Credential Issuance Process</h3>
-          <ul class="process-steps">
-            <li class="process-step">
-              <div class="step-icon">
-                <PhEnvelopeSimple :size="24" weight="fill" />
-              </div>
-              <div class="step-content">
-                <h4>Receive Credential Requests</h4>
-                <p class="text-secondary">
-                  Review incoming requests from individuals or organizations
-                </p>
-              </div>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">
-                <PhMagnifyingGlass :size="24" weight="fill" />
-              </div>
-              <div class="step-content">
-                <h4>Verify Request Validity</h4>
-                <p class="text-secondary">
-                  Ensure all information is accurate and meets requirements
-                </p>
-              </div>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">
-                <PhSignature :size="24" weight="fill" />
-              </div>
-              <div class="step-content">
-                <h4>Sign with Organization Key</h4>
-                <p class="text-secondary">
-                  Apply cryptographic signatures to validate the credential
-                </p>
-              </div>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">
-                <PhPaperPlaneTilt :size="24" weight="fill" />
-              </div>
-              <div class="step-content">
-                <h4>Issue Credential</h4>
-                <p class="text-secondary">
-                  Deliver the signed credential to the requester
-                </p>
-              </div>
-            </li>
-            <li class="process-step">
-              <div class="step-icon">
-                <PhProhibit :size="24" weight="fill" />
-              </div>
-              <div class="step-content">
-                <h4>Manage Revocations</h4>
-                <p class="text-secondary">
-                  Revoke credentials when necessary to maintain system integrity
-                </p>
-              </div>
-            </li>
-          </ul>
-        </div>
-
-        <!-- Call to action -->
-        <div class="cta-section">
-          <p class="cta-text">Ready to start managing credentials?</p>
-          <button class="primary-button">View Pending Requests</button>
-        </div>
+      <div class="steps-container">
+        <ul class="process-steps">
+          <li class="process-step">
+            <PhEnvelopeSimple :size="30" weight="fill" />
+            <div class="step-content">
+              <h4>Receive Credential Requests</h4>
+              <p class="text-secondary">
+                Review incoming requests from individuals or organizations
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <PhShieldCheck :size="30" weight="fill" />
+            <div class="step-content">
+              <h4>Verify Request Validity</h4>
+              <p class="text-secondary">
+                Ensure all information is accurate and meets requirements
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <PhSignature :size="30" weight="bold" />
+            <div class="step-content">
+              <h4>Sign with Organization Key</h4>
+              <p class="text-secondary">
+                Apply cryptographic signatures to validate the credential
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <PhPaperPlaneTilt :size="30" weight="fill" />
+            <div class="step-content">
+              <h4>Issue Credential</h4>
+              <p class="text-secondary">
+                Deliver the signed credential to the requester
+              </p>
+            </div>
+          </li>
+          <li class="process-step">
+            <PhProhibit :size="30" weight="fill" />
+            <div class="step-content">
+              <h4>Manage Revocations</h4>
+              <p class="text-secondary">
+                Revoke credentials when necessary to maintain system integrity
+              </p>
+            </div>
+          </li>
+        </ul>
       </div>
     </div>
   </div>
 </template>
 
 <script setup>
-import authenticity from "../../assets/authenticity-gradient.svg";
 import {
   PhEnvelopeSimple,
-  PhMagnifyingGlass,
   PhSignature,
   PhPaperPlaneTilt,
   PhProhibit,
+  PhShieldCheck,
 } from "@phosphor-icons/vue";
+import issuerIllu from "../../assets/illustrations/issuer-illu.png";
 </script>
 
 <style scoped>
-.issuer-welcome-container {
+.issuer-onboarding-container {
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: calc(100vh - 80px); /* Adjust based on header size */
-}
-
-.content-wrapper {
-  width: 100%;
   max-width: 1200px;
-  padding: 2rem;
-  margin: 0 auto;
-  text-align: left;
 }
 
-.hero-section {
+.header-section {
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  margin-bottom: 3rem;
-  gap: 2rem;
+  margin-bottom: 5rem;
+  padding: 3rem 1rem 1rem;
 }
 
-.hero-content {
-  flex: 1;
+.main-title {
+  font-size: var(--text-5xl);
+  text-align: center;
+  margin-bottom: 1.5rem;
 }
 
-.hero-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: var(--color-text-primary);
-  font-weight: 700;
-  text-align: left;
-}
-
-.hero-subtitle {
-  font-size: 1.25rem;
-  color: var(--color-text-primary);
-  opacity: 0.9;
-  text-align: left;
-}
-
-.svg-container {
-  flex-shrink: 0;
-  display: flex;
-  justify-content: flex-end;
-  align-items: center;
-}
-
-.authenticity-svg {
-  width: 140px; /* Made the SVG about half the size */
-  height: auto;
-}
-
-.info-section {
-  padding: 1rem 0;
-}
-
-.info-section h2 {
-  font-size: 1.75rem;
-  margin-bottom: 1rem;
-  color: var(--color-text-primary);
-  text-align: left;
-}
-
-.info-text {
-  margin-bottom: 2rem;
-  font-size: 1rem;
-  color: var(--color-text-primary);
-  max-width: 800px;
-  line-height: 1.6;
-  text-align: left;
+.gradient-line {
+  width: 160px;
+  height: 4px;
+  background: linear-gradient(
+    to right,
+    var(--color-yellow),
+    var(--color-orange),
+    var(--color-pink),
+    var(--color-purple),
+    var(--color-blue)
+  );
+  border-radius: 2px;
 }
 
 .process-container {
-  margin: 2rem 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
 }
 
-.process-container h3 {
-  font-size: 1.5rem;
-  margin-bottom: 1.5rem;
-  color: var(--color-text-primary);
-  text-align: left;
+.illustration-container {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.illustration {
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  object-fit: contain;
+  transform: translateY(-3rem) translateX(2rem);
+}
+
+.steps-container {
+  flex: 1;
+  padding-left: 2rem;
 }
 
 .process-steps {
@@ -202,25 +142,13 @@ import {
   padding: 0;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .process-step {
   display: flex;
   align-items: flex-start;
   gap: 1rem;
-}
-
-.step-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: rgba(255, 255, 255, 0.1);
-  border-radius: 50%;
-  width: 48px;
-  height: 48px;
-  color: var(--color-text-primary);
-  flex-shrink: 0;
 }
 
 .step-content {
@@ -242,45 +170,19 @@ import {
   margin: 0;
 }
 
-.cta-section {
-  margin-top: 3rem;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 1rem;
-}
-
-.cta-text {
-  font-size: 1.2rem;
-  color: var(--color-text-primary);
-  text-align: left;
-}
-
-.primary-button {
-  background: linear-gradient(90deg, #4776e6 0%, #8e54e9 100%);
-  border: none;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-  color: var(--color-text-primary);
-  font-weight: 600;
-  cursor: pointer;
-  transition: all 0.2s ease;
-}
-
-.primary-button:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-}
-
-/* Responsive styling */
+/* Responsive adjustments */
 @media (max-width: 768px) {
-  .hero-section {
+  .process-container {
     flex-direction: column;
+    gap: 2rem;
   }
 
-  .svg-container {
-    justify-content: flex-start;
+  .illustration-container {
     margin-bottom: 1rem;
+  }
+
+  .illustration {
+    max-width: 300px;
   }
 }
 </style>

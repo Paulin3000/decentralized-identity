@@ -66,6 +66,11 @@
   --color-purple: rgb(211, 0, 197);
   --color-blue:   rgb(118, 56, 250);
 
+  /*
+
+
+   */
+
   /* New gradient variable */
   --gradient-credential: linear-gradient(
           to bottom right,
