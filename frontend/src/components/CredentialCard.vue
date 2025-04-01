@@ -158,7 +158,7 @@ const logoContainerStyle = computed(() => {
 
    */
 
-  border: 1px solid #393939;
+  border: 1px solid #707070;
   border-radius: 16px;
   overflow: hidden;
   display: flex;

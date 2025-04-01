@@ -11,7 +11,7 @@
           :issuer="credential.issuer"
           :expiryDate="credential.expiryDate"
           :logoUrl="credential.logoUrl"
-          :logo-container-color="credential.logoContainerColor"
+          :color-theme="credential.colorTheme"
           :glowy="true"
         />
       </div>
@@ -90,7 +90,7 @@ const credential = ref({
   issuer: "Swiss Federal Office",
   expiryDate: "2028-06-30",
   logoUrl: switzerlandLogo,
-  logoContainerColor: "var(--color-pink)",
+  colorTheme: "pink",
 });
 
 onMounted(() => {

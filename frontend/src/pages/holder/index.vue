@@ -1,7 +1,7 @@
 <template>
   <div class="issuer-onboarding-container">
     <div class="header-section">
-      <h1 class="main-title">Decentralized Identity</h1>
+      <h1 class="main-title">Mask Identity</h1>
       <div class="gradient-line"></div>
     </div>
 

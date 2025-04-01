@@ -124,7 +124,7 @@ function navigateTo(routeName) {
 const navigateToDetail = (credentialId) => {
   router
     .push({
-      name: "credential-detail",
+      name: "credential-details",
       params: { id: credentialId },
     })
     .catch((err) => {
