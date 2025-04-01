@@ -7,7 +7,9 @@
     <div class="card-header">
       <div class="header-content">
         <h4 class="text-left">{{ type }}</h4>
-        <p class="text-small credential-subheading">{{ subheading }}</p>
+        <p class="text-small credential-subheading" :style="greyThemeTextStyle">
+          {{ subheading }}
+        </p>
       </div>
       <div
         class="status-tag"
@@ -21,21 +23,21 @@
     <div class="card-body">
       <div class="credential-data">
         <div class="data-row">
-          <span class="data-label">Holder</span>
+          <span class="data-label" :style="greyThemeTextStyle">Holder</span>
           <span class="data-value">{{ holder }}</span>
         </div>
         <div class="data-row">
-          <span class="data-label">Issuer</span>
+          <span class="data-label" :style="greyThemeTextStyle">Issuer</span>
           <span class="data-value">{{ issuer }}</span>
         </div>
         <div class="data-row">
-          <span class="data-label">Expiry</span>
+          <span class="data-label" :style="greyThemeTextStyle">Expiry</span>
           <span class="data-value">{{ formatDate(expiryDate) }}</span>
         </div>
       </div>
 
       <!-- logo -->
-      <div v-if="logoUrl" class="logo-container" :style="logoContainerStyle">
+      <div class="logo-container" v-if="logoUrl" :style="logoContainerStyle">
         <img :src="logoUrl" alt="logo" />
       </div>
     </div>
@@ -83,9 +85,9 @@ const props = defineProps({
   },
   colorTheme: {
     type: String,
-    default: "",
+    default: "grey",
     validator: (value) =>
-      ["yellow", "orange", "pink", "purple", "blue"].includes(value),
+      ["yellow", "orange", "pink", "purple", "blue", "grey"].includes(value),
   },
 
   glowy: {
@@ -111,6 +113,12 @@ const backgroundColor = computed(() => {
   return props.colorTheme ? `background-${props.colorTheme}` : "";
 });
 
+const greyThemeTextStyle = computed(() => {
+  return props.colorTheme === "grey"
+    ? { color: "var(--color--text-primary)" }
+    : {};
+});
+
 const logoContainerStyle = computed(() => {
   if (!props.colorTheme) return {};
 
@@ -131,12 +139,15 @@ const logoContainerStyle = computed(() => {
   width: 340px;
   height: 215px;
 
+  /*
   background: radial-gradient(
     circle at top left,
     rgba(255, 255, 255, 0.15) 0%,
     rgba(255, 255, 255, 0.05) 50%,
     rgba(255, 255, 255, 0.01) 100%
   );
+
+   */
   /*
   background: linear-gradient(
     to right,
@@ -157,70 +168,59 @@ const logoContainerStyle = computed(() => {
   cursor: pointer;
 }
 
-/*
-.background-yellow {
-  background-color: rgba(255, 214, 0, 0.5);
-}
-.background-orange {
-  background-color: rgba(255, 122, 0, 0.5);
-}
-.background-pink {
-  background-color: rgba(255, 0, 105, 0.5);
-}
-.background-purple {
-  background-color: rgba(211, 0, 197, 0.5);
-}
-.background-blue {
-  background-color: rgba(118, 56, 250, 0.5);
-}
- */
-/*
 .background-yellow {
   background: linear-gradient(
     135deg,
-    rgba(255, 214, 0, 0.3) 0%,
-    rgba(255, 173, 51, 0.25) 50%,
-    rgba(255, 233, 125, 0.2) 100%
+    rgba(255, 214, 0, 0.6) 0%,
+    rgba(255, 173, 51, 0.6) 50%,
+    rgba(255, 233, 125, 0.6) 100%
   );
 }
 
 .background-orange {
   background: linear-gradient(
-    120deg,
-    rgba(255, 122, 0, 0.3) 0%,
-    rgba(255, 159, 26, 0.25) 50%,
-    rgba(255, 76, 0, 0.2) 100%
+    135deg,
+    rgba(255, 122, 0, 0.6) 0%,
+    rgba(255, 153, 51, 0.6) 50%,
+    rgba(255, 179, 102, 0.6) 100%
   );
 }
 
 .background-pink {
   background: linear-gradient(
-    145deg,
-    rgba(255, 0, 105, 0.3) 0%,
-    rgba(255, 51, 153, 0.25) 65%,
-    rgba(230, 0, 126, 0.2) 100%
+    135deg,
+    rgba(255, 59, 136, 0.75) 0%,
+    rgba(209, 102, 255, 0.75) 50%,
+    rgba(158, 106, 255, 0.75) 100%
   );
 }
 
 .background-purple {
   background: linear-gradient(
-    130deg,
-    rgba(211, 0, 197, 0.3) 0%,
-    rgba(172, 51, 255, 0.25) 60%,
-    rgba(156, 0, 230, 0.2) 100%
+    135deg,
+    rgba(211, 0, 197, 0.75) 0%,
+    rgba(165, 35, 230, 0.75) 50%,
+    rgba(135, 56, 255, 0.75) 100%
   );
 }
 
 .background-blue {
   background: linear-gradient(
-    150deg,
-    rgba(118, 56, 250, 0.3) 0%,
-    rgba(56, 120, 255, 0.25) 50%,
-    rgba(83, 166, 250, 0.2) 100%
+    135deg,
+    rgba(122, 77, 255, 0.75) 0%,
+    rgba(91, 107, 255, 0.75) 50%,
+    rgba(79, 179, 255, 0.75) 100%
   );
 }
 
- */
+.background-grey {
+  background: linear-gradient(
+    135deg,
+    rgba(80, 80, 85, 0.3) 0%,
+    rgba(105, 105, 110, 0.3) 50%,
+    rgba(130, 130, 140, 0.3) 100%
+  );
+}
 
 .credential-card:hover {
   transform: scale(1.02);
@@ -235,6 +235,22 @@ const logoContainerStyle = computed(() => {
 
 .credential-card.glowy:hover {
   box-shadow: 0 0 25px rgba(73, 92, 248, 0.6);
+}
+
+.credential-card::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    to right,
+    rgba(255, 255, 255, 0.005) 10%,
+    rgba(255, 255, 255, 0.16) 50%,
+    rgba(255, 255, 255, 0.005) 90%
+  );
+  pointer-events: none; /* This allows clicks to pass through to the card */
 }
 
 /* gradient at the left side */
@@ -273,8 +289,9 @@ const logoContainerStyle = computed(() => {
 
 .credential-subheading {
   margin: 4px 0 0;
-  color: var(--color-text-secondary);
+  color: var(--color-background);
   text-align: left;
+  font-weight: var(--font-medium);
 }
 
 .status-tag {
@@ -285,12 +302,15 @@ const logoContainerStyle = computed(() => {
 }
 
 .status-verified {
-  background-color: var(--color-good-dark);
+  /*background-color: rgba(16, 185, 129, 0.5);*/
+  /*background-color: var(--color-background);*/
+  background-color: rgba(12, 15, 20, 0.75);
   color: var(--color-good);
 }
 
 .status-revoked {
-  background-color: rgba(239, 68, 68, 0.1);
+  /*background-color: rgba(239, 68, 68, 0.3);*/
+  background-color: rgba(12, 15, 20, 0.75);
   color: rgb(239, 68, 68);
 }
 
@@ -317,9 +337,10 @@ const logoContainerStyle = computed(() => {
 
 .data-label {
   font-size: var(--text-xs);
-  color: var(--color-text-secondary);
+  color: var(--color-background);
   grid-column: 1;
   text-align: left;
+  font-weight: var(--font-medium);
 }
 
 .data-value {
@@ -334,7 +355,7 @@ const logoContainerStyle = computed(() => {
   width: 45px;
   height: 45px;
   border-radius: 10px;
-  background-color: var(--color-blue); /* default color */
+  background-color: var(--color-orange); /* default color */
   display: flex;
   justify-content: center;
   align-items: center;

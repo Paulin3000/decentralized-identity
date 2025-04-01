@@ -76,16 +76,17 @@
       color-theme="orange"
       @credentialClick="navigateToDetail"
     />
-    <CredentialCard
-      id="certification-id-1"
-      type="Certification"
-      subheading="Project Management Institute"
-      :verified="false"
-      holder="John Appleseeed"
-      issuer="PMI Global"
-      expiryDate="2025-09-18"
-      @credentialClick="navigateToDetail"
-    />
+
+    <!--    <CredentialCard-->
+    <!--      id="certification-id-1"-->
+    <!--      type="Certification"-->
+    <!--      subheading="Project Management Institute"-->
+    <!--      :verified="false"-->
+    <!--      holder="John Appleseeed"-->
+    <!--      issuer="PMI Global"-->
+    <!--      expiryDate="2025-09-18"-->
+    <!--      @credentialClick="navigateToDetail"-->
+    <!--    />-->
   </div>
 </template>
 <script setup lang="ts">
@@ -121,7 +122,16 @@ function navigateTo(routeName) {
 }
 
 const navigateToDetail = (credentialId) => {
-  router.push(`/holder/credentials/${credentialId}`);
+  router
+    .push({
+      name: "credential-detail",
+      params: { id: credentialId },
+    })
+    .catch((err) => {
+      if (err.name !== "NavigationDuplicated") {
+        throw err;
+      }
+    });
 };
 </script>
 

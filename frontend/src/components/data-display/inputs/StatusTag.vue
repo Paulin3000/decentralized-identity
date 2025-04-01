@@ -59,7 +59,7 @@ const statusText = computed(() => {
 }
 
 .status-revoked {
-  background-color: var(--color-bad-dark);
+  background-color: rgba(239, 68, 68, 0.1);
   color: var(--color-bad);
 }
 </style>

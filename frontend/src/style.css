@@ -54,7 +54,6 @@
   --color-secondary-dark: #404b5b;
 
   --color-good: rgb(16, 185, 129);
-  --color-good-dark: rgba(16, 185, 129, 0.1);
   --color-bad: rgb(239, 68, 68);
   --color-bad-dark: rgb(239, 68, 68, 0.1); /* used in tag? */
   --color-warning: #FF7A00;
