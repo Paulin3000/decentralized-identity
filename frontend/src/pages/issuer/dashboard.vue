@@ -151,7 +151,7 @@ const goToCredentials = () => {
 }
 
 .gradient-card {
-  background: var(--gradient-credential);
+  background: var(--color-gradient-credential);
   border: 1px solid rgba(255, 255, 255, 0.1);
 }
 

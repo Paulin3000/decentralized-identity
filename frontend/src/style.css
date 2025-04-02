@@ -65,13 +65,17 @@
   --color-purple: rgb(211, 0, 197);
   --color-blue:   rgb(118, 56, 250);
 
-  /*
-
-
-   */
+  --color-gradient: linear-gradient(
+          to right,
+          rgb(255, 214, 0) 0%,
+          rgb(255, 122, 0) 25%,
+          rgb(255, 0, 105) 50%,
+          rgb(211, 0, 197) 75%,
+          rgb(118, 56, 250) 100%,
+  );
 
   /* New gradient variable */
-  --gradient-credential: linear-gradient(
+  --color-gradient-credential: linear-gradient(
           to bottom right,
           rgba(119, 76, 105, 0.7) 0%,
           rgba(35, 72, 109, 0.7) 60%,

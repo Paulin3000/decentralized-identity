@@ -19,7 +19,9 @@ const props = defineProps({
     type: String,
     default: "primary",
     validator: (value) =>
-      ["primary", "danger", "secondary", "outline-primary"].includes(value),
+      ["primary", "danger", "secondary", "outline-primary", "special"].includes(
+        value,
+      ),
   },
   isActive: {
     type: Boolean,
@@ -102,6 +104,73 @@ const onClick = (event) => {
 .outline-primary.active {
   background-color: var(--color-primary);
   color: var(--color-text-primary);
+}
+
+/*
+.special {
+  color: var(--color-text-primary);
+  background: linear-gradient(
+    to right,
+    rgb(255, 214, 0) 0%,
+    rgb(255, 122, 0) 25%,
+    rgb(255, 0, 105) 50%,
+    rgb(211, 0, 197) 75%,
+    rgb(118, 56, 250) 100%
+  );
+}
+
+ */
+
+.special {
+  position: relative;
+  color: var(--color-text-primary);
+  background-color: transparent;
+  border: none;
+  z-index: 0;
+  overflow: visible;
+}
+
+.special::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  right: -2px;
+  bottom: -2px;
+  left: -2px;
+  z-index: -1;
+  border-radius: 27px;
+  background: linear-gradient(
+    to right,
+    rgb(255, 214, 0) 0%,
+    rgb(255, 122, 0) 25%,
+    rgb(255, 0, 105) 50%,
+    rgb(211, 0, 197) 75%,
+    rgb(118, 56, 250) 100%
+  );
+}
+
+.special::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: -1;
+  border-radius: 23px;
+  background-color: var(--color-background, #fff);
+  transition: background 0.75s ease;
+}
+
+.special:hover::after {
+  background: linear-gradient(
+    to right,
+    rgb(255, 214, 0) 0%,
+    rgb(255, 122, 0) 25%,
+    rgb(255, 0, 105) 50%,
+    rgb(211, 0, 197) 75%,
+    rgb(118, 56, 250) 100%
+  );
 }
 
 /* Disabled state */

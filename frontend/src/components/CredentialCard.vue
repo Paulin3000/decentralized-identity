@@ -166,6 +166,7 @@ const logoContainerStyle = computed(() => {
   transition: transform 0.3s ease;
   position: relative;
   cursor: pointer;
+  box-shadow: 0 0 20px rgba(73, 92, 248, 0.4);
 }
 
 .background-yellow {

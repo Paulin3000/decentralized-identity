@@ -2,7 +2,18 @@
   <div class="issuer-onboarding-container">
     <div class="header-section">
       <h1 class="main-title">Mask Identity</h1>
-      <div class="gradient-line"></div>
+      <div class="lead-text">
+        Your Decentralized Identity App. Securely manage verified credentials
+        under your control for a private, seamless online experience.
+      </div>
+      <IconButton
+        variant="special"
+        :icon-right="PhArrowRight"
+        @click="navigateTo('holder-credentials')"
+        >Get Started
+      </IconButton>
+
+      <!--      <div class="gradient-line"></div>-->
     </div>
 
     <div class="process-container">
@@ -74,8 +85,15 @@ import {
   PhDownload,
   PhWallet,
   PhCheck,
+  PhArrowRight,
 } from "@phosphor-icons/vue";
-import holderIllu from "../../assets/illustrations/holder-illu.png";
+import holderIllu from "../../assets/illustrations/holder-phone.png";
+import IconButton from "../../components/buttons/IconButton.vue";
+import router from "../../router/index.js";
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
 </script>
 
 <style scoped>
@@ -90,7 +108,7 @@ import holderIllu from "../../assets/illustrations/holder-illu.png";
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
+  margin-bottom: 4rem;
   padding: 3rem 1rem 1rem;
 }
 
@@ -98,6 +116,16 @@ import holderIllu from "../../assets/illustrations/holder-illu.png";
   font-size: var(--text-5xl);
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.lead-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  padding: 0 1.5rem;
 }
 
 .gradient-line {

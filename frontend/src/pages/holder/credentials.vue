@@ -3,7 +3,7 @@
     <div class="header">
       <div>
         <div class="heading-container">
-          <h1>Credentials</h1>
+          <h1>Your Credentials</h1>
         </div>
         <p class="subtitle-container">
           <component
@@ -12,8 +12,8 @@
             color="var(--color-text-secondary)"
           />
           <span class="text-sm text-text-secondary"
-            >Your credentials are securely stored on your device, not on a
-            public server.
+            >All credentials are securely stored on your device, not on a public
+            server.
           </span>
         </p>
       </div>
@@ -57,7 +57,7 @@
       id="drivers-license-id-1"
       type="Driver's License"
       subheading="Department of Transportation"
-      :verified="true"
+      :verified="false"
       holder="John Appleseeed"
       issuer="Strassenverkehrsamt"
       expiryDate="2027-03-15"
@@ -75,6 +75,7 @@
       :logoUrl="sanitasLogo"
       color-theme="orange"
       @credentialClick="navigateToDetail"
+      expiry-date="2027-03-15"
     />
 
     <!--    <CredentialCard-->
@@ -98,6 +99,7 @@ import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
+import PageHeader from "../../components/PageHeader.vue";
 
 /*
 function navigateTo(routeName) {
@@ -143,7 +145,7 @@ const navigateToDetail = (credentialId) => {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
+  /*border-bottom: 1px solid #e5e7eb;*/
 }
 .heading-container {
   display: flex;

@@ -111,7 +111,6 @@ const formatDate = (dateString) => {
 .card-section {
   display: flex;
   justify-content: center;
-  padding-bottom: 2rem;
   width: 100%;
 }
 
@@ -119,6 +118,6 @@ const formatDate = (dateString) => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 3.75rem;
+  gap: 2.5rem;
 }
 </style>
