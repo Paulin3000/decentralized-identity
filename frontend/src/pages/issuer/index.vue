@@ -7,7 +7,7 @@
 
     <div class="process-container">
       <div class="illustration-container">
-        <img :src="issuerIllu" class="illustration" alt="Illustration" />
+        <img :src="illustration" class="illustration" alt="Illustration" />
       </div>
 
       <div class="steps-container">
@@ -71,7 +71,7 @@ import {
   PhProhibit,
   PhShieldCheck,
 } from "@phosphor-icons/vue";
-import issuerIllu from "../../assets/illustrations/issuer-illu.png";
+import illustration from "../../assets/illustrations/issuer.png";
 </script>
 
 <style scoped>

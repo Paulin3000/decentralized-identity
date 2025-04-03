@@ -7,7 +7,7 @@
 
     <div class="process-container">
       <div class="illustration-container">
-        <img :src="holderIllu" class="illustration" alt="Illustration" />
+        <img :src="illustration" class="illustration" alt="Illustration" />
       </div>
 
       <div class="steps-container">
@@ -68,7 +68,7 @@ import {
   PhShieldCheck,
   PhEnvelopeSimple,
 } from "@phosphor-icons/vue";
-import holderIllu from "../../assets/illustrations/holder-illu.png";
+import illustration from "../../assets/illustrations/verifier.png";
 </script>
 
 <style scoped>
@@ -126,7 +126,7 @@ import holderIllu from "../../assets/illustrations/holder-illu.png";
   max-width: 300px;
   height: auto;
   object-fit: contain;
-  transform: translateX(2rem);
+  transform: translateX(2rem) translateY(-1.5rem);
 }
 
 .steps-container {
