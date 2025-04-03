@@ -102,7 +102,10 @@ function navigateTo(routeName) {
 }
 
 const navigateToDetail = (credentialId) => {
-  router.push(`/holder/credentials/${credentialId}`);
+  router.push({
+    name: "issuer-credential-details",
+    params: { id: credentialId },
+  });
 };
 </script>
 

@@ -113,7 +113,7 @@ function navigateTo(routeName) {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 4rem 1rem;
+  padding: 1rem 1rem 3.5rem 1rem;
 }
 
 .main-title {

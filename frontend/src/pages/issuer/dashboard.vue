@@ -5,27 +5,11 @@
   </div>
   <div class="dashboard-container">
     <div class="dashboard-grid">
-      <!-- Pending Request Card  -->
-      <div class="request-card gradient-card" @click="goToRequests">
-        <div class="card-content">
-          <div class="icon-container">
-            <PhEnvelopeSimple :size="32" weight="fill" />
-          </div>
-          <div class="card-text">
-            <h3>Pending Requests</h3>
-            <p class="card-description">
-              Review and process credential requests from users
-            </p>
-          </div>
-          <div class="requests-count">5 pending</div>
-        </div>
-      </div>
-
       <!-- New Request Card -->
       <div class="request-card gradient-card" @click="goToRequests">
         <div class="card-content">
           <div class="icon-container">
-            <PhBell :size="32" weight="fill" />
+            <PhEnvelopeSimple :size="64" weight="fill" />
           </div>
           <div class="card-text">
             <h3>New Request!</h3>
@@ -33,18 +17,34 @@
           </div>
 
           <div class="button-container">
-            <IconButton variant="secondary" :icon-right="PhArrowRight"
+            <IconButton variant="primary" :icon-right="PhArrowRight"
               >View Request
             </IconButton>
           </div>
         </div>
       </div>
 
+      <!--      &lt;!&ndash; Pending Request Card  &ndash;&gt;-->
+      <!--      <div class="request-card gradient-card" @click="goToRequests">-->
+      <!--        <div class="card-content">-->
+      <!--          <div class="icon-container">-->
+      <!--            <PhEnvelopeSimple :size="64" weight="fill" />-->
+      <!--          </div>-->
+      <!--          <div class="card-text">-->
+      <!--            <h3>Pending Requests</h3>-->
+      <!--            <p class="card-description">-->
+      <!--              Review and process credential requests from users-->
+      <!--            </p>-->
+      <!--          </div>-->
+      <!--          <div class="requests-count">5 pending</div>-->
+      <!--        </div>-->
+      <!--      </div>-->
+
       <!-- Credentials Card -->
       <div class="request-card gradient-card" @click="goToCredentials">
         <div class="card-content">
           <div class="icon-container">
-            <PhIdentificationCard :size="32" weight="fill" />
+            <PhIdentificationCard :size="64" weight="fill" />
           </div>
           <div class="card-text">
             <h3>Credentials</h3>
@@ -57,10 +57,10 @@
       </div>
 
       <!-- Statistics Card -->
-      <div class="request-card" :class="{ 'dark-card': true }">
+      <div class="request-card gradient-card" :class="{ 'dark-card': true }">
         <div class="card-content">
           <div class="icon-container">
-            <PhChartLine :size="32" weight="fill" />
+            <PhChartLine :size="64" weight="fill" />
           </div>
           <div class="card-text">
             <h3>Statistics</h3>
@@ -138,14 +138,15 @@ const goToCredentials = () => {
 }
 
 .request-card:hover {
-  transform: scale(1.03);
-  /*box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);*/
+  /*transform: scale(1.03);*/
+  box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
   /*
   box-shadow:
     0 0 5px rgba(119, 76, 105, 0.5),
     0 0 15px rgba(35, 72, 109, 0.4),
-    0 0 25px rgba(37, 106, 97, 0.3);*/
-  border: 1px solid rgba(255, 255, 255, 0.5);
+    0 0 25px rgba(37, 106, 97, 0.3);
+   */
+  border: 1px solid var(--color-text-primary);
 
   transition: all 0.3s ease;
 }
@@ -169,7 +170,7 @@ const goToCredentials = () => {
 }
 
 .icon-container {
-  background-color: rgba(255, 255, 255, 0.2);
+  /*background-color: rgba(255, 255, 255, 0.2);*/
   width: 56px;
   height: 56px;
   border-radius: 12px;
@@ -207,9 +208,9 @@ h3 {
 }
 
 .stats-container {
-  margin-top: auto;
   display: flex;
   justify-content: space-between;
+  margin: auto 0.5rem 0.5rem;
 }
 
 .stat-item {

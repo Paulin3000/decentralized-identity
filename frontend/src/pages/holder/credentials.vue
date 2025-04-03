@@ -124,16 +124,10 @@ function navigateTo(routeName) {
 }
 
 const navigateToDetail = (credentialId) => {
-  router
-    .push({
-      name: "credential-details",
-      params: { id: credentialId },
-    })
-    .catch((err) => {
-      if (err.name !== "NavigationDuplicated") {
-        throw err;
-      }
-    });
+  router.push({
+    name: "holder-credential-details",
+    params: { id: credentialId },
+  });
 };
 </script>
 

@@ -15,11 +15,6 @@ export default [
     name: "verifier-requests",
   },
   {
-    path: "requests/:id",
-    component: () => import("../pages/verifier/request-detail.vue"),
-    name: "verifier-request-detail",
-  },
-  {
     path: "settings",
     component: () => import("../pages/verifier/settings.vue"),
     name: "verifier-settings",

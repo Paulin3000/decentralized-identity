@@ -281,7 +281,6 @@ const logoContainerStyle = computed(() => {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.06);
 }
 
 .header-content {

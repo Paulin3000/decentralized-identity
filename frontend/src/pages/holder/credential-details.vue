@@ -76,7 +76,6 @@
     </template>
   </DataDisplayLayout>
 
-  <!-- Delete Confirmation Modal -->
   <FeedbackModal
     type="error"
     title="Delete Credential"
