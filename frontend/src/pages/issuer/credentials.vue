@@ -3,27 +3,19 @@
     <div class="header">
       <div>
         <div class="heading-container">
-          <h1>Credentials</h1>
+          <h1>Issued Credentials</h1>
         </div>
-        <p class="subtitle-container">
-          <component
-            :is="PhLock"
-            weight="fill"
-            color="var(--color-text-secondary)"
-          />
-          <span class="text-sm text-text-secondary"
-            >Your credentials are securely stored on your device, not on a
-            public server.
-          </span>
-        </p>
-      </div>
-      <div class="button-container">
-        <IconButton
-          :icon-left="PhPlus"
-          variant="primary"
-          @click="navigateTo('request-credential')"
-          >Claim New Credential</IconButton
-        >
+        <!--        <p class="subtitle-container">-->
+        <!--          <component-->
+        <!--            :is="PhLock"-->
+        <!--            weight="fill"-->
+        <!--            color="var(&#45;&#45;color-text-secondary)"-->
+        <!--          />-->
+        <!--          <span class="text-sm text-text-secondary"-->
+        <!--            >Your credentials are securely stored on your device, not on a-->
+        <!--            public server.-->
+        <!--          </span>-->
+        <!--        </p>-->
       </div>
     </div>
   </div>

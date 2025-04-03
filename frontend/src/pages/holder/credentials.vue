@@ -3,7 +3,7 @@
     <div class="header">
       <div>
         <div class="heading-container">
-          <h1>Your Credentials</h1>
+          <h1>My Credentials</h1>
         </div>
         <p class="subtitle-container">
           <component
@@ -12,8 +12,8 @@
             color="var(--color-text-secondary)"
           />
           <span class="text-sm text-text-secondary"
-            >All credentials are securely stored on your device, not on a public
-            server.
+            >All your credentials are securely stored on your device, not on a
+            public server.
           </span>
         </p>
       </div>
