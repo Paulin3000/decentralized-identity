@@ -165,7 +165,7 @@ function navigateTo(routeName) {
   max-width: 300px;
   height: auto;
   object-fit: contain;
-  transform: translateX(2rem) translateY(-2rem);
+  transform: translateX(2.5rem) translateY(-2.5rem);
 }
 
 .steps-container {

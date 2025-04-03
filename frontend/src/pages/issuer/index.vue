@@ -2,7 +2,19 @@
   <div class="issuer-onboarding-container">
     <div class="header-section">
       <h1 class="main-title">Issuer Portal</h1>
-      <div class="gradient-line"></div>
+      <div class="lead-text">
+        Welcome to your secure credential management hub. Efficiently receive,
+        verify, sign, and issue digital credentials while maintaining the
+        highest standards of trust and security.
+      </div>
+      <IconButton
+        variant="special"
+        :icon-right="PhArrowRight"
+        @click="navigateTo('issuer-dashboard')"
+        >Dashboard
+      </IconButton>
+
+      <!--      <div class="gradient-line"></div>-->
     </div>
 
     <div class="process-container">
@@ -65,13 +77,20 @@
 
 <script setup>
 import {
-  PhEnvelopeSimple,
-  PhSignature,
   PhPaperPlaneTilt,
-  PhProhibit,
+  PhArrowRight,
+  PhEnvelopeSimple,
   PhShieldCheck,
+  PhSignature,
+  PhProhibit,
 } from "@phosphor-icons/vue";
 import illustration from "../../assets/illustrations/issuer.png";
+import IconButton from "../../components/buttons/IconButton.vue";
+import router from "../../router/index.js";
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
 </script>
 
 <style scoped>
@@ -79,21 +98,35 @@ import illustration from "../../assets/illustrations/issuer.png";
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: calc(100vh - 128px);
   max-width: 1200px;
+  max-height: 1000px;
+  margin: 0 auto; /* Center the container */
+  padding: 1rem 1rem 2rem;
+  justify-content: space-around; /* Distributes space between header and process */
 }
 
 .header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
-  padding: 3rem 1rem 1rem;
+  padding: 1rem 1rem 3.5rem 1rem;
 }
 
 .main-title {
   font-size: var(--text-5xl);
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.lead-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  padding: 0 1.5rem;
 }
 
 .gradient-line {
@@ -114,7 +147,7 @@ import illustration from "../../assets/illustrations/issuer.png";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .illustration-container {
@@ -126,7 +159,7 @@ import illustration from "../../assets/illustrations/issuer.png";
 
 .illustration {
   width: 100%;
-  max-width: 400px;
+  max-width: 370px;
   height: auto;
   object-fit: contain;
   transform: translateY(-3rem) translateX(2rem);
@@ -182,7 +215,7 @@ import illustration from "../../assets/illustrations/issuer.png";
   }
 
   .illustration {
-    max-width: 300px;
+    max-width: 200px;
   }
 }
 </style>

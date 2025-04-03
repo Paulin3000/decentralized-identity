@@ -2,7 +2,18 @@
   <div class="issuer-onboarding-container">
     <div class="header-section">
       <h1 class="main-title">Verifier Portal</h1>
-      <div class="gradient-line"></div>
+      <div class="lead-text">
+        Instantly verify digital credentials through secure blockchain
+        validation, ensuring trust and authenticity with every request.
+      </div>
+      <IconButton
+        variant="special"
+        :icon-right="PhArrowRight"
+        @click="navigateTo('verifier-dashboard')"
+        >Dashboard
+      </IconButton>
+
+      <!--      <div class="gradient-line"></div>-->
     </div>
 
     <div class="process-container">
@@ -57,18 +68,18 @@
 
 <script setup>
 import {
-  PhPaperPlaneTilt,
-  PhFileText,
-  PhDownload,
-  PhWallet,
-  PhCheck,
-  PhMagnifyingGlass,
-  PhClockCountdown,
-  PhCheckCircle,
-  PhShieldCheck,
+  PhArrowRight,
   PhEnvelopeSimple,
+  PhShieldCheck,
+  PhCheck,
 } from "@phosphor-icons/vue";
 import illustration from "../../assets/illustrations/verifier.png";
+import IconButton from "../../components/buttons/IconButton.vue";
+import router from "../../router/index.js";
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
 </script>
 
 <style scoped>
@@ -76,21 +87,35 @@ import illustration from "../../assets/illustrations/verifier.png";
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: calc(100vh - 128px);
   max-width: 1200px;
+  max-height: 1000px;
+  margin: 0 auto; /* Center the container */
+  padding: 1rem 1rem 2rem;
+  justify-content: space-around; /* Distributes space between header and process */
 }
 
 .header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 5rem;
-  padding: 3rem 1rem 1rem;
+  padding: 1rem 1rem 3.5rem 1rem;
 }
 
 .main-title {
   font-size: var(--text-5xl);
   text-align: center;
   margin-bottom: 1.5rem;
+}
+
+.lead-text {
+  text-align: center;
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  font-size: var(--text-xl);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+  padding: 0 1.5rem;
 }
 
 .gradient-line {
@@ -111,7 +136,7 @@ import illustration from "../../assets/illustrations/verifier.png";
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .illustration-container {
@@ -126,7 +151,7 @@ import illustration from "../../assets/illustrations/verifier.png";
   max-width: 300px;
   height: auto;
   object-fit: contain;
-  transform: translateX(2rem) translateY(-1.5rem);
+  transform: translateX(2.5rem) translateY(-2rem);
 }
 
 .steps-container {
