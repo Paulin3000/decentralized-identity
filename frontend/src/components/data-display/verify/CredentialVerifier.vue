@@ -172,7 +172,7 @@ async function startVerification() {
 .container {
   background: #2a323b;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 2rem;
+  border-radius: 1.5rem;
   padding: 2rem 1.5rem 1.5rem 1.5rem;
   display: flex;
   flex-direction: column;

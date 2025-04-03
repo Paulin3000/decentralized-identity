@@ -27,7 +27,7 @@ import BaseButton from "./BaseButton.vue";
 defineProps({
   text: {
     type: String,
-    default: "Button",
+    default: "",
   },
   variant: {
     type: String,

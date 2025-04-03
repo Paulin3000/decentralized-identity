@@ -79,7 +79,7 @@ const onClick = (event) => {
 }
 
 .danger:hover {
-  background-color: var(--color-bad-dark);
+  background-color: rgb(239, 68, 68, 0.7);
 }
 
 .secondary {

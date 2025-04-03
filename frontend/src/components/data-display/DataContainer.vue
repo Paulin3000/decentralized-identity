@@ -35,7 +35,7 @@ defineProps({
 .data-container {
   background: var(--color-container);
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
+  border-radius: 1.5rem;
   padding: 1.5rem 20px;
   display: flex;
   flex-direction: column;

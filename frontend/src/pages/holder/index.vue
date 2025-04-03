@@ -101,15 +101,19 @@ function navigateTo(routeName) {
   display: flex;
   flex-direction: column;
   width: 100%;
+  height: calc(100vh - 128px);
   max-width: 1200px;
+  max-height: 1000px;
+  margin: 0 auto; /* Center the container */
+  padding: 1rem 1rem 2rem;
+  justify-content: space-around; /* Distributes space between header and process */
 }
 
 .header-section {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 4rem;
-  padding: 3rem 1rem 1rem;
+  padding: 2rem 1rem 4rem 1rem;
 }
 
 .main-title {
@@ -146,7 +150,7 @@ function navigateTo(routeName) {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  align-items: flex-start;
+  align-items: center;
 }
 
 .illustration-container {
@@ -161,7 +165,7 @@ function navigateTo(routeName) {
   max-width: 300px;
   height: auto;
   object-fit: contain;
-  transform: translateX(2rem);
+  transform: translateX(2rem) translateY(-2rem);
 }
 
 .steps-container {

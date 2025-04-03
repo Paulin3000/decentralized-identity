@@ -13,9 +13,10 @@
           </div>
           <h2 class="feedback-heading" :class="type">{{ title }}</h2>
           <p class="feedback-message">{{ message }}</p>
-          <IconButton variant="secondary" @click="onClose">
-            {{ buttonText }}
-          </IconButton>
+          <div class="feedback-buttons">
+            <slot name="left" @click="onClose" />
+            <slot name="right" @click="onClose" />
+          </div>
         </div>
       </div>
     </Transition>
@@ -44,10 +45,6 @@ const props = defineProps({
   isVisible: {
     type: Boolean,
     default: false,
-  },
-  buttonText: {
-    type: String,
-    default: "Continue",
   },
 });
 
@@ -116,6 +113,12 @@ const iconColor = computed(() => {
   margin-bottom: 2rem;
   line-height: 1.5;
   color: var(--color-text-secondary);
+}
+
+.feedback-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
 }
 
 .fade-enter-active,

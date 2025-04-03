@@ -49,14 +49,26 @@
           message="The credential request has been verified and approved. The holder will be notified."
           :is-visible="showApprovedFeedbackModal"
           @close="closeFeedbackModal"
-        />
+        >
+          <template #left>
+            <BaseButton variant="secondary" @click="closeFeedbackModal"
+              >Continue</BaseButton
+            >
+          </template>
+        </FeedbackModal>
         <FeedbackModal
           type="error"
           title="Credential Rejected"
           message="This credential request has been rejected. The holder will be notified about this decision."
           :is-visible="showRejectedFeedbackModal"
           @close="closeFeedbackModal"
-        />
+        >
+          <template #left>
+            <BaseButton variant="secondary" @click="closeFeedbackModal"
+              >Continue</BaseButton
+            >
+          </template>
+        </FeedbackModal>
 
         <div class="buttons-container">
           <IconButton
@@ -94,6 +106,7 @@ import FeedbackModal from "../../components/FeedbackModal.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import { useRouter } from "vue-router";
 import CredentialVerifier from "../../components/data-display/verify/CredentialVerifier.vue";
+import BaseButton from "../../components/buttons/BaseButton.vue";
 
 const router = useRouter();
 const showApprovedFeedbackModal = ref(false);

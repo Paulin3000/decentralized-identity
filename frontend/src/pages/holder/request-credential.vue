@@ -44,7 +44,13 @@
           message="Your credential request has been sent to the issuer. You will be notified once it's processed."
           :is-visible="showFeedbackModal"
           @close="closeFeedbackModal"
-        />
+        >
+          <template #left>
+            <BaseButton variant="secondary" @click="closeFeedbackModal"
+              >Continue</BaseButton
+            >
+          </template>
+        </FeedbackModal>
 
         <div class="buttons-container">
           <IconButton
@@ -89,6 +95,7 @@ import {
 import router from "../../router/index.js";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import SignatureField from "../../components/data-display/SignatureField.vue";
+import BaseButton from "../../components/buttons/BaseButton.vue";
 
 const issuerDID = ref("");
 const trustStatus = ref(null);
