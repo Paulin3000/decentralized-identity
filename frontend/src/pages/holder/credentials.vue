@@ -5,17 +5,6 @@
         <div class="heading-container">
           <h1>My Credentials</h1>
         </div>
-        <p class="subtitle-container">
-          <component
-            :is="PhLock"
-            weight="fill"
-            color="var(--color-text-secondary)"
-          />
-          <span class="text-sm text-text-secondary"
-            >All your credentials are securely stored on your device, not on a
-            public server.
-          </span>
-        </p>
       </div>
       <div class="button-container">
         <IconButton
@@ -89,6 +78,13 @@
     <!--      @credentialClick="navigateToDetail"-->
     <!--    />-->
   </div>
+  <p class="subtitle-container">
+    <component :is="PhLock" weight="fill" color="var(--color-text-secondary)" />
+    <span class="text-sm text-text-secondary"
+      >All your credentials are securely stored on your device, not on a public
+      server.
+    </span>
+  </p>
 </template>
 <script setup lang="ts">
 import Header from "../../components/Header.vue";
@@ -133,35 +129,41 @@ const navigateToDetail = (credentialId) => {
 
 <style scoped>
 .header {
-  padding: 1rem 1rem 2rem;
+  padding: 2rem 1rem 2rem;
 
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  /*border-bottom: 1px solid #e5e7eb;*/
+  border-bottom: 1px solid #e5e7eb;
 }
 .heading-container {
   display: flex;
-  align-items: flex-start;
+  align-self: flex-end;
 }
 .subtitle-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  padding-left: 1.5rem;
+  padding-top: 3rem;
 }
 
 .button-container {
   display: flex;
+  align-items: center;
+  /*
   align-items: flex-end;
   align-self: flex-end;
+
+   */
 }
 
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
-  padding: 32px 24px;
+  padding: 3rem 1.5rem 2rem;
   max-width: 1200px;
   margin: auto;
 }

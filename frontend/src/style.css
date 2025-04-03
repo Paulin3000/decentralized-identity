@@ -44,6 +44,7 @@
   --color-background-secondary: #152026;
   --color-nav-hover: #292f3e;
   --color-container: #23282F;
+  --color-container-secondary:  #2a323b;
   --color-line: #e5e7eb;
 
   --color-primary: rgb(73, 92, 248);
@@ -117,7 +118,7 @@ h1, .heading-1 {
   font-size: var(--text-5xl);
   line-height: var(--leading-tight);
   font-weight: var(--font-bold);
-  margin-bottom: 1rem;
+  /*margin-bottom: 1rem;*/
   color: var(--color-text-primary);
 }
 

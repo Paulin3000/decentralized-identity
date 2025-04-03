@@ -80,11 +80,11 @@ import PageHeader from "../../components/PageHeader.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
-import InputField from "../../components/data-display/inputs/InputField.vue";
-import LinkButton from "../../components/data-display/inputs/LinkButton.vue";
+import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
+import InputField from "../../components/data-display/inputs-DataField/InputField.vue";
+import LinkButton from "../../components/data-display/inputs-DataField/LinkButton.vue";
 import { ref } from "vue";
-import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
+import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import {
   PhCheck,

@@ -17,37 +17,104 @@
       </div>
     </template>
     <template #content>
-      <div class="details-section">
-        <DataContainer title="Credential Information">
-          <DataField label="Holder" :value="credential.holder" />
-          <DataField label="Holder DID"
-            ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
-              show-icon="true"
-              icon="verified"
-          /></DataField>
-          <DataField label="Issuer" :value="credential.issuer" />
-          <DataField label="Issuer DID"
-            ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
-              show-icon="true"
-              icon="verified"
-          /></DataField>
-          <DataField label="Issuance Date" value="Jan 15, 2023" />
-          <DataField
-            label="Expiry Date"
-            :value="formatDate(credential.expiryDate)"
-          />
-          <DataField label="Status" :isLast="true">
-            <status-tag status="verified">Revoked</status-tag>
+      <div class="data-section">
+        <DataContainer title="Verifier Information" variant="secondary">
+          <DataField label="Verifier Name">
+            <InputField
+              placeholder="Enter Name"
+              type="text"
+              :model-value="verifierName"
+            >
+            </InputField>
+          </DataField>
+          <DataField label="Verifier DID" :is-last="true">
+            <InputField
+              placeholder="Enter DID"
+              type="did"
+              v-model="verifierDID"
+              @trust-status="handleTrustStatus"
+            >
+            </InputField>
           </DataField>
         </DataContainer>
 
-        <DataContainer title="Credential Data">
-          <DataField label="First Name" value="John" />
-          <DataField label="Last Name" value="Appleseed" />
-          <DataField label="Date of Birth" value="April 1, 1990" />
-          <DataField label="Nationality" value="Swiss" :isLast="true" />
+        <DataContainer title="Required Data">
+          <SelectableDataField
+            label="Credential Type"
+            value="Certificate"
+            v-model="selectedFields.credentialType"
+            required
+          />
+          <SelectableDataField
+            label="Issuer Name"
+            value="University of Zürich"
+            v-model="selectedFields.issuerName"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Issuer DID"
+            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+            v-model="selectedFields.issuerDID"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Holder Name"
+            value="Joe Appleseed"
+            v-model="selectedFields.holderName"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Holder DID"
+            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+            v-model="selectedFields.holderDID"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Issued On"
+            value="April 1, 2020"
+            v-model="selectedFields.issuedOn"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Expires On"
+            value="July 12, 2032"
+            v-model="selectedFields.expiresOn"
+            :required="true"
+          />
+          <SelectableDataField
+            label="Status"
+            value="Verified"
+            v-model="selectedFields.status"
+            :required="true"
+          />
+        </DataContainer>
+
+        <DataContainer title="Share Credential Data">
+          <SelectableDataField
+            label="Date of Birth"
+            value="September 12, 1990"
+            v-model="selectedFields.dateOfBirth"
+          />
+          <SelectableDataField
+            label="Course Completed"
+            value="Ethics in AI"
+            v-model="selectedFields.courseCompleted"
+          />
+          <SelectableDataField
+            label="Final Grade"
+            value="5.5 / 6.0"
+            v-model="selectedFields.finalGrade"
+          />
+          <SelectableDataField
+            label="ECTS"
+            value="2"
+            v-model="selectedFields.ects"
+          />
+          <SelectableDataField
+            label="Instructor"
+            value="Prof. Sample"
+            v-model="selectedFields.instructor"
+          />
         </DataContainer>
 
         <div class="buttons-container">
@@ -87,32 +154,29 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
-import Header from "../../components/Header.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
-import {
-  PhPaperPlaneTilt,
-  PhSealCheck,
-  PhTrash,
-  PhX,
-} from "@phosphor-icons/vue";
-import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
-import GoBackButton from "../../components/GoBackButton.vue";
+import { PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
+import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
+import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
-import IconOnlyButton from "../../components/buttons/IconOnlyButton.vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import BaseButton from "../../components/buttons/BaseButton.vue";
+import InputField from "../../components/data-display/inputs-DataField/InputField.vue";
+import SelectableDataField from "../../components/data-display/SelectableDataField.vue";
 
 const route = useRoute();
 const credentialId = route.params.id;
 const showFeedbackModal = ref(false);
+
+const verifierName = ref("");
+const verifierDID = ref("");
 
 const credential = ref({
   id: credentialId,
@@ -124,6 +188,22 @@ const credential = ref({
   expiryDate: "2028-06-30",
   logoUrl: switzerlandLogo,
   colorTheme: "pink",
+});
+
+const selectedFields = ref({
+  credentialType: false,
+  issuerName: false,
+  issuerDID: false,
+  holderName: false,
+  holderDID: false,
+  issuedOn: false,
+  expiresOn: false,
+  status: false,
+  dateOfBirth: false,
+  courseCompleted: false,
+  finalGrade: false,
+  ects: false,
+  instructor: false,
 });
 
 onMounted(() => {
@@ -144,6 +224,12 @@ const handleCancel = () => {
   router.back();
 };
 
+const handleTrustStatus = (status) => {
+  if (status && status.type === "trusted") {
+    verifierName.value = "University of Zürich";
+  }
+};
+
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -162,7 +248,7 @@ const formatDate = (dateString) => {
   position: relative;
 }
 
-.details-section {
+.data-section {
   display: flex;
   flex-direction: column;
   width: 100%;

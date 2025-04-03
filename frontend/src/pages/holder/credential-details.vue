@@ -18,7 +18,7 @@
           <IconOnlyButton
             :icon="PhPaperPlaneTilt"
             variant="primary"
-            @click="shareCredential"
+            @click="navigateTo('holder-sharing')"
           >
           </IconOnlyButton>
           <IconOnlyButton
@@ -103,10 +103,10 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
 import { PhPaperPlaneTilt, PhSealCheck, PhTrash } from "@phosphor-icons/vue";
-import StatusTag from "../../components/data-display/inputs/StatusTag.vue";
+import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import DIDAddress from "../../components/data-display/inputs/DIDAddress.vue";
+import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import IconOnlyButton from "../../components/buttons/IconOnlyButton.vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
@@ -139,6 +139,10 @@ const handleDelete = () => {
 const handleCancel = () => {
   showDeleteModal.value = false;
 };
+
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
 
 const formatDate = (dateString) => {
   const date = new Date(dateString);

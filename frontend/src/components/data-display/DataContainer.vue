@@ -1,7 +1,7 @@
 <template>
   <div class="data-container-wrapper">
     <h3 v-if="title" class="container-title">{{ title }}</h3>
-    <div class="data-container">
+    <div class="data-container" :class="{ secondary: variant === 'secondary' }">
       <slot></slot>
     </div>
   </div>
@@ -12,6 +12,11 @@ defineProps({
   title: {
     type: String,
     default: "",
+  },
+  variant: {
+    type: String,
+    default: "primary",
+    validator: (value) => ["primary", "secondary"].includes(value),
   },
 });
 </script>
@@ -42,5 +47,8 @@ defineProps({
   gap: 1rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
   width: 100%;
+}
+.data-container.secondary {
+  background: var(--color-container-secondary);
 }
 </style>
