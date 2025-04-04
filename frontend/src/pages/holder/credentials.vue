@@ -145,7 +145,6 @@ const navigateToDetail = (credentialId) => {
   display: flex;
   align-items: center;
   gap: 0.5rem;
-  padding-left: 1.5rem;
   padding-top: 3rem;
 }
 

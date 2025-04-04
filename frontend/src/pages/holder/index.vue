@@ -10,7 +10,7 @@
         variant="special"
         :icon-right="PhArrowRight"
         @click="navigateTo('holder-credentials')"
-        >Get Started
+        >My Credentials
       </IconButton>
 
       <!--      <div class="gradient-line"></div>-->
