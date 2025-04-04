@@ -160,6 +160,7 @@ const formatDate = (dateString) => {
   justify-content: center;
   width: 100%;
   position: relative;
+  padding: 4rem 0;
 }
 
 .action-buttons {
@@ -175,6 +176,7 @@ const formatDate = (dateString) => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2.5rem;
+  /*gap: 2.5rem;*/
+  gap: 4rem;
 }
 </style>

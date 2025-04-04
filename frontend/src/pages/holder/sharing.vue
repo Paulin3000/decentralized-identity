@@ -18,7 +18,12 @@
     </template>
     <template #content>
       <div class="data-section">
-        <DataContainer title="Verifier Information" variant="secondary">
+        <DataContainer
+          title="Verifier Information"
+          variant="secondary"
+          subtitle="Enter the verifier's details or contact them if you don't have their DID."
+          :subtitle-icon="PhInfo"
+        >
           <DataField label="Verifier Name">
             <InputField
               placeholder="Enter Name"
@@ -38,7 +43,12 @@
           </DataField>
         </DataContainer>
 
-        <DataContainer title="Required Data">
+        <DataContainer
+          title="Credential Information"
+          subtitle="These fields are required and will always be shared with the verifier.
+"
+          :subtitle-icon="PhInfo"
+        >
           <SelectableDataField
             label="Credential Type"
             value="Certificate"
@@ -89,7 +99,12 @@
           />
         </DataContainer>
 
-        <DataContainer title="Share Credential Data">
+        <DataContainer
+          title="Share Credential Data"
+          subtitle="Select which additional credential details you'd like to share with the verifier.
+"
+          :subtitle-icon="PhInfo"
+        >
           <SelectableDataField
             label="Date of Birth"
             value="September 12, 1990"
@@ -161,7 +176,7 @@ import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
-import { PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
+import { PhInfo, PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
 import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
@@ -246,13 +261,14 @@ const formatDate = (dateString) => {
   justify-content: center;
   width: 100%;
   position: relative;
+  padding: 4rem 0;
 }
 
 .data-section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2.5rem;
+  gap: 4rem;
 }
 
 .buttons-container {

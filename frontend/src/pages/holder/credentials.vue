@@ -78,13 +78,13 @@
     <!--      @credentialClick="navigateToDetail"-->
     <!--    />-->
   </div>
-  <p class="subtitle-container">
+  <div class="subtitle-container">
     <component :is="PhLock" weight="fill" color="var(--color-text-secondary)" />
     <span class="text-sm text-text-secondary"
       >All your credentials are securely stored on your device, not on a public
       server.
     </span>
-  </p>
+  </div>
 </template>
 <script setup lang="ts">
 import Header from "../../components/Header.vue";

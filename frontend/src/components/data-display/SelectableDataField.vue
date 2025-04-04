@@ -143,18 +143,21 @@ const handleClick = () => {
 .selectable-data-field__content {
   flex-grow: 1;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   text-align: left;
 }
 
 .selectable-data-field__label {
-  font-size: 16px;
+  font-size: var(--text-base);
   font-weight: var(--font-semibold);
   margin-bottom: 4px;
+  width: 180px;
 }
 
 .selectable-data-field__value {
-  font-size: 14px;
+  /*font-size: var(--text-sm);*/
+  font-size: var(--text-base);
+  font-weight: var(--font-semibold);
   color: var(--color-text-secondary);
 }
 

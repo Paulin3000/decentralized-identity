@@ -64,7 +64,7 @@ const onClick = (event) => {
 
 .primary {
   background-color: var(--color-primary);
-  color: var(--color-text-primary);
+  color: var(--color-background);
   border: 2px solid transparent;
 }
 
@@ -84,7 +84,7 @@ const onClick = (event) => {
 
 .secondary {
   background-color: var(--color-secondary);
-  color: var(--color-text-primary);
+  color: var(--color-background);
   border: 2px solid transparent;
 }
 
