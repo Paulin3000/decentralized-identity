@@ -45,7 +45,7 @@ const props = defineProps({
 <style scoped>
 .page-header {
   padding: 2rem 1rem 1rem;
-  border-bottom: 1px solid #e5e7eb;
+  /*border-bottom: 1px solid #e5e7eb;*/
   margin-bottom: 1.5rem;
 }
 
