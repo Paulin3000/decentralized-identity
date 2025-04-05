@@ -1,6 +1,6 @@
 <template>
   <div>
-    <Header title="Holder Settings"> </Header>
+    <Header title="Holder Settings" :line="true"> </Header>
   </div>
 </template>
 <script setup lang="ts">

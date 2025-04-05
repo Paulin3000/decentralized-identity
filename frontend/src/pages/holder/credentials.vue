@@ -1,21 +1,12 @@
 <template>
-  <div>
-    <div class="header">
-      <div>
-        <div class="heading-container">
-          <h1>My Credentials</h1>
-        </div>
-      </div>
-      <div class="button-container">
-        <IconButton
-          :icon-left="PhPlus"
-          variant="primary"
-          @click="navigateTo('request-credential')"
-          >Claim New Credential</IconButton
-        >
-      </div>
-    </div>
-  </div>
+  <Header title="My Credentials" :line="true">
+    <IconButton
+      :icon-left="PhPlus"
+      variant="primary"
+      @click="navigateTo('request-credential')"
+      >Claim New Credential</IconButton
+    >
+  </Header>
 
   <div class="credentials-grid">
     <CredentialCard
@@ -78,7 +69,7 @@
     <!--      @credentialClick="navigateToDetail"-->
     <!--    />-->
   </div>
-  <div class="subtitle-container">
+  <div class="info-container">
     <component :is="PhLock" weight="fill" color="var(--color-text-secondary)" />
     <span class="text-sm text-text-secondary"
       >All your credentials are securely stored on your device, not on a public
@@ -128,41 +119,18 @@ const navigateToDetail = (credentialId) => {
 </script>
 
 <style scoped>
-.header {
-  padding: 2rem 1rem 2rem;
-
-  /*margin-bottom: 1rem;*/
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
-}
-.heading-container {
-  display: flex;
-  align-self: flex-end;
-}
-.subtitle-container {
+.info-container {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   padding-top: 3rem;
 }
 
-.button-container {
-  display: flex;
-  align-items: center;
-  /*
-  align-items: flex-end;
-  align-self: flex-end;
-
-   */
-}
-
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
-  padding: 3rem 1.5rem 2rem;
+  padding: 0 1.5rem 2rem;
   max-width: 1200px;
   margin: auto;
 }

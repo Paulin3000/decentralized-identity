@@ -279,4 +279,8 @@ const formatDate = (dateString) => {
   margin-top: 1rem;
   padding-right: 0.5rem;
 }
+
+:deep(.data-container:has(> div[class*="selectable-data-field"])) {
+  gap: 0.7rem;
+}
 </style>

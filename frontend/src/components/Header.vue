@@ -1,20 +1,14 @@
 <template>
-  <div class="page-header">
-    <div class="header-container">
-      <h1>{{ title }}</h1>
-
-      <!-- ?? -->
-      <slot></slot>
+  <div class="header">
+    <div class="header-subcontainer">
+      <div class="heading">
+        <h1>{{ title }}</h1>
+      </div>
+      <div class="button-container">
+        <slot></slot>
+      </div>
     </div>
-
-    <p v-if="subtitle" class="subtitle-container">
-      <component
-        :is="subtitleIcon"
-        :weight="iconWeight"
-        color="var(--color-text-secondary)"
-      />
-      <span class="text-sm text-text-secondary">{{ subtitle }}</span>
-    </p>
+    <div class="divider-line" v-if="line"></div>
   </div>
 </template>
 
@@ -27,39 +21,37 @@ const props = defineProps({
     type: String,
     required: true,
   },
-  subtitle: {
-    type: String,
-    default: "",
-  },
-  subtitleIcon: {
-    type: Object,
-    default: () => PhLock,
-  },
-  iconWeight: {
-    type: String,
-    default: "fill",
+  line: {
+    type: Boolean,
+    default: false,
   },
 });
 </script>
 
 <style scoped>
-.page-header {
-  padding: 2rem 1rem 1rem;
-  /*border-bottom: 1px solid #e5e7eb;*/
-  margin-bottom: 1.5rem;
-}
-
-.header-container {
+.header {
+  padding: 2rem 1rem 0;
+  margin-bottom: 2rem;
   display: flex;
-  justify-content: space-between;
-  align-items: center;
+  flex-direction: column;
 }
 
-.subtitle-container {
-  margin: 0.5rem 0 0;
+.header-subcontainer {
   display: flex;
   flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  width: 100%;
+}
+
+.button-container {
+  display: flex;
   align-items: center;
-  gap: 0.5rem;
+}
+
+.divider-line {
+  width: 100%;
+  height: 1px;
+  background: #e5e7eb;
 }
 </style>
