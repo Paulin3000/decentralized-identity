@@ -277,10 +277,11 @@ const logoContainerStyle = computed(() => {
 }*/
 
 .card-header {
-  padding: 20px 20px 12px;
+  padding: 20px 20px 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  /* border-bottom: 3px solid rgba(0, 0, 0, 0.2); */
 }
 
 .header-content {
@@ -289,7 +290,7 @@ const logoContainerStyle = computed(() => {
 
 .credential-subheading {
   margin: 4px 0 0;
-  color: var(--color-background);
+  color: black;
   text-align: left;
   font-weight: var(--font-medium);
 }
@@ -315,7 +316,7 @@ const logoContainerStyle = computed(() => {
 }
 
 .card-body {
-  padding: 16px 20px;
+  padding: 16px 20px 24px;
   flex: 1;
   display: flex;
   justify-content: space-between;
@@ -337,7 +338,7 @@ const logoContainerStyle = computed(() => {
 
 .data-label {
   font-size: var(--text-xs);
-  color: var(--color-background);
+  color: black;
   grid-column: 1;
   text-align: left;
   font-weight: var(--font-medium);

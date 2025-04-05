@@ -1,15 +1,13 @@
 <template>
   <Header title="How It Works" :line="false"> </Header>
-  <div class="container">
-    <img
-      :src="trustTriangle"
-      class="illustration"
-      alt="Triangle of Trust Illustration"
-    />
-  </div>
+  <img
+    :src="trustTriangle"
+    class="illustration"
+    alt="Triangle of Trust Illustration"
+  />
 
   <div class="content">
-    <h2>Understanding the Triangle of Trust in Decentralized Identity</h2>
+    <h2>Understanding the Triangle of Trust</h2>
 
     <p>
       When using a decentralized identity (DI) system like Polygon ID, three
@@ -19,9 +17,9 @@
     </p>
 
     <ul class="roles">
-      <li>Issuer</li>
-      <li>Holder</li>
-      <li>Verifier</li>
+      <li>• Issuer</li>
+      <li>• Holder</li>
+      <li>• Verifier</li>
     </ul>
 
     <p>
@@ -84,26 +82,29 @@
       <h3>How It All Comes Together</h3>
       <ol>
         <li>
-          The Issuer writes verification data to the blockchain and gives the
+          1. The Issuer writes verification data to the blockchain and gives the
           credential to the Holder.
         </li>
         <li>
-          The Holder stores the credential and later presents it to a Verifier.
+          2. The Holder stores the credential and later presents it to a
+          Verifier.
         </li>
         <li>
-          The Verifier checks the credential against the public data on the
+          3. The Verifier checks the credential against the public data on the
           blockchain to confirm it is valid and trustworthy.
         </li>
       </ol>
 
       <p>This model ensures that:</p>
       <ul>
-        <li>You stay in control of your data.</li>
+        <li>• You stay in control of your data.</li>
         <li>
-          The Verifier doesn't need to trust you personally—only the trusted
+          • The Verifier doesn't need to trust you personally—only the trusted
           Issuer.
         </li>
-        <li>Your privacy is better protected through selective disclosure.</li>
+        <li>
+          • Your privacy is better protected through selective disclosure.
+        </li>
       </ul>
     </div>
   </div>
@@ -117,20 +118,12 @@ import IconButton from "../../components/buttons/IconButton.vue";
 </script>
 
 <style scoped>
-.container {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 2rem 0;
-}
-
 .illustration {
   width: 100%;
   height: auto;
   object-fit: contain;
   transform: scale(1.05);
-  margin-bottom: 4rem;
+  margin-bottom: 7rem;
 }
 
 .content {
@@ -140,15 +133,11 @@ import IconButton from "../../components/buttons/IconButton.vue";
 }
 
 h2 {
-  font-size: 1.5rem;
-  font-weight: 700;
-  margin-bottom: 1.25rem;
+  margin-bottom: 2rem;
   color: var(--color-text-primary);
 }
 
 h3 {
-  font-size: 1.25rem;
-  font-weight: 600;
   margin-bottom: 0.75rem;
   color: var(--color-primary);
 }
@@ -160,17 +149,12 @@ p {
 }
 
 .roles {
-  display: flex;
-  justify-content: space-around;
-  list-style: none;
-  margin: 1.5rem 0;
-  padding: 0;
-  font-weight: 600;
-  color: var(--color-primary);
+  margin: 1.25rem 0;
+  font-weight: 700;
 }
 
 .role-section {
-  margin-bottom: 2rem;
+  margin: 3rem 0;
   padding: 1rem;
   background: rgba(73, 92, 248, 0.05);
   border-radius: 1rem;
@@ -187,13 +171,15 @@ p {
 
 ol,
 ul {
-  padding-left: 1.5rem;
   margin-bottom: 1rem;
+  padding-left: 0.5rem;
   line-height: 1.6;
   color: var(--color-text-secondary);
+  font-size: var(--text-lg);
 }
 
 li {
   margin-bottom: 0.5rem;
+  text-align: left;
 }
 </style>
