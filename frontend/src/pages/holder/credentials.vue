@@ -10,64 +10,19 @@
 
   <div class="credentials-grid">
     <CredentialCard
-      id="national-id-1"
-      type="National ID"
-      subheading="Government of Switzerland"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="Swiss Federal Office"
-      expiryDate="2028-06-30"
-      :logoUrl="switzerlandLogo"
-      color-theme="pink"
+      v-for="credential in credentials"
+      :key="credential.id"
+      :id="credential.id"
+      :type="credential.type"
+      :subheading="credential.subheading"
+      :verified="credential.verified"
+      :holder="credential.holder"
+      :issuer="credential.issuer"
+      :expiryDate="credential.expiryDate"
+      :logoUrl="credential.logoUrl"
+      :color-theme="credential.colorTheme"
       @credentialClick="navigateToDetail"
     />
-    <CredentialCard
-      id="degree-id-1"
-      type="University Degree"
-      subheading="ETH Zurich"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="ETH Zurich University"
-      expiryDate="2099-01-01"
-      :logoUrl="uzhLogo"
-      color-theme="blue"
-      @credentialClick="navigateToDetail"
-    />
-    <CredentialCard
-      id="drivers-license-id-1"
-      type="Driver's License"
-      subheading="Department of Transportation"
-      :verified="false"
-      holder="John Appleseeed"
-      issuer="Strassenverkehrsamt"
-      expiryDate="2027-03-15"
-      :logoUrl="switzerlandLogo"
-      color-theme="pink"
-      @credentialClick="navigateToDetail"
-    />
-    <CredentialCard
-      id="health-insurance-id-1"
-      type="Health Insurance"
-      subheading="National Healthcare System"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="Sanitas"
-      :logoUrl="sanitasLogo"
-      color-theme="orange"
-      @credentialClick="navigateToDetail"
-      expiry-date="2027-03-15"
-    />
-
-    <!--    <CredentialCard-->
-    <!--      id="certification-id-1"-->
-    <!--      type="Certification"-->
-    <!--      subheading="Project Management Institute"-->
-    <!--      :verified="false"-->
-    <!--      holder="John Appleseeed"-->
-    <!--      issuer="PMI Global"-->
-    <!--      expiryDate="2025-09-18"-->
-    <!--      @credentialClick="navigateToDetail"-->
-    <!--    />-->
   </div>
   <div class="info-container">
     <component :is="PhLock" weight="fill" color="var(--color-text-secondary)" />
@@ -86,14 +41,15 @@ import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
-import PageHeader from "../../components/PageHeader.vue";
+import { onMounted, ref } from "vue";
+import { getAllCredentials } from "../../stores/credentialStore.js";
 
-/*
-function navigateTo(routeName) {
-  router.push({ name: routeName });
-}
+const credentials = ref([]);
 
- */
+onMounted(() => {
+  credentials.value = getAllCredentials();
+});
+
 function navigateTo(routeName) {
   router
     .push({ name: routeName })

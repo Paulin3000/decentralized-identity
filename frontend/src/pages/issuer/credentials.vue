@@ -49,15 +49,6 @@
       color-theme="orange"
       @credentialClick="navigateToDetail"
     />
-    <!--    <CredentialCard-->
-    <!--      id="certification-id-1"-->
-    <!--      type="Certification"-->
-    <!--      subheading="Project Management Institute"-->
-    <!--      :verified="false"-->
-    <!--      holder="John Appleseeed"-->
-    <!--      issuer="PMI Global"-->
-    <!--      expiryDate="2025-09-18"-->
-    <!--      @credentialClick="navigateToDetail"-->
   </div>
 </template>
 <script setup lang="ts">
@@ -66,8 +57,6 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import uzhLogo from "../../assets/uzh-acronym.svg";
 import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
-import IconButton from "../../components/buttons/IconButton.vue";
-import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
 
 function navigateTo(routeName) {

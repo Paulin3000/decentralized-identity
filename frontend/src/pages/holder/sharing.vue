@@ -1,5 +1,5 @@
 <template>
-  <DataDisplayLayout :show-go-back="false">
+  <DataDisplayLayout :show-go-back="true">
     <template #header>
       <div class="card-section">
         <CredentialCard
@@ -59,49 +59,49 @@
         >
           <SelectableDataField
             label="Credential Type"
-            value="Certificate"
+            :value="credential.type"
             v-model="selectedFields.credentialType"
             required
           />
           <SelectableDataField
             label="Issuer Name"
-            value="University of Zürich"
+            :value="credential.issuer"
             v-model="selectedFields.issuerName"
             :required="true"
           />
           <SelectableDataField
             label="Issuer DID"
-            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+            :value="credential.issuerDid"
             v-model="selectedFields.issuerDID"
             :required="true"
           />
           <SelectableDataField
             label="Holder Name"
-            value="Joe Appleseed"
+            :value="credential.holder"
             v-model="selectedFields.holderName"
             :required="true"
           />
           <SelectableDataField
             label="Holder DID"
-            value="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+            :value="credential.holderDid"
             v-model="selectedFields.holderDID"
             :required="true"
           />
           <SelectableDataField
             label="Issued On"
-            value="April 1, 2020"
+            :value="credential.issuanceDate"
             v-model="selectedFields.issuedOn"
             :required="true"
           />
           <SelectableDataField
             label="Expires On"
-            value="July 12, 2032"
+            :value="credential.expiryDate"
             v-model="selectedFields.expiresOn"
             :required="true"
           />
           <SelectableDataField
             label="Status"
-            value="Verified"
+            :value="credential.verified ? 'Verified' : 'Revoked'"
             v-model="selectedFields.status"
             :required="true"
           />
@@ -114,29 +114,24 @@
           :subtitle-icon="PhInfo"
         >
           <SelectableDataField
-            label="Date of Birth"
-            value="September 12, 1990"
-            v-model="selectedFields.dateOfBirth"
+            label="Degree"
+            :value="credential.additionalData?.degree"
+            v-model="selectedFields.degree"
           />
           <SelectableDataField
-            label="Course Completed"
-            value="Ethics in AI"
-            v-model="selectedFields.courseCompleted"
+            label="Field of Study"
+            :value="credential.additionalData?.field"
+            v-model="selectedFields.field"
           />
           <SelectableDataField
-            label="Final Grade"
-            value="5.5 / 6.0"
-            v-model="selectedFields.finalGrade"
+            label="Graduation Date"
+            :value="credential.additionalData?.graduationDate"
+            v-model="selectedFields.graduationDate"
           />
           <SelectableDataField
-            label="ECTS"
-            value="2"
-            v-model="selectedFields.ects"
-          />
-          <SelectableDataField
-            label="Instructor"
-            value="Prof. Sample"
-            v-model="selectedFields.instructor"
+            label="GPA"
+            :value="credential.additionalData?.gpa"
+            v-model="selectedFields.gpa"
           />
         </DataContainer>
 
@@ -177,7 +172,7 @@
 </template>
 
 <script setup>
-import { onMounted, ref } from "vue";
+import { computed, onMounted, ref } from "vue";
 import { useRoute } from "vue-router";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
@@ -194,9 +189,11 @@ import BaseButton from "../../components/buttons/BaseButton.vue";
 import InputField from "../../components/data-display/inputs-DataField/InputField.vue";
 import SelectableDataField from "../../components/data-display/SelectableDataField.vue";
 import illustration from "../../assets/illustrations/send-to-verifier.png";
+import { getCredentialById } from "../../stores/credentialStore.js";
 
 const route = useRoute();
-const credentialId = route.params.id;
+const credentialId = computed(() => route.params.id);
+const credential = ref({});
 const showFeedbackModal = ref(false);
 
 const verifierName = ref("");
@@ -205,16 +202,16 @@ const verifierDID = ref("");
 const shouldMove = ref(false);
 const showIllustration = ref(false);
 
-const credential = ref({
-  id: credentialId,
-  type: "National ID",
-  subheading: "Government of Switzerland",
-  verified: true,
-  holder: "John Appleseed",
-  issuer: "Swiss Federal Office",
-  expiryDate: "2028-06-30",
-  logoUrl: switzerlandLogo,
-  colorTheme: "pink",
+onMounted(() => {
+  const credentialData = getCredentialById(credentialId.value);
+
+  if (credentialData) {
+    credential.value = credentialData;
+  } else {
+    console.error(`Credential with ID ${credentialId.value} not found`);
+    // Optionally redirect to a 404 page or back to credentials list
+    router.push({ name: "holder-credentials" });
+  }
 });
 
 const selectedFields = ref({

@@ -20,7 +20,7 @@ export default [
     name: "request-credential",
   },
   {
-    path: "sharing",
+    path: "sharing/:id",
     component: () => import("../pages/holder/sharing.vue"),
     name: "holder-sharing",
   },

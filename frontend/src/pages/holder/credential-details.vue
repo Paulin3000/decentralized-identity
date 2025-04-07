@@ -140,7 +140,6 @@ const credentialId = computed(() => route.params.id);
 const credential = ref({});
 
 onMounted(() => {
-  // Fetch the credential data when component mounts
   const credentialData = getCredentialById(credentialId.value);
 
   if (credentialData) {
@@ -162,7 +161,7 @@ const handleCancel = () => {
 };
 
 function navigateTo(routeName) {
-  router.push({ name: routeName });
+  router.push({ name: routeName, params: { id: credential.value.id } });
 }
 
 const formatDate = (dateString) => {

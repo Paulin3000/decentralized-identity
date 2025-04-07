@@ -21,7 +21,7 @@
               :icon="PhPaperPlaneTilt"
               text="Sharing"
               :isActive="isActiveRoute('holder-sharing')"
-              @click="navigateTo('holder-sharing')"
+              @click="navigateTo('holder-sharing', { id: 'degree-id-1' })"
             />
             <NavItem
               :icon="PhGearSix"
@@ -167,8 +167,11 @@ function isActiveRoute(name) {
   return route.name === name;
 }
 
-function navigateTo(routeName) {
-  router.push({ name: routeName });
+function navigateTo(routeName, params = {}) {
+  router.push({
+    name: routeName,
+    params: params,
+  });
 }
 
 function switchRole(role) {
