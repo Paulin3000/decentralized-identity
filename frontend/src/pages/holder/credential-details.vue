@@ -36,39 +36,60 @@
           <DataField label="Holder" :value="credential.holder" />
           <DataField label="Holder DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              :address="credential.holderDid"
               show-icon="true"
               icon="verified"
           /></DataField>
           <DataField label="Issuer" :value="credential.issuer" />
           <DataField label="Issuer DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              :address="credential.issuerDid"
               show-icon="true"
               icon="verified"
           /></DataField>
-          <DataField label="Issuance Date" value="Jan 15, 2023" />
+          <DataField
+            label="Issuance Date"
+            :value="formatDate(credential.issuanceDate)"
+          />
           <DataField
             label="Expiry Date"
             :value="formatDate(credential.expiryDate)"
           />
           <DataField label="Status" :isLast="true">
-            <status-tag status="verified">Revoked</status-tag>
+            <status-tag :status="credential.verified ? 'verified' : 'revoked'">
+              {{ credential.verified ? "Verified" : "Revoked" }}
+            </status-tag>
           </DataField>
         </DataContainer>
 
-        <DataContainer title="Credential Data">
-          <DataField label="First Name" value="John" />
-          <DataField label="Last Name" value="Appleseed" />
-          <DataField label="Date of Birth" value="April 1, 1990" />
-          <DataField label="Nationality" value="Swiss" :isLast="true" />
+        <DataContainer title="Credential Data" v-if="credential.additionalData">
+          <template
+            v-for="(value, key) in credential.additionalData"
+            :key="key"
+          >
+            <DataField
+              :label="
+                key
+                  .replace(/([A-Z])/g, ' $1')
+                  .replace(/^./, (str) => str.toUpperCase())
+              "
+              :value="value"
+              :isLast="Object.keys(credential.additionalData).pop() === key"
+            />
+          </template>
         </DataContainer>
 
-        <DataContainer title="Verification History">
-          <DataField label="Last Verification" value="May 12, 2023" />
+        <DataContainer
+          title="Verification History"
+          v-if="credential.verification"
+        >
+          <DataField
+            label="Last Verification"
+            :value="credential.verification.lastVerified"
+          />
           <DataField
             label="Verification Method"
-            value="Blockchain Consensus"
+            :value="credential.verification.method"
             :isLast="true"
           />
         </DataContainer>
@@ -94,7 +115,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
 import Header from "../../components/Header.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
@@ -110,25 +131,25 @@ import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddres
 import IconButton from "../../components/buttons/IconButton.vue";
 import IconOnlyButton from "../../components/buttons/IconOnlyButton.vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
+import { getCredentialById } from "../../stores/credentialStore.js";
 
 const route = useRoute();
-const credentialId = route.params.id;
 const showDeleteModal = ref(false);
 
-const credential = ref({
-  id: credentialId,
-  type: "National ID",
-  subheading: "Government of Switzerland",
-  verified: true,
-  holder: "John Appleseed",
-  issuer: "Swiss Federal Office",
-  expiryDate: "2028-06-30",
-  logoUrl: switzerlandLogo,
-  colorTheme: "pink",
-});
+const credentialId = computed(() => route.params.id);
+const credential = ref({});
 
 onMounted(() => {
-  // Fetch/update credential details as needed
+  // Fetch the credential data when component mounts
+  const credentialData = getCredentialById(credentialId.value);
+
+  if (credentialData) {
+    credential.value = credentialData;
+  } else {
+    console.error(`Credential with ID ${credentialId.value} not found`);
+    // Optionally redirect to a 404 page or back to credentials list
+    router.push({ name: "holder-credentials" });
+  }
 });
 
 const handleDelete = () => {
