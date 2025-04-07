@@ -7,6 +7,7 @@ import sanitasLogo from "../assets/Sanitas_Logo_RGB_black.png";
 // Constants
 const HOLDER_DID = "did:ethr:0x7834ACE28B1050685201A64B09A576B14F31";
 const VERIFICATION_METHOD = "Blockchain Registry Verification";
+const UZH_ISSUER_DID = "did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE";
 
 // Create a reactive store with all our credentials data
 const credentialsData = reactive({
@@ -113,12 +114,176 @@ const credentialsData = reactive({
   },
 });
 
-// Function to get a credential by ID
+const credentialsDataIssuer = reactive({
+  "degree-phd-1": {
+    id: "degree-phd-1",
+    type: "PhD Degree",
+    subheading: "University of Zurich",
+    verified: true,
+    holder: "Sophie Müller",
+    holderDid: "did:ethr:0x9A72BF45C1D80E4A243EEDD3F78ABC982D5E",
+    issuer: "University of Zurich",
+    issuerDid: UZH_ISSUER_DID,
+    expiryDate: "January 1, 2099",
+    logoUrl: uzhLogo,
+    colorTheme: "blue",
+    issuanceDate: "May 12, 2022",
+    additionalData: {
+      firstName: "Sophie",
+      lastName: "Müller",
+      degree: "Doctor of Philosophy",
+      field: "Neuroscience",
+      thesis: "Neural Correlates of Visual Perception",
+      graduationDate: "May 10, 2022",
+      honors: "Summa Cum Laude",
+      supervisor: "Prof. Dr. Hans Weber",
+      department: "Faculty of Science",
+      dateOfBirth: "March 15, 1988",
+      ects: "240",
+    },
+    verification: {
+      lastVerified: "May 20, 2022",
+      method: VERIFICATION_METHOD,
+    },
+  },
+  "degree-masters-1": {
+    id: "degree-masters-1",
+    type: "Master's Degree",
+    subheading: "University of Zurich",
+    verified: true,
+    holder: "Lukas Schmid",
+    holderDid: "did:ethr:0x4B3FDA567E12CF89AE1D56278901CBA45F9",
+    issuer: "University of Zurich",
+    issuerDid: UZH_ISSUER_DID,
+    expiryDate: "January 1, 2099",
+    logoUrl: uzhLogo,
+    colorTheme: "blue",
+    issuanceDate: "June 25, 2023",
+    additionalData: {
+      firstName: "Lukas",
+      lastName: "Schmid",
+      degree: "Master of Science",
+      field: "Artificial Intelligence",
+      thesis: "Explainable AI in Healthcare Applications",
+      graduationDate: "June 20, 2023",
+      gpa: "5.8/6.0",
+      honors: "Magna Cum Laude",
+      department: "Department of Informatics",
+      dateOfBirth: "January 8, 1995",
+      ects: "120",
+    },
+    verification: {
+      lastVerified: "June 30, 2023",
+      method: VERIFICATION_METHOD,
+    },
+  },
+  "certificate-blockchain-1": {
+    id: "certificate-blockchain-1",
+    type: "Professional Certificate",
+    subheading: "University of Zurich",
+    verified: true,
+    holder: "Elena Rossi",
+    holderDid: "did:ethr:0x3CF82AB5D98E4C1A7FB256EA790D45F12E",
+    issuer: "University of Zurich",
+    issuerDid: UZH_ISSUER_DID,
+    expiryDate: "December 31, 2025",
+    logoUrl: uzhLogo,
+    colorTheme: "blue",
+    issuanceDate: "November 10, 2023",
+    additionalData: {
+      firstName: "Elena",
+      lastName: "Rossi",
+      certificateName: "Blockchain Technologies",
+      courseCompleted: "November 5, 2023",
+      finalGrade: "A",
+      instructor: "Prof. Dr. Michael Bernstein",
+      programLength: "120 hours",
+      skillsAcquired:
+        "Smart Contract Development, Blockchain Architecture, Cryptography",
+      department: "Department of Banking and Finance",
+      ects: "10",
+    },
+    verification: {
+      lastVerified: "November 15, 2023",
+      method: VERIFICATION_METHOD,
+    },
+  },
+  "degree-bachelors-1": {
+    id: "degree-bachelors-1",
+    type: "Bachelor's Degree",
+    subheading: "University of Zurich",
+    verified: true,
+    holder: "Thomas Keller",
+    holderDid: "did:ethr:0x7C19DF56A8E29F4C3B612DE871A95D37CE5",
+    issuer: "University of Zurich",
+    issuerDid: UZH_ISSUER_DID,
+    expiryDate: "January 1, 2099",
+    logoUrl: uzhLogo,
+    colorTheme: "blue",
+    issuanceDate: "July 15, 2024",
+    additionalData: {
+      firstName: "Thomas",
+      lastName: "Keller",
+      degree: "Bachelor of Arts",
+      field: "Economics",
+      graduationDate: "July 10, 2024",
+      gpa: "5.2/6.0",
+      department: "Department of Economics",
+      thesis: "Impact of Digital Currencies on Traditional Banking",
+      dateOfBirth: "April 22, 1997",
+      ects: "180",
+    },
+    verification: {
+      lastVerified: "July 20, 2024",
+      method: VERIFICATION_METHOD,
+    },
+  },
+  "certificate-datascience-1": {
+    id: "certificate-datascience-1",
+    type: "Professional Certificate",
+    subheading: "University of Zurich",
+    verified: true,
+    holder: "Anna Fischer",
+    holderDid: "did:ethr:0x2A5DE8F94B671C3A9F5D2E86B7C498A2F7",
+    issuer: "University of Zurich",
+    issuerDid: UZH_ISSUER_DID,
+    expiryDate: "January 15, 2026",
+    logoUrl: uzhLogo,
+    colorTheme: "blue",
+    issuanceDate: "January 15, 2024",
+    additionalData: {
+      firstName: "Anna",
+      lastName: "Fischer",
+      certificateName: "Advanced Data Science",
+      courseCompleted: "January 10, 2024",
+      finalGrade: "A+",
+      instructor: "Prof. Dr. Sarah Johnson",
+      programLength: "150 hours",
+      skillsAcquired:
+        "Machine Learning, Big Data Analytics, Statistical Modeling",
+      projects: "Predictive Analysis of Climate Data",
+      department: "Department of Informatics",
+      ects: "15",
+    },
+    verification: {
+      lastVerified: "January 20, 2024",
+      method: VERIFICATION_METHOD,
+    },
+  },
+});
+
 export function getCredentialById(id) {
   return credentialsData[id] || null;
 }
 
-// Function to get all credentials
 export function getAllCredentials() {
   return Object.values(credentialsData);
+}
+
+export function getIssuerCredentialById(id) {
+  return credentialsDataIssuer[id] || null;
+}
+
+export function getAllIssuerCredentials() {
+  return Object.values(credentialsDataIssuer);
 }

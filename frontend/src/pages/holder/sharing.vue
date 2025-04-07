@@ -112,27 +112,17 @@
           subtitle="Select which additional credential details you'd like to share with the verifier.
 "
           :subtitle-icon="PhInfo"
+          v-if="credential && credential.additionalData"
         >
-          <SelectableDataField
-            label="Degree"
-            :value="credential.additionalData?.degree"
-            v-model="selectedFields.degree"
-          />
-          <SelectableDataField
-            label="Field of Study"
-            :value="credential.additionalData?.field"
-            v-model="selectedFields.field"
-          />
-          <SelectableDataField
-            label="Graduation Date"
-            :value="credential.additionalData?.graduationDate"
-            v-model="selectedFields.graduationDate"
-          />
-          <SelectableDataField
-            label="GPA"
-            :value="credential.additionalData?.gpa"
-            v-model="selectedFields.gpa"
-          />
+          <template v-if="credential && credential.additionalData">
+            <SelectableDataField
+              v-for="(value, key) in credential.additionalData"
+              :key="key"
+              :label="formatLabel(key)"
+              :value="value"
+              v-model="selectedFields[key]"
+            />
+          </template>
         </DataContainer>
 
         <div class="buttons-container">
@@ -223,12 +213,22 @@ const selectedFields = ref({
   issuedOn: false,
   expiresOn: false,
   status: false,
-  dateOfBirth: false,
-  courseCompleted: false,
-  finalGrade: false,
-  ects: false,
-  instructor: false,
 });
+
+if (credential.value && credential.value.additionalData) {
+  Object.keys(credential.value.additionalData).forEach((key) => {
+    selectedFields.value[key] = false;
+  });
+}
+
+// Helper function to format the field labels from camelCase
+function formatLabel(key) {
+  // Convert camelCase to Title Case with spaces
+  return key
+    .replace(/([A-Z])/g, " $1") // Add space before capital letters
+    .replace(/^./, (str) => str.toUpperCase()) // Capitalize the first letter
+    .trim(); // Remove any extra spaces
+}
 
 onMounted(() => {
   // Small delay before starting animation
@@ -278,7 +278,7 @@ const formatDate = (dateString) => {
   width: 100%;
   position: relative;
   padding: 4rem 0;
-  min-height: calc(250px + 4rem);
+  min-height: calc(215px + 8rem);
 }
 
 .credential-card {

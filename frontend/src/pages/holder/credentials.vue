@@ -35,9 +35,6 @@
 <script setup lang="ts">
 import Header from "../../components/Header.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
-import uzhLogo from "../../assets/uzh-acronym.svg";
-import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";

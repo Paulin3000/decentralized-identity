@@ -111,12 +111,6 @@ const goToCredentials = () => {
 </script>
 
 <style scoped>
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-}
 .dashboard-container {
   padding: 0 20px 20px 20px;
 }
@@ -125,7 +119,6 @@ const goToCredentials = () => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
-  margin-top: 1rem;
 }
 
 .request-card {

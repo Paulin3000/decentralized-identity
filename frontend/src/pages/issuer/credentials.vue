@@ -1,52 +1,26 @@
 <template>
-  <Header title="Issued Credentials" :line="true"> </Header>
+  <Header title="Issued Credentials" :line="true">
+    <IconButton
+      :icon-left="PhPlus"
+      variant="primary"
+      @click="navigateTo('request-credential')"
+      >Claim New Credential</IconButton
+    >
+  </Header>
 
   <div class="credentials-grid">
     <CredentialCard
-      id="national-id-1"
-      type="National ID"
-      subheading="Government of Switzerland"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="Swiss Federal Office"
-      expiryDate="2028-06-30"
-      :logoUrl="switzerlandLogo"
-      color-theme="pink"
-      @credentialClick="navigateToDetail"
-    />
-    <CredentialCard
-      id="degree-id-1"
-      type="University Degree"
-      subheading="ETH Zurich"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="ETH Zurich University"
-      expiryDate="2099-01-01"
-      :logoUrl="uzhLogo"
-      color-theme="blue"
-      @credentialClick="navigateToDetail"
-    />
-    <CredentialCard
-      id="drivers-license-id-1"
-      type="Driver's License"
-      subheading="Department of Transportation"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="Strassenverkehrsamt"
-      expiryDate="2027-03-15"
-      :logoUrl="switzerlandLogo"
-      color-theme="pink"
-      @credentialClick="navigateToDetail"
-    />
-    <CredentialCard
-      id="health-insurance-id-1"
-      type="Health Insurance"
-      subheading="National Healthcare System"
-      :verified="true"
-      holder="John Appleseeed"
-      issuer="Sanitas"
-      :logoUrl="sanitasLogo"
-      color-theme="orange"
+      v-for="credential in credentials"
+      :key="credential.id"
+      :id="credential.id"
+      :type="credential.type"
+      :subheading="credential.subheading"
+      :verified="credential.verified"
+      :holder="credential.holder"
+      :issuer="credential.issuer"
+      :expiryDate="credential.expiryDate"
+      :logoUrl="credential.logoUrl"
+      :color-theme="credential.colorTheme"
       @credentialClick="navigateToDetail"
     />
   </div>
@@ -57,10 +31,32 @@ import CredentialCard from "../../components/CredentialCard.vue";
 import switzerlandLogo from "../../assets/switzerland.png";
 import uzhLogo from "../../assets/uzh-acronym.svg";
 import sanitasLogo from "../../assets/Sanitas_Logo_RGB_black.png";
+import IconButton from "../../components/buttons/IconButton.vue";
+import { PhLock, PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
+import { onMounted, ref } from "vue";
+import { getAllIssuerCredentials } from "../../stores/credentialStore.js";
+
+const credentials = ref([]);
+
+onMounted(() => {
+  credentials.value = getAllIssuerCredentials();
+});
 
 function navigateTo(routeName) {
-  router.push({ name: routeName });
+  router
+    .push({ name: routeName })
+    .catch((err) => {
+      if (err.name !== "NavigationDuplicated") {
+        throw err;
+      }
+    })
+    .then(() => {
+      // Force component update if needed
+      if (router.currentRoute.value.name === routeName) {
+        window.location.reload();
+      }
+    });
 }
 
 const navigateToDetail = (credentialId) => {
@@ -72,11 +68,18 @@ const navigateToDetail = (credentialId) => {
 </script>
 
 <style scoped>
+.info-container {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding-top: 3rem;
+}
+
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
   gap: 32px;
-  padding: 32px 24px;
+  padding: 0 1.5rem 2rem;
   max-width: 1200px;
   margin: auto;
 }
