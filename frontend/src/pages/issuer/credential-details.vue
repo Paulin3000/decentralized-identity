@@ -21,6 +21,7 @@
             @click="showDeleteModal = true"
           >
           </IconOnlyButton>
+          <span class="text-label button-label">Revoke</span>
         </div>
       </div>
     </template>
@@ -139,6 +140,10 @@ const handleCancel = () => {
   showDeleteModal.value = false;
 };
 
+function navigateTo(routeName) {
+  router.push({ name: routeName });
+}
+
 const formatDate = (dateString) => {
   const date = new Date(dateString);
   return date.toLocaleDateString("en-US", {
@@ -155,21 +160,27 @@ const formatDate = (dateString) => {
   justify-content: center;
   width: 100%;
   position: relative;
+  padding: 4rem 0;
 }
 
 .action-buttons {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 0.75rem;
   position: absolute;
-  right: 0;
-  bottom: 0;
+  right: 1rem;
+  bottom: 2rem;
+}
+
+.button-label {
+  color: var(--color-bad);
 }
 
 .details-section {
   display: flex;
   flex-direction: column;
   width: 100%;
-  gap: 2.5rem;
+  /*gap: 2.5rem;*/
+  gap: 4rem;
 }
 </style>
