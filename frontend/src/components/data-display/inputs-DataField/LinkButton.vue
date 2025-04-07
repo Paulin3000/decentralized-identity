@@ -8,16 +8,14 @@
 </template>
 
 <script setup>
-import { PhPaperclip } from "@phosphor-icons/vue";
-
 defineProps({
   text: {
     type: String,
     default: "",
   },
   icon: {
-    type: Object,
-    default: PhPaperclip,
+    type: [Object, null],
+    default: null,
   },
 });
 </script>

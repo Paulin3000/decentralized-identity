@@ -176,7 +176,6 @@ const formatDate = (dateString) => {
   display: flex;
   flex-direction: column;
   width: 100%;
-  /*gap: 2.5rem;*/
   gap: 4rem;
 }
 </style>

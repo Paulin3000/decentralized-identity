@@ -1,7 +1,7 @@
 <template>
   <div class="page-header">
     <div class="header-container">
-      <h2 class="text-left">{{ title }}</h2>
+      <h2>{{ title }}</h2>
       <p v-if="subtitle" class="subtitle-container">
         <component
           :is="subtitleIcon"
@@ -58,7 +58,6 @@ const props = defineProps({
 }
 
 .subtitle-container {
-  margin: 0.5rem 0 0;
   display: flex;
   flex-direction: row;
   align-items: center;

@@ -29,7 +29,9 @@
             ></DIDAddress>
           </DataField>
           <DataField label="Additional Documents">
-            <LinkButton>Attach Credentials or Documents</LinkButton>
+            <LinkButton :icon="PhPaperclip"
+              >Attach Credentials or Documents</LinkButton
+            >
           </DataField>
           <DataField label="Message" is-last="true">
             <InputField type="text" placeholder="Enter message" />
@@ -89,6 +91,7 @@ import IconButton from "../../components/buttons/IconButton.vue";
 import {
   PhCheck,
   PhCheckCircle,
+  PhPaperclip,
   PhPaperPlaneTilt,
   PhX,
 } from "@phosphor-icons/vue";
@@ -126,7 +129,7 @@ const handleCancel = () => {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 3rem;
 }
 .buttons-container {
   display: flex;
