@@ -10,7 +10,7 @@
     <h2>Understanding the Triangle of Trust</h2>
 
     <p>
-      When using a decentralized identity (DI) system like Polygon ID, three
+      When using a decentralized identity (DI) system like Mask Identity, three
       roles work together to help prove and verify identity in a trustworthy and
       secure way. This relationship is called the Triangle of Trust, and it
       involves:
@@ -65,10 +65,9 @@
     <div class="role-section">
       <h3>3. Verifier – The One Who Checks</h3>
       <p>
-        The Verifier (sometimes also called a relying party) is the person,
-        website, or organization that wants to confirm your credentials. This
-        could be a bar checking your age, an employer verifying a certificate,
-        or an app ensuring you're a member.
+        The Verifier is the person, website, or organization that wants to
+        confirm your credentials. This could be a bar checking your age, an
+        employer verifying a certificate, or an app ensuring you're a member.
       </p>
       <p>
         The verifier checks your credentials against the data that the Issuer

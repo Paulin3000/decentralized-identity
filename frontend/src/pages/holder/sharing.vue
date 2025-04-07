@@ -3,6 +3,8 @@
     <template #header>
       <div class="card-section">
         <CredentialCard
+          class="credential-card"
+          :class="{ 'move-to-right': shouldMove }"
           :id="credential.id"
           :type="credential.type"
           :subheading="credential.subheading"
@@ -13,6 +15,12 @@
           :logoUrl="credential.logoUrl"
           :color-theme="credential.colorTheme"
           :glowy="true"
+        />
+        <img
+          :src="illustration"
+          class="illustration"
+          :class="{ 'show-illustration': showIllustration }"
+          alt="send to verifier"
         />
       </div>
     </template>
@@ -185,6 +193,7 @@ import FeedbackModal from "../../components/FeedbackModal.vue";
 import BaseButton from "../../components/buttons/BaseButton.vue";
 import InputField from "../../components/data-display/inputs-DataField/InputField.vue";
 import SelectableDataField from "../../components/data-display/SelectableDataField.vue";
+import illustration from "../../assets/illustrations/send-to-verifier.png";
 
 const route = useRoute();
 const credentialId = route.params.id;
@@ -192,6 +201,9 @@ const showFeedbackModal = ref(false);
 
 const verifierName = ref("");
 const verifierDID = ref("");
+
+const shouldMove = ref(false);
+const showIllustration = ref(false);
 
 const credential = ref({
   id: credentialId,
@@ -222,7 +234,15 @@ const selectedFields = ref({
 });
 
 onMounted(() => {
-  // Fetch/update credential details as needed
+  // Small delay before starting animation
+  setTimeout(() => {
+    shouldMove.value = true;
+
+    // Show illustration after the card has moved (adjust timing as needed)
+    setTimeout(() => {
+      showIllustration.value = true;
+    }, 200); // 1 second delay after card starts moving
+  }, 100);
 });
 
 const handleSendCredential = () => {
@@ -258,10 +278,42 @@ const formatDate = (dateString) => {
 <style scoped>
 .card-section {
   display: flex;
-  justify-content: center;
   width: 100%;
   position: relative;
   padding: 4rem 0;
+  min-height: calc(250px + 4rem);
+}
+
+.credential-card {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  transition:
+    left 100ms ease-out,
+    transform 100ms ease-out;
+
+  pointer-events: none;
+  z-index: 1;
+}
+
+.move-to-right {
+  transform: translateX(-120%);
+}
+
+.illustration {
+  max-width: 300px;
+  height: auto;
+  object-fit: contain;
+  position: absolute;
+  right: 9%;
+  top: 30%;
+  z-index: 0;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.show-illustration {
+  opacity: 1;
 }
 
 .data-section {
