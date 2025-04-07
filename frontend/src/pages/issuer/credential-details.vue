@@ -168,7 +168,7 @@ const formatDate = (dateString) => {
   flex-direction: column;
   gap: 0.75rem;
   position: absolute;
-  right: 1rem;
+  right: 4rem;
   bottom: 2rem;
 }
 

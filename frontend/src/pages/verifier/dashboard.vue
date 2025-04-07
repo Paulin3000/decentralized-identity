@@ -1,8 +1,9 @@
 <template>
-  <div class="header">
-    <h1>Verifier Dashboard</h1>
-    <p class="text-base">Manage your credential requests and issuances</p>
-  </div>
+  <Header
+    title="Verifier Dashboard"
+    subtitle="Manage your credential requests "
+  >
+  </Header>
   <div class="dashboard-container">
     <div class="dashboard-grid">
       <!-- New Request Card -->
@@ -96,6 +97,7 @@ import {
 import PageHeader from "../../components/PageHeader.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { useRouter } from "vue-router";
+import Header from "../../components/Header.vue";
 
 const router = useRouter();
 

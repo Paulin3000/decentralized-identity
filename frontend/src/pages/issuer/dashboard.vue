@@ -1,8 +1,10 @@
 <template>
-  <div class="header">
-    <h1>Issuer Dashboard</h1>
-    <p class="text-base">Manage your credential requests and issuances</p>
-  </div>
+  <Header
+    title="Issuer Dashboard"
+    subtitle="Manage your credential requests and issuances"
+  >
+  </Header>
+
   <div class="dashboard-container">
     <div class="dashboard-grid">
       <!-- New Request Card -->
@@ -93,7 +95,7 @@ import {
   PhIdentificationCard,
   PhChartLine,
 } from "@phosphor-icons/vue";
-import PageHeader from "../../components/PageHeader.vue";
+import Header from "../../components/Header.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { useRouter } from "vue-router";
 
@@ -109,12 +111,6 @@ const goToCredentials = () => {
 </script>
 
 <style scoped>
-.header {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  padding: 20px;
-}
 .dashboard-container {
   padding: 0 20px 20px 20px;
 }
@@ -123,7 +119,6 @@ const goToCredentials = () => {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   gap: 24px;
-  margin-top: 1rem;
 }
 
 .request-card {

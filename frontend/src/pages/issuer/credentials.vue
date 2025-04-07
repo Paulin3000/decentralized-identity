@@ -1,24 +1,5 @@
 <template>
-  <div>
-    <div class="header">
-      <div>
-        <div class="heading-container">
-          <h1>Issued Credentials</h1>
-        </div>
-        <!--        <p class="subtitle-container">-->
-        <!--          <component-->
-        <!--            :is="PhLock"-->
-        <!--            weight="fill"-->
-        <!--            color="var(&#45;&#45;color-text-secondary)"-->
-        <!--          />-->
-        <!--          <span class="text-sm text-text-secondary"-->
-        <!--            >Your credentials are securely stored on your device, not on a-->
-        <!--            public server.-->
-        <!--          </span>-->
-        <!--        </p>-->
-      </div>
-    </div>
-  </div>
+  <Header title="Issued Credentials" :line="true"> </Header>
 
   <div class="credentials-grid">
     <CredentialCard
@@ -102,29 +83,6 @@ const navigateToDetail = (credentialId) => {
 </script>
 
 <style scoped>
-.header {
-  padding: 1rem 1rem 2rem;
-
-  margin-bottom: 1rem;
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  border-bottom: 1px solid #e5e7eb;
-}
-.heading-container {
-  display: flex;
-  align-items: flex-start;
-}
-.subtitle-container {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
-}
-.button-container {
-  display: flex;
-  align-items: flex-end;
-  align-self: flex-end; /* Aligns the container itself at the bottom of the header */
-}
 .credentials-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));

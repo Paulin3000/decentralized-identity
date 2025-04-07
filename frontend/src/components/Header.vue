@@ -1,9 +1,15 @@
 <template>
   <div class="header">
-    <div class="header-subcontainer">
-      <div class="heading">
-        <h1>{{ title }}</h1>
+    <div class="subcontainer">
+      <div class="text-container">
+        <div class="heading">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="subheading" v-if="subtitle">
+          <p class="text-base">{{ subtitle }}</p>
+        </div>
       </div>
+
       <div class="button-container">
         <slot></slot>
       </div>
@@ -21,6 +27,10 @@ const props = defineProps({
     type: String,
     required: true,
   },
+  subtitle: {
+    type: String,
+    default: "",
+  },
   line: {
     type: Boolean,
     default: false,
@@ -36,12 +46,21 @@ const props = defineProps({
   flex-direction: column;
 }
 
-.header-subcontainer {
+.subcontainer {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   margin-bottom: 3rem;
   width: 100%;
+}
+
+.text-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.subheading {
+  margin-top: 1rem;
 }
 
 .button-container {
