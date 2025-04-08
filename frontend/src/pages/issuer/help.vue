@@ -121,7 +121,6 @@ import IconButton from "../../components/buttons/IconButton.vue";
   width: 100%;
   height: auto;
   object-fit: contain;
-  transform: scale(1.05);
   margin-bottom: 7rem;
 }
 

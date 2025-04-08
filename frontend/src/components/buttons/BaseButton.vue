@@ -74,7 +74,7 @@ const onClick = (event) => {
 
 .danger {
   background-color: var(--color-bad);
-  color: white;
+  color: var(--color-background);
   border: 2px solid transparent;
 }
 
@@ -84,7 +84,7 @@ const onClick = (event) => {
 
 .secondary {
   background-color: var(--color-secondary);
-  color: var(--color-background);
+  color: black;
   border: 2px solid transparent;
 }
 

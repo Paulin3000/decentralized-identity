@@ -94,8 +94,8 @@
 
   <FeedbackModal
     type="error"
-    title="Delete Credential"
-    message="Are you sure you want to delete this credential?"
+    title="Revoke Credential"
+    message="Are you sure you want to revoke this credential?"
     :is-visible="showDeleteModal"
   >
     <template #left>
@@ -104,7 +104,7 @@
       </IconButton>
     </template>
     <template #right>
-      <IconButton variant="danger" @click="handleDelete"> Delete </IconButton>
+      <IconButton variant="danger" @click="handleDelete"> Revoke </IconButton>
     </template>
   </FeedbackModal>
 </template>
