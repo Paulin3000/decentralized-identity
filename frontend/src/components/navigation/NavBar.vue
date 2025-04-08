@@ -50,6 +50,7 @@
               text="Requests"
               :isActive="isActiveRoute('issuer-requests')"
               @click="navigateTo('issuer-requests')"
+              badge-count="1"
             />
             <NavItem
               :icon="PhIdentificationCard"
@@ -84,6 +85,7 @@
               text="Requests"
               :isActive="isActiveRoute('verifier-requests')"
               @click="navigateTo('verifier-requests')"
+              badge-count="1"
             />
             <NavItem
               :icon="PhGearSix"
