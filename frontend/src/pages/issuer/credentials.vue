@@ -1,12 +1,5 @@
 <template>
-  <Header title="Issued Credentials" :line="true">
-    <IconButton
-      :icon-left="PhPlus"
-      variant="primary"
-      @click="navigateTo('request-credential')"
-      >Claim New Credential</IconButton
-    >
-  </Header>
+  <Header title="Issued Credentials" :line="true"> </Header>
 
   <div class="credentials-grid">
     <CredentialCard
@@ -28,8 +21,6 @@
 <script setup lang="ts">
 import Header from "../../components/Header.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
-import IconButton from "../../components/buttons/IconButton.vue";
-import { PhPlus } from "@phosphor-icons/vue";
 import router from "../../router";
 import { onMounted, ref } from "vue";
 import { getAllIssuerCredentials } from "../../stores/credentialStore.js";
