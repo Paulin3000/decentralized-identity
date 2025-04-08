@@ -6,7 +6,7 @@ import sanitasLogo from "../assets/Sanitas_Logo_RGB_black.png";
 
 // Constants
 const HOLDER_DID = "did:ethr:0x7834ACE28B1050685201A64B09A576B14F31";
-const VERIFICATION_METHOD = "Blockchain Registry Verification";
+const VERIFICATION_METHOD = "Secure blockchain record";
 const UZH_ISSUER_DID = "did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE";
 
 // Create a reactive store with all our credentials data
@@ -14,7 +14,7 @@ const credentialsData = reactive({
   "national-id-1": {
     id: "national-id-1",
     type: "National ID",
-    subheading: "Government of Switzerland",
+    subheading: "Citizen of Switzerland\n",
     verified: true,
     holder: "John Appleseeed",
     holderDid: HOLDER_DID,
@@ -39,7 +39,7 @@ const credentialsData = reactive({
   "degree-id-1": {
     id: "degree-id-1",
     type: "University Degree",
-    subheading: "University of Zurich",
+    subheading: "B.Sc. in Computer Science",
     verified: true,
     holder: "John Appleseeed",
     holderDid: HOLDER_DID,
@@ -65,11 +65,11 @@ const credentialsData = reactive({
   "drivers-license-id-1": {
     id: "drivers-license-id-1",
     type: "Driver's License",
-    subheading: "Department of Transportation",
+    subheading: "Licensed Driver - Class B",
     verified: false,
     holder: "John Appleseeed",
     holderDid: HOLDER_DID,
-    issuer: "Strassenverkehrsamt",
+    issuer: "Department of Transportation",
     issuerDid: "did:ethr:0x5D924E5CD8E09B76C5F1D0A05CE3C931B97",
     expiryDate: "March 15, 2027",
     logoUrl: switzerlandLogo,
@@ -90,7 +90,7 @@ const credentialsData = reactive({
   "health-insurance-id-1": {
     id: "health-insurance-id-1",
     type: "Health Insurance",
-    subheading: "National Healthcare System",
+    subheading: "Full Medical Coverage",
     verified: true,
     holder: "John Appleseeed",
     holderDid: HOLDER_DID,
@@ -135,7 +135,6 @@ const credentialsDataIssuer = reactive({
       field: "Neuroscience",
       thesis: "Neural Correlates of Visual Perception",
       graduationDate: "May 10, 2022",
-      honors: "Summa Cum Laude",
       supervisor: "Prof. Dr. Hans Weber",
       department: "Faculty of Science",
       dateOfBirth: "March 15, 1988",
@@ -167,7 +166,6 @@ const credentialsDataIssuer = reactive({
       thesis: "Explainable AI in Healthcare Applications",
       graduationDate: "June 20, 2023",
       gpa: "5.8/6.0",
-      honors: "Magna Cum Laude",
       department: "Department of Informatics",
       dateOfBirth: "January 8, 1995",
       ects: "120",
@@ -195,7 +193,7 @@ const credentialsDataIssuer = reactive({
       lastName: "Rossi",
       certificateName: "Blockchain Technologies",
       courseCompleted: "November 5, 2023",
-      finalGrade: "A",
+      finalGrade: "4.8/6.0",
       instructor: "Prof. Dr. Michael Bernstein",
       programLength: "120 hours",
       skillsAcquired:
@@ -256,7 +254,7 @@ const credentialsDataIssuer = reactive({
       lastName: "Fischer",
       certificateName: "Advanced Data Science",
       courseCompleted: "January 10, 2024",
-      finalGrade: "A+",
+      finalGrade: "5.75/6.0",
       instructor: "Prof. Dr. Sarah Johnson",
       programLength: "150 hours",
       skillsAcquired:

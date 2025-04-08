@@ -30,10 +30,10 @@
               @click="navigateTo('holder-settings')"
             />
             <NavItem
-              :icon="PhQuestion"
-              text="Help"
-              :isActive="isActiveRoute('holder-help')"
-              @click="navigateTo('holder-help')"
+              :icon="PhInfo"
+              text="Info"
+              :isActive="isActiveRoute('holder-info')"
+              @click="navigateTo('holder-info')"
             />
           </template>
 
@@ -65,10 +65,10 @@
               @click="navigateTo('issuer-settings')"
             />
             <NavItem
-              :icon="PhQuestion"
-              text="Help"
-              :isActive="isActiveRoute('issuer-help')"
-              @click="navigateTo('issuer-help')"
+              :icon="PhInfo"
+              text="Info"
+              :isActive="isActiveRoute('issuer-info')"
+              @click="navigateTo('issuer-info')"
             />
           </template>
 
@@ -94,10 +94,10 @@
               @click="navigateTo('verifier-settings')"
             />
             <NavItem
-              :icon="PhQuestion"
-              text="Help"
-              :isActive="isActiveRoute('verifier-help')"
-              @click="navigateTo('verifier-help')"
+              :icon="PhInfo"
+              text="Info"
+              :isActive="isActiveRoute('verifier-info')"
+              @click="navigateTo('verifier-info')"
             />
           </template>
         </ul>
@@ -135,7 +135,6 @@ import { useRouter, useRoute } from "vue-router";
 import {
   PhWallet,
   PhGearSix,
-  PhQuestion,
   PhUser,
   PhEnvelopeSimple,
   PhPaperPlaneTilt,
@@ -143,6 +142,7 @@ import {
   PhSquaresFour,
   PhShieldCheck,
   PhIdentificationCard,
+  PhInfo,
 } from "@phosphor-icons/vue";
 
 import NavItem from "./NavItem.vue";
@@ -277,14 +277,5 @@ function navigateToHome() {
 
 .logo {
   width: 4rem;
-}
-
-.fade-enter-active,
-.fade-leave-active {
-  transition: opacity 0.15s ease;
-}
-.fade-enter-from,
-.fade-leave-to {
-  opacity: 0;
 }
 </style>

@@ -55,7 +55,6 @@ import { ref, computed, watch } from "vue";
 import { PhShieldCheck, PhWarning, PhSealCheck } from "@phosphor-icons/vue";
 import IconButton from "../../../components/buttons/IconButton.vue";
 import VerificationItem from "./VerificationItem.vue";
-import DataContainer from "../DataContainer.vue";
 
 const isVerifying = ref(false);
 const isVerified = ref(false);
@@ -70,6 +69,11 @@ const props = defineProps({
 });
 
 const verificationItemsVerifier = [
+  {
+    title: "DID Verification",
+    description: "Is the holder’s DID registered and not blacklisted?",
+    status: "initial",
+  },
   {
     title: "Issuer's Signature",
     description: "Is the credential signed by the expected issuer?",
@@ -88,11 +92,6 @@ const verificationItemsVerifier = [
   {
     title: "Revocation Status",
     description: "Has this credential been revoked by the issuer?",
-    status: "initial",
-  },
-  {
-    title: "DID Verification",
-    description: "Is the holder’s DID registered and not blacklisted?",
     status: "initial",
   },
 ];

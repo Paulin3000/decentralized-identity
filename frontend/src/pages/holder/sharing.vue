@@ -109,8 +109,7 @@
 
         <DataContainer
           title="Share Credential Data"
-          subtitle="Select which additional credential details you'd like to share with the verifier.
-"
+          subtitle="Select the specific details you want to share. The rest will remain private."
           :subtitle-icon="PhInfo"
           v-if="credential && credential.additionalData"
         >
@@ -139,7 +138,7 @@
             icon-weight="fill"
             @click="handleSendCredential"
           >
-            Send Credential
+            Share Credential
           </IconButton>
         </div>
       </div>
@@ -167,12 +166,9 @@ import { useRoute } from "vue-router";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
 import { PhInfo, PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
-import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import BaseButton from "../../components/buttons/BaseButton.vue";

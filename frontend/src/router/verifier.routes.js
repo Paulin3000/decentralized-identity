@@ -20,8 +20,8 @@ export default [
     name: "verifier-settings",
   },
   {
-    path: "help",
-    component: () => import("../pages/verifier/help.vue"),
-    name: "verifier-help",
+    path: "info",
+    component: () => import("../pages/verifier/info.vue"),
+    name: "verifier-info",
   },
 ];

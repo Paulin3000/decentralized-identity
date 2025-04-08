@@ -30,8 +30,8 @@ export default [
     name: "issuer-settings",
   },
   {
-    path: "help",
-    component: () => import("../pages/issuer/help.vue"),
-    name: "issuer-help",
+    path: "info",
+    component: () => import("../pages/issuer/info.vue"),
+    name: "issuer-info",
   },
 ];

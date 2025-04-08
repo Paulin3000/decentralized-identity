@@ -1,9 +1,9 @@
 <template>
-  <DataDisplayLayout :show-go-back="true">
+  <DataDisplayLayout :show-go-back="false">
     <template #header>
       <DataDisplayHeader
         title="New Credential Request "
-        subtitle="Send a request to a trusted issuer to claim your credential."
+        subtitle="Check the credential details to verify their authenticity and validity before you accept them. Verification is based on trusted records from the issuer."
       ></DataDisplayHeader>
     </template>
 
@@ -13,39 +13,54 @@
           <DataField label="Holder" :value="credential.holder" />
           <DataField label="Holder DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              :address="credential.holderDid"
               show-icon="true"
               icon="verified"
           /></DataField>
           <DataField label="Issuer" :value="credential.issuer" />
           <DataField label="Issuer DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              :address="credential.issuerDid"
               show-icon="true"
               icon="verified"
           /></DataField>
-          <DataField label="Issuance Date" value="Jan 15, 2023" />
+          <DataField
+            label="Issuance Date"
+            :value="formatDate(credential.issuanceDate)"
+          />
           <DataField
             label="Expiry Date"
             :value="formatDate(credential.expiryDate)"
           />
           <DataField label="Status" :isLast="true">
-            <status-tag status="verified">Revoked</status-tag>
+            <status-tag :status="credential.verified ? 'verified' : 'revoked'">
+              {{ credential.verified ? "Verified" : "Revoked" }}
+            </status-tag>
           </DataField>
         </DataContainer>
 
-        <DataContainer title="Credential Data">
-          <DataField label="First Name" value="John" />
-          <DataField label="Last Name" value="Appleseed" />
-          <DataField label="Date of Birth" value="April 1, 1990" />
-          <DataField label="Nationality" value="Swiss" :isLast="true" />
+        <DataContainer title="Credential Data" v-if="credential.additionalData">
+          <template
+            v-for="(value, key) in credential.additionalData"
+            :key="key"
+          >
+            <DataField
+              :label="
+                key
+                  .replace(/([A-Z])/g, ' $1')
+                  .replace(/^./, (str) => str.toUpperCase())
+              "
+              :value="value"
+              :isLast="Object.keys(credential.additionalData).pop() === key"
+            />
+          </template>
         </DataContainer>
 
         <CredentialVerifier @verified="isVerified = true" />
 
         <FeedbackModal
           type="success"
-          title="Credential Approved"
+          title="Credential Accepted"
           message="The credential request has been verified and approved. The holder will be notified."
           :is-visible="showApprovedFeedbackModal"
           @close="closeFeedbackModal"
@@ -84,7 +99,7 @@
             @click="handleApprove"
             :disabled="!isVerified"
           >
-            Approve
+            Accept
           </IconButton>
         </div>
       </div>
@@ -98,15 +113,15 @@ import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
 import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhCheck, PhX } from "@phosphor-icons/vue";
 import FeedbackModal from "../../components/FeedbackModal.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
 import { useRouter } from "vue-router";
 import CredentialVerifier from "../../components/data-display/verify/CredentialVerifier.vue";
 import BaseButton from "../../components/buttons/BaseButton.vue";
+import uzhLogo from "../../assets/uzh-acronym.svg";
 
 const router = useRouter();
 const showApprovedFeedbackModal = ref(false);
@@ -114,15 +129,30 @@ const showRejectedFeedbackModal = ref(false);
 const isVerified = ref(false);
 
 const credential = ref({
-  id: "asdf",
-  type: "National ID",
-  subheading: "Government of Switzerland",
+  id: "degree-id-1",
+  type: "University Degree",
+  subheading: "University of Zurich",
   verified: true,
-  holder: "John Appleseed",
-  issuer: "Swiss Federal Office",
-  expiryDate: "2028-06-30",
-  logoUrl: switzerlandLogo,
-  logoContainerColor: "var(--color-pink)",
+  holder: "John Appleseeed",
+  holderDid: "did:ethr:0x7834ACE28B1050685201A64B09A576B14F31",
+  issuer: "University of Zurich",
+  issuerDid: "did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE",
+  expiryDate: "January 1, 2099",
+  logoUrl: uzhLogo,
+  colorTheme: "blue",
+  issuanceDate: "July 6, 2025",
+  additionalData: {
+    firstName: "John",
+    lastName: "Appleseed",
+    degree: "Bachelor of Science",
+    field: "Computer Science",
+    graduationDate: "April 30, 2025",
+    gpa: "5.25/6.0",
+  },
+  verification: {
+    lastVerified: "July 16, 2025",
+    method: "did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE",
+  },
 });
 
 const formatDate = (dateString) => {

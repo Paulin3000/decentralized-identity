@@ -3,8 +3,8 @@
     <div class="header-section">
       <h1 class="main-title">Mask Identity</h1>
       <div class="lead-text">
-        Your Decentralized Identity App. Securely manage verified credentials
-        under your control for a private, seamless online experience.
+        Take Control of Your Identity. Manage and use your verified credentials
+        privately and securely—anytime, anywhere.
       </div>
       <IconButton
         variant="special"
@@ -26,8 +26,7 @@
             <div class="step-content">
               <h4>Request Credentials</h4>
               <p class="text-secondary">
-                Submit credential requests to trusted institutions with required
-                documents
+                Submit requests to trusted institutions with required documents.
               </p>
             </div>
           </li>
@@ -36,8 +35,8 @@
             <div class="step-content">
               <h4>Receive Credentials</h4>
               <p class="text-secondary">
-                Accept and download approved credentials from issuing
-                organizations
+                Accept and download credentials issued by verified
+                organizations.
               </p>
             </div>
           </li>
@@ -46,8 +45,7 @@
             <div class="step-content">
               <h4>Manage Wallet</h4>
               <p class="text-secondary">
-                Store and organize your credentials securely in your digital
-                wallet
+                Store and organize your credentials securely.
               </p>
             </div>
           </li>
@@ -56,8 +54,8 @@
             <div class="step-content">
               <h4>Share Credentials</h4>
               <p class="text-secondary">
-                Selectively share credentials with verifiers while maintaining
-                privacy
+                Share only the necessary parts of your credentials while keeping
+                full control over your personal data.
               </p>
             </div>
           </li>
@@ -66,7 +64,7 @@
             <div class="step-content">
               <h4>Access Services</h4>
               <p class="text-secondary">
-                Use verified credentials to access services and opportunities
+                Use credentials to access services and verify your identity.
               </p>
             </div>
           </li>

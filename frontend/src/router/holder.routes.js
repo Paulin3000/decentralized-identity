@@ -30,8 +30,8 @@ export default [
     name: "holder-settings",
   },
   {
-    path: "help",
-    component: () => import("../pages/holder/help.vue"),
-    name: "holder-help",
+    path: "info",
+    component: () => import("../pages/holder/info.vue"),
+    name: "holder-info",
   },
 ];

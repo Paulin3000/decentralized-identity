@@ -6,10 +6,10 @@
     <template #content>
       <div class="settings-section">
         <DataContainer title="Identity">
-          <dataField label="Role" value="Credential Holder"></dataField>
-          <dataField label="Your DID" :is-last="true">
+          <dataField label="Your Role" value="Credential Holder"></dataField>
+          <dataField label="Your Decentralized ID" :is-last="true">
             <DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              address="did:ethr:0x7834ACE28B1050685201A64B09A576B14F31"
               show-icon="true"
               icon="verified"
             />
@@ -19,11 +19,14 @@
         <DataContainer title="Security & Privacy">
           <dataField label="Biometric Login" value="Enable FaceID"></dataField>
           <dataField label="PIN Protection" value="Change PIN"></dataField>
+          <dataField label="Backup and Recovery" value="Backup Credentials">
+          </dataField>
           <dataField
-            label="Backup and Recovery"
-            value="Backup Credentials"
-            :is-last="true"
-          >
+            label="Backup Status"
+            value="Last backup: March 30, 2025"
+          ></dataField>
+          <dataField label="Private Key" :is-last="true">
+            <LinkButton>Reveal Private Key</LinkButton>
           </dataField>
         </DataContainer>
 
@@ -35,13 +38,15 @@
 
         <DataContainer title="Help & Transparency">
           <dataField label="About your DID">
-            <LinkButton>Learn more</LinkButton>
+            <LinkButton
+              >Learn how your decentralized identity works.</LinkButton
+            >
           </dataField>
           <dataField label="Trusted Issuer List">
-            <LinkButton>View List</LinkButton>
+            <LinkButton>View Trusted Issuers</LinkButton>
           </dataField>
           <dataField label="Legal Information" :is-last="true">
-            <LinkButton>Terms & Privacy Policy </LinkButton>
+            <LinkButton>Terms of Use & Privacy Policy </LinkButton>
           </dataField>
         </DataContainer>
       </div>

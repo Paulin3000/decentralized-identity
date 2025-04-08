@@ -3,7 +3,7 @@
     <div class="header-section">
       <h1 class="main-title">Issuer Portal</h1>
       <div class="lead-text">
-        Welcome to your secure credential management hub. Efficiently receive,
+        Welcome to your secure credential management platform. Efficiently
         verify, sign, and issue digital credentials while maintaining the
         highest standards of trust and security.
       </div>

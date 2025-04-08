@@ -1,9 +1,9 @@
 <template>
-  <DataDisplayLayout :show-go-back="true">
+  <DataDisplayLayout :show-go-back="false">
     <template #header>
       <DataDisplayHeader
         title="New Credential Request "
-        subtitle="Send a request to a trusted issuer to claim your credential."
+        subtitle="Review and verify the details of this credential request before proceeding with issuance."
       ></DataDisplayHeader>
     </template>
 
@@ -13,14 +13,14 @@
           <DataField label="Holder" :value="credential.holder" />
           <DataField label="Holder DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              address="did:ethr:0x7834ACE28B1050685201A64B09A576B14F31"
               show-icon="true"
               icon="verified"
           /></DataField>
           <DataField label="Issuer" value="University of Zürich" />
           <DataField label="Issuer DID"
             ><DIDAddress
-              address="did:ethr:0xA1B2C3D4E5F67890ABCDEF1234567890ABC"
+              address="did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE"
               show-icon="true"
               icon="verified"
           /></DataField>
@@ -36,10 +36,15 @@
           <DataField label="Last Name" value="Appleseed" />
           <DataField label="Date of Birth" value="April 1, 1990" />
           <DataField label="Student ID" value="18-187-369" />
-          <DataField label="Course" value="Ethical Management" />
+          <DataField label="Course" value="Ethics in Artificial Intelligence" />
+          <DataField label="Semester" value="Spring 2025" />
           <DataField label="Final Grade" value="5.5" />
           <DataField label="ECTS" value="6" />
-          <DataField label="Instructor" value="Prof. Sample" :isLast="true" />
+          <DataField
+            label="Instructor"
+            value="Prof. Dr. Emma Steinmann"
+            :isLast="true"
+          />
         </DataContainer>
 
         <CredentialVerifier mode="issuer" @verified="isVerified = true" />
@@ -104,7 +109,7 @@ import DataDisplayHeader from "../../components/DataDisplayHeader.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import { onMounted, ref } from "vue";
+import { ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { PhCheck, PhX } from "@phosphor-icons/vue";
