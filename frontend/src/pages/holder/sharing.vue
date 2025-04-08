@@ -199,7 +199,6 @@ onMounted(() => {
     credential.value = credentialData;
   } else {
     console.error(`Credential with ID ${credentialId.value} not found`);
-    // Optionally redirect to a 404 page or back to credentials list
     router.push({ name: "holder-credentials" });
   }
 });
@@ -235,10 +234,9 @@ onMounted(() => {
   setTimeout(() => {
     shouldMove.value = true;
 
-    // Show illustration after the card has moved (adjust timing as needed)
     setTimeout(() => {
       showIllustration.value = true;
-    }, 200); // 1 second delay after card starts moving
+    }, 200);
   }, 100);
 });
 

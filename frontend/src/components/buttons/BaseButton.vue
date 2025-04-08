@@ -12,8 +12,6 @@
 </template>
 
 <script setup>
-import { computed } from "vue";
-
 const props = defineProps({
   variant: {
     type: String,
@@ -106,21 +104,6 @@ const onClick = (event) => {
   color: var(--color-text-primary);
 }
 
-/*
-.special {
-  color: var(--color-text-primary);
-  background: linear-gradient(
-    to right,
-    rgb(255, 214, 0) 0%,
-    rgb(255, 122, 0) 25%,
-    rgb(255, 0, 105) 50%,
-    rgb(211, 0, 197) 75%,
-    rgb(118, 56, 250) 100%
-  );
-}
-
- */
-
 .special {
   position: relative;
   color: var(--color-text-primary);
@@ -173,7 +156,6 @@ const onClick = (event) => {
   );
 }
 
-/* Disabled state */
 .base-btn.disabled {
   opacity: 0.4;
   cursor: not-allowed;

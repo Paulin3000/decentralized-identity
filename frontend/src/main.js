@@ -7,7 +7,7 @@ import FloatingVue from "floating-vue";
 import "floating-vue/dist/style.css";
 
 const app = createApp(App);
-app.use(router); // Use the router
+app.use(router);
 app.use(FloatingVue, {
   themes: {
     tooltip: {

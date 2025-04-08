@@ -26,22 +26,6 @@
         </div>
       </div>
 
-      <!--      &lt;!&ndash; Pending Request Card  &ndash;&gt;-->
-      <!--      <div class="request-card gradient-card" @click="goToRequests">-->
-      <!--        <div class="card-content">-->
-      <!--          <div class="icon-container">-->
-      <!--            <PhEnvelopeSimple :size="64" weight="fill" />-->
-      <!--          </div>-->
-      <!--          <div class="card-text">-->
-      <!--            <h3>Pending Requests</h3>-->
-      <!--            <p class="card-description">-->
-      <!--              Review and process credential requests from users-->
-      <!--            </p>-->
-      <!--          </div>-->
-      <!--          <div class="requests-count">5 pending</div>-->
-      <!--        </div>-->
-      <!--      </div>-->
-
       <!-- Credentials Card -->
       <div class="request-card gradient-card" @click="goToCredentials">
         <div class="card-content">
@@ -90,7 +74,6 @@
 <script setup>
 import {
   PhEnvelopeSimple,
-  PhBell,
   PhArrowRight,
   PhIdentificationCard,
   PhChartLine,
@@ -133,16 +116,8 @@ const goToCredentials = () => {
 }
 
 .request-card:hover {
-  /*transform: scale(1.03);*/
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-  /*
-  box-shadow:
-    0 0 5px rgba(119, 76, 105, 0.5),
-    0 0 15px rgba(35, 72, 109, 0.4),
-    0 0 25px rgba(37, 106, 97, 0.3);
-   */
   border: 1px solid var(--color-text-primary);
-
   transition: all 0.3s ease;
 }
 
@@ -165,7 +140,6 @@ const goToCredentials = () => {
 }
 
 .icon-container {
-  /*background-color: rgba(255, 255, 255, 0.2);*/
   width: 56px;
   height: 56px;
   border-radius: 12px;

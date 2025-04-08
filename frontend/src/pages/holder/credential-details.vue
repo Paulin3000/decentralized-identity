@@ -117,15 +117,12 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-import Header from "../../components/Header.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
-import { PhPaperPlaneTilt, PhSealCheck, PhTrash } from "@phosphor-icons/vue";
+import { PhPaperPlaneTilt, PhTrash } from "@phosphor-icons/vue";
 import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
-import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
@@ -146,7 +143,6 @@ onMounted(() => {
     credential.value = credentialData;
   } else {
     console.error(`Credential with ID ${credentialId.value} not found`);
-    // Optionally redirect to a 404 page or back to credentials list
     router.push({ name: "holder-credentials" });
   }
 });

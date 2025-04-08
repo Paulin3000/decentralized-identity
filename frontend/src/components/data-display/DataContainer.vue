@@ -20,8 +20,6 @@
 </template>
 
 <script setup>
-import { PhLock } from "@phosphor-icons/vue";
-
 defineProps({
   title: {
     type: String,
@@ -72,7 +70,6 @@ defineProps({
   text-align: left;
   padding-left: 4px;
   padding-right: 1rem;
-  /*width: 300px;*/
 }
 
 .data-container {

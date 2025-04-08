@@ -10,7 +10,7 @@
         />
         <span class="text-base">{{ subtitle }}</span>
       </p>
-      <!-- Info Box -->
+      <!-- info box -->
     </div>
     <slot></slot>
   </div>
@@ -18,8 +18,6 @@
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
-import { PhLock } from "@phosphor-icons/vue";
-import GoBackButton from "./GoBackButton.vue";
 
 const props = defineProps({
   title: {

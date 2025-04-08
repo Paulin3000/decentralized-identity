@@ -112,8 +112,6 @@
 <script setup lang="ts">
 import Header from "../../components/Header.vue";
 import trustTriangle from "../../assets/illustrations/trustTriangle.png";
-import { PhPlus } from "@phosphor-icons/vue";
-import IconButton from "../../components/buttons/IconButton.vue";
 </script>
 
 <style scoped>

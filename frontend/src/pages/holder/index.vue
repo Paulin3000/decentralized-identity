@@ -12,8 +12,6 @@
         @click="navigateTo('holder-credentials')"
         >My Credentials
       </IconButton>
-
-      <!--      <div class="gradient-line"></div>-->
     </div>
 
     <div class="process-container">
@@ -104,9 +102,9 @@ function navigateTo(routeName) {
   height: calc(100vh - 128px);
   max-width: 1200px;
   max-height: 1000px;
-  margin: 0 auto; /* Center the container */
+  margin: 0 auto;
   padding: 1rem 1rem 2rem;
-  justify-content: space-around; /* Distributes space between header and process */
+  justify-content: space-around;
 }
 
 .header-section {
@@ -130,20 +128,6 @@ function navigateTo(routeName) {
   line-height: var(--leading-relaxed);
   color: var(--color-text-secondary);
   padding: 0 1.5rem;
-}
-
-.gradient-line {
-  width: 160px;
-  height: 4px;
-  background: linear-gradient(
-    to right,
-    var(--color-yellow),
-    var(--color-orange),
-    var(--color-pink),
-    var(--color-purple),
-    var(--color-blue)
-  );
-  border-radius: 2px;
 }
 
 .process-container {
@@ -206,7 +190,6 @@ function navigateTo(routeName) {
   margin: 0;
 }
 
-/* Responsive adjustments */
 @media (max-width: 768px) {
   .process-container {
     flex-direction: column;

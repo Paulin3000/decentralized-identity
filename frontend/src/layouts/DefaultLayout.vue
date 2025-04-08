@@ -16,13 +16,13 @@ import NavBar from "../components/navigation/NavBar.vue";
 
 const route = useRoute();
 
-// Determine current role based on the route path
+// determine current role based on the route path
 const currentRole = computed(() => {
   const path = route.path;
   if (path.startsWith("/holder")) return "holder";
   if (path.startsWith("/issuer")) return "issuer";
   if (path.startsWith("/verifier")) return "verifier";
-  return "holder"; // Default
+  return "holder";
 });
 </script>
 

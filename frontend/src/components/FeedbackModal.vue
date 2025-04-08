@@ -25,7 +25,6 @@
 
 <script setup>
 import { computed } from "vue";
-import IconButton from "./buttons/IconButton.vue";
 import { PhCheckCircle, PhXCircle } from "@phosphor-icons/vue";
 
 const props = defineProps({

@@ -56,7 +56,7 @@ function navigateTo(routeName) {
       }
     })
     .then(() => {
-      // Force component update if needed
+      // force component update if needed
       if (router.currentRoute.value.name === routeName) {
         window.location.reload();
       }
@@ -88,7 +88,6 @@ const navigateToDetail = (credentialId) => {
   margin: auto;
 }
 
-/* Responsive adjustments */
 @media (min-width: 1200px) {
   .credentials-grid {
     grid-template-columns: repeat(3, 1fr);

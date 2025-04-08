@@ -46,7 +46,6 @@
 
 <script setup>
 import { computed } from "vue";
-import router from "../router/index.js";
 
 const emit = defineEmits(["credential-click"]);
 
@@ -138,26 +137,6 @@ const logoContainerStyle = computed(() => {
 .credential-card {
   width: 340px;
   height: 215px;
-
-  /*
-  background: radial-gradient(
-    circle at top left,
-    rgba(255, 255, 255, 0.15) 0%,
-    rgba(255, 255, 255, 0.05) 50%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-
-   */
-  /*
-  background: linear-gradient(
-    to right,
-    rgba(255, 255, 255, 0.01) 0%,
-    rgba(255, 255, 255, 0.12) 50%,
-    rgba(255, 255, 255, 0.01) 100%
-  );
-
-   */
-
   border: 1px solid #707070;
   border-radius: 16px;
   overflow: hidden;
@@ -251,37 +230,14 @@ const logoContainerStyle = computed(() => {
     rgba(255, 255, 255, 0.16) 50%,
     rgba(255, 255, 255, 0.005) 90%
   );
-  pointer-events: none; /* This allows clicks to pass through to the card */
-}
-
-/* gradient at the left side */
-/*
-.credential-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 6px;
-  height: 100%;
-  background: linear-gradient(
-    to bottom,
-    var(--color-yellow),
-    var(--color-orange),
-    var(--color-pink),
-    var(--color-purple),
-    var(--color-blue)
-  );
-  opacity: 0.8;
   pointer-events: none;
-  border-radius: 0 6px 6px 0;
-}*/
+}
 
 .card-header {
   padding: 20px 20px 10px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  /* border-bottom: 3px solid rgba(0, 0, 0, 0.2); */
 }
 
 .header-content {
@@ -303,14 +259,11 @@ const logoContainerStyle = computed(() => {
 }
 
 .status-verified {
-  /*background-color: rgba(16, 185, 129, 0.5);*/
-  /*background-color: var(--color-background);*/
   background-color: rgba(12, 15, 20, 0.75);
   color: var(--color-good);
 }
 
 .status-revoked {
-  /*background-color: rgba(239, 68, 68, 0.3);*/
   background-color: rgba(12, 15, 20, 0.75);
   color: rgb(239, 68, 68);
 }
@@ -356,7 +309,7 @@ const logoContainerStyle = computed(() => {
   width: 45px;
   height: 45px;
   border-radius: 10px;
-  background-color: var(--color-orange); /* default color */
+  background-color: var(--color-orange);
   display: flex;
   justify-content: center;
   align-items: center;

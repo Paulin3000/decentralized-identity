@@ -41,7 +41,7 @@ const props = defineProps({
   },
   iconWeight: {
     type: String,
-    default: "bold", // 'thin' | 'light' | 'regular' | 'bold' | 'fill' | 'duotone'
+    default: "bold",
   },
   badgeCount: {
     type: Number,

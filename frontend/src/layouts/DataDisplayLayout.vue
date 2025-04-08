@@ -13,7 +13,6 @@
 <script setup>
 import { useRouter } from "vue-router";
 import GoBackButton from "../components/GoBackButton.vue";
-import PageHeader from "../components/PageHeader.vue";
 
 const props = defineProps({
   showGoBack: { type: Boolean, default: false },
@@ -47,7 +46,6 @@ const router = useRouter();
   gap: 1.5rem;
 }
 
-/* Add responsive styling for smaller screens */
 @media (max-width: 1200px) {
   .back-button-container {
     top: -2rem;

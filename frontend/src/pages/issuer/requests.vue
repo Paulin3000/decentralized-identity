@@ -1,10 +1,10 @@
 <template>
   <DataDisplayLayout :show-go-back="true">
     <template #header>
-      <PageHeader
+      <DataDisplayHeader
         title="New Credential Request "
         subtitle="Send a request to a trusted issuer to claim your credential."
-      ></PageHeader>
+      ></DataDisplayHeader>
     </template>
 
     <template #content>
@@ -100,11 +100,10 @@
 </template>
 
 <script setup>
-import PageHeader from "../../components/PageHeader.vue";
+import DataDisplayHeader from "../../components/DataDisplayHeader.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import { onMounted, ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
@@ -132,10 +131,6 @@ const credential = ref({
   expiryDate: "2028-06-30",
   logoUrl: switzerlandLogo,
   logoContainerColor: "var(--color-pink)",
-});
-
-onMounted(() => {
-  // Fetch/update credential details as needed
 });
 
 const formatDate = (dateString) => {

@@ -1,10 +1,10 @@
 <template>
   <DataDisplayLayout :show-go-back="true">
     <template #header>
-      <PageHeader
+      <DataDisplayHeader
         title="Request New Credential"
         subtitle="Send a request to a trusted issuer to claim your credential."
-      ></PageHeader>
+      ></DataDisplayHeader>
     </template>
 
     <template #content>
@@ -78,23 +78,16 @@
 </template>
 
 <script setup>
-import PageHeader from "../../components/PageHeader.vue";
+import DataDisplayHeader from "../../components/DataDisplayHeader.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
-import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
 import InputField from "../../components/data-display/inputs-DataField/InputField.vue";
 import LinkButton from "../../components/data-display/inputs-DataField/LinkButton.vue";
 import { ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
-import {
-  PhCheck,
-  PhCheckCircle,
-  PhPaperclip,
-  PhPaperPlaneTilt,
-  PhX,
-} from "@phosphor-icons/vue";
+import { PhPaperclip, PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
 import router from "../../router/index.js";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import SignatureField from "../../components/data-display/SignatureField.vue";
@@ -107,14 +100,11 @@ const signed = ref(false);
 
 const handleSendRequest = () => {
   console.log("Sending credential request...");
-  // Add request sending logic
   showFeedbackModal.value = true;
 };
 
 const closeFeedbackModal = () => {
   showFeedbackModal.value = false;
-  // would be better to navigate to credentials but doesn't work somehow
-  // router.push({ name: "holder-credentials" });
   router.back();
 };
 

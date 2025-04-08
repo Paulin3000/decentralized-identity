@@ -101,7 +101,6 @@ const handleClick = () => {
 }
 
 .selectable-data-field--enabled:hover {
-  /*background-color: rgba(255, 255, 255, 0.05);*/
   border: 1px solid var(--color-primary);
   box-shadow: inset 0 0 0 1px var(--color-primary);
 }
@@ -155,7 +154,6 @@ const handleClick = () => {
 }
 
 .selectable-data-field__value {
-  /*font-size: var(--text-sm);*/
   font-size: var(--text-base);
   font-weight: var(--font-semibold);
   color: var(--color-text-secondary);

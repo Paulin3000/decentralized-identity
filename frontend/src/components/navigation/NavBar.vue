@@ -177,7 +177,7 @@ function navigateTo(routeName, params = {}) {
 }
 
 function switchRole(role) {
-  // Navigate to the main page of the selected role
+  // navigate to the main page (index) of the selected role
   router.push({ path: `/${role}` });
   showProfileMenu.value = false;
 }
@@ -279,7 +279,6 @@ function navigateToHome() {
   width: 4rem;
 }
 
-/* Simple fade transition for the dropdown */
 .fade-enter-active,
 .fade-leave-active {
   transition: opacity 0.15s ease;

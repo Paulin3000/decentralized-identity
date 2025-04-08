@@ -90,7 +90,7 @@ function generateSignatureHash() {
 async function signDocument() {
   isSigningInProgress.value = true;
 
-  // Simulate signing process
+  // simulate signing process
   await new Promise((resolve) => setTimeout(resolve, 1000));
 
   signatureDate.value = new Date();
@@ -103,10 +103,10 @@ async function signDocument() {
     signature: signatureHash.value,
   });
 
-  // Wait a little to ensure the DOM is updated with new content
+  // wait a little to ensure the DOM is updated with new content
   await nextTick();
 
-  // Scroll to show the signature information
+  // scroll down to show the signature information
   setTimeout(() => {
     const el = document.querySelector(".signature-content");
     if (el) {
@@ -115,7 +115,7 @@ async function signDocument() {
         block: "start",
       });
     }
-  }, 100); // Small delay to allow CSS transitions to start
+  }, 100);
 }
 </script>
 

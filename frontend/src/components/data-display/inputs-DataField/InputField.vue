@@ -136,7 +136,7 @@ const handleInput = (event) => {
   }
 };
 
-// if model value changes because without the user typing
+// if model value changes, without the user typing
 watch(
   () => props.modelValue,
   (newValue) => {

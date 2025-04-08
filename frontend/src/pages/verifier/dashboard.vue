@@ -89,12 +89,9 @@
 <script setup>
 import {
   PhEnvelopeSimple,
-  PhBell,
   PhArrowRight,
-  PhIdentificationCard,
   PhChartLine,
 } from "@phosphor-icons/vue";
-import PageHeader from "../../components/PageHeader.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
 import { useRouter } from "vue-router";
 import Header from "../../components/Header.vue";
@@ -133,16 +130,8 @@ const goToCredentials = () => {
 }
 
 .request-card:hover {
-  /*transform: scale(1.03);*/
   box-shadow: 0 0 5px rgba(255, 255, 255, 0.6);
-  /*
-  box-shadow:
-    0 0 5px rgba(119, 76, 105, 0.5),
-    0 0 15px rgba(35, 72, 109, 0.4),
-    0 0 25px rgba(37, 106, 97, 0.3);
-   */
   border: 1px solid var(--color-text-primary);
-
   transition: all 0.3s ease;
 }
 
@@ -165,7 +154,6 @@ const goToCredentials = () => {
 }
 
 .icon-container {
-  /*background-color: rgba(255, 255, 255, 0.2);*/
   width: 56px;
   height: 56px;
   border-radius: 12px;
@@ -193,13 +181,6 @@ h3 {
 
 .button-container {
   margin-top: auto;
-}
-
-.requests-count {
-  margin-top: auto;
-  font-weight: var(--font-semibold);
-  font-size: var(--text-lg);
-  margin-bottom: 0.75rem;
 }
 
 .stats-container {

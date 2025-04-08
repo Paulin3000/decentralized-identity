@@ -112,20 +112,12 @@
 <script setup>
 import { ref, onMounted, computed } from "vue";
 import { useRoute } from "vue-router";
-import Header from "../../components/Header.vue";
 import DataContainer from "../../components/data-display/DataContainer.vue";
 import DataField from "../../components/data-display/DataField.vue";
 import CredentialCard from "../../components/CredentialCard.vue";
-import switzerlandLogo from "../../assets/switzerland.png";
 import router from "../../router/index.js";
-import {
-  PhPaperPlaneTilt,
-  PhProhibit,
-  PhSealCheck,
-  PhTrash,
-} from "@phosphor-icons/vue";
+import { PhProhibit } from "@phosphor-icons/vue";
 import StatusTag from "../../components/data-display/inputs-DataField/StatusTag.vue";
-import GoBackButton from "../../components/GoBackButton.vue";
 import DataDisplayLayout from "../../layouts/DataDisplayLayout.vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";

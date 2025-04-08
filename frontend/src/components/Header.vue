@@ -20,7 +20,6 @@
 
 <script setup>
 import { defineProps, defineEmits } from "vue";
-import { PhLock } from "@phosphor-icons/vue";
 
 const props = defineProps({
   title: {
