@@ -68,15 +68,15 @@
           </div>
           <div class="stats-container">
             <div class="stat-item">
-              <span class="stat-number">24</span>
-              <span class="stat-label">Issued</span>
+              <span class="stat-number">12</span>
+              <span class="stat-label">Accepted</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">5</span>
+              <span class="stat-number">3</span>
               <span class="stat-label">Pending</span>
             </div>
             <div class="stat-item">
-              <span class="stat-number">2</span>
+              <span class="stat-number">6</span>
               <span class="stat-label">Rejected</span>
             </div>
           </div>
