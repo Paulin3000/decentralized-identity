@@ -9,7 +9,11 @@
 
     <template #content>
       <div class="request-section">
-        <DataContainer>
+        <DataContainer
+          subtitle="Enter the issuer's DID (their unique digital identifier). If you don't have it, contact the issuer directly.
+"
+          :subtitle-icon="PhInfo"
+        >
           <DataField label="Credential Type" value="..." has-status="true">
             <InputField type="text" placeholder="Enter credential type" />
           </DataField>
@@ -87,7 +91,12 @@ import LinkButton from "../../components/data-display/inputs-DataField/LinkButto
 import { ref } from "vue";
 import DIDAddress from "../../components/data-display/inputs-DataField/DIDAddress.vue";
 import IconButton from "../../components/buttons/IconButton.vue";
-import { PhPaperclip, PhPaperPlaneTilt, PhX } from "@phosphor-icons/vue";
+import {
+  PhInfo,
+  PhPaperclip,
+  PhPaperPlaneTilt,
+  PhX,
+} from "@phosphor-icons/vue";
 import router from "../../router/index.js";
 import FeedbackModal from "../../components/FeedbackModal.vue";
 import SignatureField from "../../components/data-display/SignatureField.vue";

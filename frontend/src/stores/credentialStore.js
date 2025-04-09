@@ -7,7 +7,7 @@ import sanitasLogo from "../assets/Sanitas_Logo_RGB_black.png";
 // Constants
 const HOLDER_DID = "did:ethr:0x7834ACE28B1050685201A64B09A576B14F31";
 const VERIFICATION_METHOD = "Secure blockchain record";
-const UZH_ISSUER_DID = "did:ethr:0x4A0E8C1F1E262F5F9A9E4B7E520CB5DD7FE";
+const UZH_ISSUER_DID = "did:ethr:0xAA0E8C1F1E262F5F9A9E4B7E520CB5DD7FE";
 
 // Create a reactive store with all our credentials data
 const credentialsData = reactive({
