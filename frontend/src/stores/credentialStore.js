@@ -55,7 +55,7 @@ const credentialsData = reactive({
       degree: "Bachelor of Science",
       field: "Computer Science",
       graduationDate: "April 30, 2025",
-      gpa: "5.25/6.0",
+      gpa: "4.25 / 6.0",
     },
     verification: {
       lastVerified: "July 16, 2025",

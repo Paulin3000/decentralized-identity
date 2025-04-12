@@ -8,7 +8,7 @@
           :weight="iconWeight"
           color="var(--color-text-tertiary)"
         />
-        <span class="text-base">{{ subtitle }}</span>
+        <span class="text-lg">{{ subtitle }}</span>
       </p>
       <!-- info box -->
     </div>
