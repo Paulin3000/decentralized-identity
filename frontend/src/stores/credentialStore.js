@@ -240,7 +240,7 @@ const credentialsDataIssuer = reactive({
     id: "certificate-datascience-1",
     type: "Professional Certificate",
     subheading: "University of Zurich",
-    verified: true,
+    verified: false,
     holder: "Anna Fischer",
     holderDid: "did:ethr:0x2A5DE8F94B671C3A9F5D2E86B7C498A2F7",
     issuer: "University of Zurich",
