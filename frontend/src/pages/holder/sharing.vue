@@ -252,7 +252,7 @@ const handleCancel = () => {
 
 const handleTrustStatus = (status) => {
   if (status && status.type === "trusted") {
-    verifierName.value = "University of Zürich";
+    verifierName.value = "Fantasy Inc.";
   }
 };
 
