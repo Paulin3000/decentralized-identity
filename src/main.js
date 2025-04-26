@@ -2,7 +2,7 @@ import { createApp } from "vue";
 import { createRouter, createWebHistory } from "vue-router";
 import "./style.css";
 import App from "./App.vue";
-import router from "./router";
+import router from "./router/index.js";
 import FloatingVue from "floating-vue";
 import "floating-vue/dist/style.css";
 

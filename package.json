@@ -1,25 +1,29 @@
 {
-  "name": "credchain",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "name": "frontend",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "^1.0.2",
-    "@nomiclabs/hardhat-truffle5": "^2.0.7",
-    "@nomiclabs/hardhat-web3": "^2.0.0",
-    "hardhat": "^2.11.1",
-    "web3": "^1.8.0"
+    "dev": "vite",
+    "build": "../../../Desktop/frontend/node_modules/.bin/vite build",
+    "preview": "../../../Desktop/frontend/node_modules/.bin/vite preview"
   },
   "dependencies": {
-    "big-integer": "^1.6.51",
-    "crypto-js": "^4.1.1",
-    "ethereumjs-util": "^7.1.5",
-    "floating-vue": "^5.2.2"
+    "@phosphor-icons/vue": "^2.2.1",
+    "@tailwindcss/vite": "^4.0.14",
+    "floating-vue": "^5.2.2",
+    "vue": "^3.5.13",
+    "vue-router": "^4.5.0"
+  },
+  "devDependencies": {
+    "@vitejs/plugin-vue": "^5.2.1",
+    "autoprefixer": "^10.4.21",
+    "eslint": "^9.22.0",
+    "eslint-plugin-vue": "^10.0.0",
+    "postcss": "^8.5.3",
+    "prettier": "3.5.3",
+    "sass": "^1.85.1",
+    "tailwindcss": "^4.0.14",
+    "vite": "^6.2.0"
   }
 }

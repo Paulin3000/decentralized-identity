@@ -1,7 +1,7 @@
 import { createRouter, createWebHistory } from "vue-router";
-import holderRoutes from "./holder.routes";
-import issuerRoutes from "./issuer.routes";
-import verifierRoutes from "./verifier.routes";
+import holderRoutes from "./holder.routes.js";
+import issuerRoutes from "./issuer.routes.js";
+import verifierRoutes from "./verifier.routes.js";
 
 const routes = [
   {
