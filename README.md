@@ -32,7 +32,6 @@ npm run dev
 The app will be available at http://localhost:5173/
 
 
-
 ## Features and Basic Operation
 
 - **Start Screen**: Navigate between "Credentials", "Sharing", "Settings", and "Info" sections from the homepage
