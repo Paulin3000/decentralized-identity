@@ -99,12 +99,12 @@ const verificationItemsVerifier = [
 const verificationItemsIssuer = [
   {
     title: "Requestor Identity",
-    description: "Is the requestor identity valid and registered?",
+    description: "Is the requester identity valid and registered?",
     status: "initial",
   },
   {
     title: "Request Signature",
-    description: "Is the request properly signed by the requestor?",
+    description: "Is the request properly signed by the requester?",
     status: "initial",
   },
 ];
