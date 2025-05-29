@@ -15,7 +15,7 @@ export default [
     name: "holder-credential-details",
   },
   {
-    path: "request-credential",
+    path: "credentias/request-credential",
     component: () => import("../pages/holder/request-credential.vue"),
     name: "holder-request-credential",
   },
