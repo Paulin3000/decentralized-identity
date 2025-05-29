@@ -5,8 +5,8 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "../../../Desktop/frontend/node_modules/.bin/vite build",
-    "preview": "../../../Desktop/frontend/node_modules/.bin/vite preview"
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@phosphor-icons/vue": "^2.2.1",
