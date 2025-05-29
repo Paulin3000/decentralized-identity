@@ -10,12 +10,12 @@ export default [
     name: "holder-credentials",
   },
   {
-    path: "/holder/credentials/:id",
+    path: "credentials/:id",
     component: () => import("../pages/holder/credential-details.vue"),
     name: "holder-credential-details",
   },
   {
-    path: "/holder/request-credential",
+    path: "request-credential",
     component: () => import("../pages/holder/request-credential.vue"),
     name: "holder-request-credential",
   },

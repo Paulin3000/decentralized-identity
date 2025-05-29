@@ -20,7 +20,7 @@ export default [
     name: "issuer-credentials",
   },
   {
-    path: "/issuer/credentials/:id",
+    path: "credentials/:id",
     component: () => import("../pages/issuer/credential-details.vue"),
     name: "issuer-credential-details",
   },
