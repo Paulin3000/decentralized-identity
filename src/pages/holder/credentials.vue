@@ -3,7 +3,7 @@
     <IconButton
       :icon-left="PhPlus"
       variant="primary"
-      @click="navigateTo('request-credential')"
+      @click="navigateTo('holder-request-credential')"
       >Claim New Credential</IconButton
     >
   </Header>
