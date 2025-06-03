@@ -1,4 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Nohemi:wght@400;500;600;700&family=Public+Sans:wght@300;400;500;600;700&display=swap');
+/*@import url('https://fonts.googleapis.com/css2?family=Nohemi:wght@400;500;600;700&family=Public+Sans:wght@300;400;500;600;700&display=swap'); */
+@import url('https://fonts.googleapis.com/css2?family=Public+Sans:wght@300;400;500;600;700&display=swap');
 
 @import "tailwindcss";
 
@@ -7,7 +8,7 @@
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('@/assets/fonts/Nohemi/Nohemi-Regular-BF6438cc4d0e493.ttf') format('truetype');
+  src: url('/src/assets/fonts/Nohemi/Nohemi-Regular-BF6438cc579d934.woff') format('woff');
   font-weight: 400;
   font-style: normal;
   font-display: swap;
@@ -15,7 +16,7 @@
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('@/assets/fonts/Nohemi/Nohemi-Medium-BF6438cc581a509.otf') format('opentype');
+  src: url('/src/assets/fonts/Nohemi/Nohemi-Medium-BF6438cc57ddecd.woff') format('woff');
   font-weight: 500;
   font-style: normal;
   font-display: swap;
@@ -23,7 +24,15 @@
 
 @font-face {
   font-family: 'Nohemi';
-  src: url('@/assets/fonts/Nohemi/Nohemi-Bold-BF6438cc587b5b5.ttf') format('truetype');
+  src: url('/src/assets/fonts/Nohemi/Nohemi-SemiBold-BF6438cc57db2ff.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Nohemi';
+  src: url('/src/assets/fonts/Nohemi/Nohemi-Bold-BF6438cc577b524.woff') format('woff');
   font-weight: 700;
   font-style: normal;
   font-display: swap;
@@ -116,6 +125,8 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  --font-heading: 'Nohemi', sans-serif;
+  --font-body: 'Public Sans', system-ui, sans-serif;
 }
 
 body {
