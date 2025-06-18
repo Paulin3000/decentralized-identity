@@ -59,15 +59,15 @@
               </p>
             </div>
           </li>
-          <li class="process-step">
-            <PhCheck :size="30" weight="bold" />
-            <div class="step-content">
-              <h4>Access Services</h4>
-              <p class="text-secondary">
-                Use credentials to access services and verify your identity.
-              </p>
-            </div>
-          </li>
+<!--          <li class="process-step">-->
+<!--            <PhCheck :size="30" weight="bold" />-->
+<!--            <div class="step-content">-->
+<!--              <h4>Access Services</h4>-->
+<!--              <p class="text-secondary">-->
+<!--                Use credentials to access services and verify your identity.-->
+<!--              </p>-->
+<!--            </div>-->
+<!--          </li>-->
         </ul>
       </div>
     </div>
